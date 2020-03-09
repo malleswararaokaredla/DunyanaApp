@@ -1,0 +1,72 @@
+<div class="changepassword">
+    <p-dialog header="Add Categories" [(visible)]="display" [modal]="true" [responsive]="true" [style]="{width: '550px'}"  [closeOnEscape]="true"  (onHide)="onClose()">
+  
+        <form class="from_wrapper" [formGroup]="merchentForm" novalidate>
+            <h2 class="col-md-12 text-center">Add Merchant values</h2>
+            <div class="row inputset">
+             
+                <div class="col-sm-6"><label>Attribute</label><span class="r">*</span></div>
+                <div class="col-sm-6"><input id="input" type="text" formControlName="MerchantAttribute" placeholder="Enter attribute" (keyup)="formvalidate()"> </div>
+                <div class="col-sm-12">
+                    <div *ngIf="merchentForm.controls['MerchantAttribute'].errors && !merchentForm.controls['MerchantAttribute'].pristine" class="text-danger float-right error">
+                        <div [hidden]="!merchentForm.controls['MerchantAttribute'].errors.required">Enter merchant attribute name </div>
+                       
+                    </div>
+                </div>
+  
+                <div class="col-sm-12">
+                    <hr>
+                </div>
+            </div>
+            <div class="row inputset">
+                <div class="col-sm-6"><label>Value</label><span class="r">*</span></div>
+                <div class="col-sm-6"><input id="input" type="text" formControlName="MerchantValue" (keyup)="formvalidate()" placeholder="Enter value"> </div>
+                <div class="col-sm-12">
+                    <div *ngIf="merchentForm.controls['MerchantValue'].errors && !merchentForm.controls['MerchantValue'].pristine" class="text-danger float-right error">
+                        <div [hidden]="!merchentForm.controls['MerchantValue'].errors.required">Enter merchant value </div>
+                       
+                    </div>
+                </div>
+  
+                <div class="col-sm-12">
+                    <hr>
+                </div>
+            </div>
+            
+  
+            <div class="row inputset">
+                <div class="col-sm-6"><label>Description</label><span class="r">*</span></div>
+                <div class="col-sm-6"><input id="input" type="text" formControlName="MerchantDescription" placeholder="Enter description" (keyup)="formvalidate()"> </div>
+                <div class="col-sm-12">
+                    <div *ngIf="merchentForm.controls['MerchantDescription'].errors && !merchentForm.controls['MerchantDescription'].pristine" class="text-danger float-right error">
+                        <div [hidden]="!merchentForm.controls['MerchantDescription'].errors.required"> Enter merchant description</div>
+                       
+                    </div>
+                </div>
+  
+                <div class="col-sm-12">
+                    <hr>
+                </div>
+              </div>
+            <div class="row justify-content-center mt-4">
+  
+                <button class="line_btn sblue mr-4" [ngClass]="btndisable" (click)="Addmerchentvalues()">Add</button>
+                <button class="line_btn sblue" (click)="redirectcustomerlist()">Cancel</button>
+  
+            </div>
+            <div class="col-sm-12" style="text-align: center">
+                    <span [ngClass]="responsesty" #adddiv></span>
+    
+                </div>
+        </form>
+
+         <div class="loading-indicator mid" *ngIf="ProgressSpinnerDlg">
+                <p-progressSpinner></p-progressSpinner>
+            </div>
+            
+            <div class="overlay" *ngIf="ProgressSpinnerDlg"></div>
+  
+    </p-dialog>
+    <p-toast></p-toast>
+  </div>
+  

@@ -1,0 +1,102 @@
+<section class="accounts walletbackground ">
+    <div class="text_container">
+        <div class="container">
+
+            <div class="row justify-content-md-center">
+                <div class="col-md-4">
+                    <div class="profile">
+                        <form id="payment-form" [formGroup]="paymentForm" class="from_wrapper">
+
+                            <div class="address">
+                                <a class="backBtn" href="javascript:void(0);" (click)='goBack()' data-slide="prev">
+                                    <i class="icomoon icon-arrows"></i>
+                                </a>
+                                <div class="form-group" id="amountContent">
+                                    <label for="Amount">Amount</label>
+                                    <input class="form-control" type="number" formControlName="Amount" id="Amount"
+                                        name="Amount" value="{{ amount }}" />
+                                    <div *ngIf="paymentForm.controls['Amount'].errors && !paymentForm.controls['Amount'].pristine"
+                                        class="login-error">
+                                        <div [hidden]="!paymentForm.controls['Amount'].errors.required">Please enter
+                                            Amount</div>
+                                        <div [hidden]="!paymentForm.controls['Amount'].errors?.pattern">Please enter
+                                            valid Amount</div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <p-dropdown [options]="cardTypes" id="cardType" formControlName="cardType"
+                                        (onChange)="formvalidate($event)" [autoWidth]="false" [filter]="false">
+                                        <option *ngFor="let s of cardTypes" [ngValue]="s">{{s}}</option>
+                                    </p-dropdown>
+                                    <div *ngIf="paymentForm.controls['cardType'].errors && !paymentForm.controls['cardType'].pristine"
+                                        class="login-error">
+                                        <div [hidden]="!paymentForm.controls['cardType'].errors.required">Please select
+                                            card type</div>
+                                        <div [hidden]="!paymentForm.controls['cardType'].errors?.pattern">Please select
+                                            card type</div>
+                                    </div>
+                                </div>
+                                <input type="hidden" id="CustomerId" name="CustomerId" value="{{ customerId }}" />
+                                <input type="hidden" id="CardToken" name="CardToken" value="" />
+                                <input type="hidden" id="CardBin" name="CardBin" value="" />
+
+                                <div class="form-group" style="display:none;">
+                                    <label for="Currency">Currency</label>
+                                    <select class="form-control" data-val="true"
+                                        data-val-required="The Currency field is required." id="Currency"
+                                        name="Currency">
+
+                                        <option value={{currencytype}}>{{currencytype}}</option>
+                                    </select>
+                                    <span class="text-danger field-validation-valid" data-valmsg-for="Currency"
+                                        data-valmsg-replace="true"></span>
+                                </div>
+                                <div class="form-group" style="display:none;" id="cvvContent">
+                                    <label for="CVV">CVV</label>
+                                    <input class="form-control price_input" type="password" id="cvv" name="cvv" #cvv
+                                        value="" maxlength="4" onpaste="return false" (keyup)="cvvValidation(cvv.value)"
+                                        onkeypress='return event.charCode >= 48 && event.charCode <= 57' required />
+                                </div>
+                                <div class="form-group form-check" style="display:none;">
+                                    <input class="form-check-input" type="checkbox" data-val="true"
+                                        data-val-required="The 3-D Secure field is required." id="DoThreeDS"
+                                        name="DoThreeDS" value="true">
+                                    <label class="form-check-label" for="DoThreeDS">3-D Secure</label>
+                                </div>
+                                <div class="form-group form-check" style="display:none;">
+                                    <input class="form-check-input " type="checkbox" checked="checked" data-val="true"
+                                        data-val-required="The Capture field is required." id="Capture" name="Capture"
+                                        value="true">
+                                    <label class="form-check-label" for="Capture">Capture</label>
+                                </div>
+                                <div class="frames-container form-group" style="display:none;" id="frames-container">
+                                </div>
+                                <div class="form-group form-check" style="display:none;" id="saveCardContent">
+                                    <input class="form-check-input" type="checkbox" id="saveCard" name="saveCard"
+                                        value="false">
+                                    <label class="form-check-label" for="SaveCard">Save Card</label>
+                                </div>
+                                <div class="form-group text-center mt-4">
+                                    <button id="pay-now-button" type="button" class="line_btn sblue " disabled
+                                        (click)="submitFrm()">Continue </button>
+                                    <button id="payTemp" type="button" class="line_btn sblue " (click)="apiSubmit()"
+                                        style="display: none;">Pay Temp </button>
+                                </div>
+
+                                <input name="DoThreeDS" type="hidden" value="false">
+                                <input name="Capture" type="hidden" value="false">
+                            </div>
+                        </form>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="loading-indicator mid" style="display: none;" id="ProgressSpinnerDlg">
+        <p-progressSpinner></p-progressSpinner>
+    </div>
+
+
+</section>

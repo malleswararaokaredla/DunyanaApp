@@ -1,0 +1,73 @@
+<section class="accounts walletbackground">
+    <div class="text_container">
+        <div class="container">
+
+            <div class="row justify-content-md-center">
+                <div class="col-sm-4 ">
+                    <div class="profile">
+
+                        <form [formGroup]="walletForm" class="form" (ngSubmit)="insertWalletMoney()">
+                            <div class="address">
+                                <a class="backBtn" href="#demo" [routerLink]="['/customer/customeraccount']"
+                                    data-slide="prev">
+                                    <i class="icomoon icon-arrows"></i>
+                                </a><br>
+
+                                <label>Enter Amount<span class="r">*</span></label><br>
+                                <input type="text" class="price_input" formControlName="transactionAmount" #wallet
+                                    [(ngModel)]="_walletDto.transactionAmount" pInputText (keyup)="formvalidation()"
+                                    maxlength="8" onpaste="return false"
+                                    (keypress)="restrictNumeric(wallet.value, $event);">
+                                <small>{{currencytype}}</small>
+
+                                <div class="col-sm-12">
+                                    <div *ngIf="walletForm.controls['transactionAmount'].errors && !walletForm.controls['transactionAmount'].pristine"
+                                        class="text-danger error">
+                                        <div [hidden]="!walletForm.controls['transactionAmount'].errors.required">
+
+                                        </div>
+                                        <div [hidden]="!walletForm.controls['transactionAmount'].errors?.pattern">
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row ">
+                                    <div class="col-sm-8">
+                                    </div>
+                                    <div class="col-sm-4 text-right">
+                                        <h6><small> Last Update</small><br> {{transactionDate | date:'MMM d, y'}}</h6>
+                                    </div>
+                                </div>
+                                <div class="col-sm-12">
+
+                                </div>
+                                <div class="col-sm-12">
+                                    <span [hidden]="txtErrormsg" class="text-danger error">{{walletvalidmsg}}</span>
+                                </div>
+
+                                <div class="row btns">
+                                    <div class="col-sm-12 text-center mt-4">
+                                        <button class="line_btn sblue mr-4" [ngClass]="btndisable">Continue</button>
+                                    </div>
+                                </div>
+                                <div class="pt-2">
+                                    <div [ngClass]="responsesty">
+                                        <span [ngClass]="responsesty" style="color: yellowgreen" #div></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>
+
+<div class="loading-indicator mid" *ngIf="ProgressSpinnerDlg">
+    <p-progressSpinner></p-progressSpinner>
+</div>
+
+<div class="overlay" *ngIf="ProgressSpinnerDlg"></div>

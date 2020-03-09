@@ -1,0 +1,108 @@
+<section class="accounts">
+    <div class="text_container">
+        <div class="container">
+
+            <div class="row">
+                <div class="col-xl-12 leftPanel">
+
+                    <h2>Deals And Promotions <span class="font-weight-bold"></span></h2>
+                    <p class="small">At dunyana  you shop online world class variety quality of products with amazing offers and deals, cashbacks, Promotional discounts up to  flat 50% off or more!!!!</p>
+
+                </div>
+            </div>
+
+            <section class="category brands">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-10 offset-md-1">
+                            <h2>Deals</h2>
+                            <div *ngIf="translate.store.currentLang ==='en'">
+                                <p class="text-center let-space">
+                                    <span *ngFor="let char of alphabetpaging"
+                                        [ngClass]="{'active':char == selectedchar}"
+                                        (click)="Filterbyalphabet(char)">{{char}}</span>
+                                </p>
+                            </div>
+                            <div *ngIf="translate.store.currentLang ==='ar'">
+                                <p class="text-center let-space">
+                                    <span *ngFor="let char of alphabetpaging"
+                                        [ngClass]="{'active':char == selectedchar}"
+                                        (click)="ArbFilterbyalphabet(char)">{{char}}</span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <hr />
+                </div>
+            </section>
+
+            <section>
+                <div *ngIf="translate.store.currentLang ==='en'">
+
+                    <div class="row">
+                        <div class="col-md-6 langdeal" *ngFor="let deal of pagedItems">
+                            <div class="card mb-4 box-shadow" (click)="redirecttomerchant(deal)">
+                                <img alt="Thumbnail [100%x225]" class="card-img-top" [src]="deal.englishImage">
+                                <div class="card-body">
+                                    <p class="card-text">{{deal.dealName}}</p>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div *ngIf="translate.store.currentLang ==='ar'">
+                    <div class="row">
+                        <div class="col-md-6 langdeal" *ngFor="let deal of arpagedItems">
+                            <div class="card mb-4 box-shadow" (click)="redirecttomerchant(deal)">
+                                <img alt="Thumbnail [100%x225]" class="card-img-top" [src]="deal.arabicImage">
+                                <div class="card-body">
+                                    <p class="card-text">{{deal.dealName}}</p>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div *ngIf="translate.store.currentLang ==='en'">
+                    <div class="col-md-12 text-center float-right pr-0">
+                        <ul *ngIf="pager.pages && pager.pages.length" class="pagination">
+                            <li [ngClass]="{disabled:pager.currentPage === 1}">
+                                <a (click)="setPage(1)">First</a>
+                            </li>
+                            <li [ngClass]="{disabled:pager.currentPage === 1}">
+                                <a (click)="pager.currentPage === 1?'': setPage(pager.currentPage - 1)">Previous</a>
+                            </li>
+                            <li *ngFor="let page of pager.pages" [ngClass]="{active:pager.currentPage === page}">
+                                <a (click)="setPage(page)">{{page}}</a>
+                            </li>
+                            <li [ngClass]="{disabled:pager.currentPage === pager.totalPages}">
+                                <a
+                                    (click)="pager.currentPage === pager.totalPages?'':setPage(pager.currentPage + 1)">Next</a>
+                            </li>
+                            <li [ngClass]="{disabled:pager.currentPage === pager.totalPages}">
+                                <a (click)="setPage(pager.totalPages)">Last</a>
+                            </li>
+                        </ul>
+
+                    </div>
+                </div>
+
+            </section>
+            <div class="no-orders" *ngIf="translate.store.currentLang =='ar'">
+                <div *ngIf="arpagedItems.length==0">
+                    <span>No Deals Found</span>
+                </div>
+            </div>
+            <div class="no-orders" *ngIf="translate.store.currentLang =='en'">
+                <div *ngIf="pagedItems.length==0">
+                    <span>No Deals Found</span>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+</section>

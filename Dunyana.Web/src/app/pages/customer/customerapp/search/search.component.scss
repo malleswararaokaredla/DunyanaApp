@@ -1,0 +1,334 @@
+
+section.search
+{
+    padding-top:20px;
+    padding-bottom:65px;
+    h2
+    {
+        text-align: center;
+        color: #00c0f3;
+        font-size:26px;
+        padding-bottom: 20px;
+        margin:0;
+    }
+    .pagetle
+    {
+        border-bottom: solid 1px #eeeeee; 
+    }
+    .search-result
+    {
+        padding-bottom: 45px;
+        margin-top:45px;
+        border-bottom: solid 1px #eeeeee;    
+        .search-img
+        {
+            img
+            {
+                max-width:220px;
+            }
+        }  
+        .search-cont
+        {
+            padding-left: 0;
+            h3
+            {
+                font-size:28px;
+                color: #262c33;
+                margin-bottom:25px;
+            }
+            p
+            {
+                font-size:14px;
+                line-height: 24px;
+                font-weight: 600;
+                margin-bottom:25px;
+            }
+        } 
+    }
+    
+}
+:host {
+    ::ng-deep {
+        .lblue
+        {
+            background-image: url(/assets/layout/images/ch_line.png);           
+            background-position: 0 bottom;
+            height: 53px;
+            &:hover
+            {
+                background-position: 0px -24px;
+            }
+       .ui-button {
+           background: transparent;
+           border: none;
+           outline: none;
+           width: 100%;
+           opacity: 1 !important;
+           span.ui-button-text
+           {
+             color: #00c0f3;
+             margin-top: -10px;
+             opacity: 1 !important;
+             padding: 0 !important;
+             font-family: "teshrin_arltlight", sans-serif;
+           }
+           &:enabled,
+           &:active {
+               outline: none;
+               border: none;
+               &:hover,
+               &:focus {
+                   background-position: 0px 0px;
+                   background: transparent;
+                   outline: none;
+                   border: none;
+               }
+           }
+           &:hover {
+               background-position: 0px 0px;
+               background: transparent;
+               outline: none;
+               border: none;
+           }
+           span {
+               
+               font-size: 16pt !important;
+               padding: 0.2em 1em 0.7em !important;
+               outline: none;
+               border: none;
+               height: 60px;
+               font-weight: 600;
+               &:hover {
+                   color: #000 !important;
+               }
+           }
+       }
+    }
+   }
+  }
+
+  section.accounts .text_container .leftPanel p.small {
+    font-size: 14pt;
+  }
+  
+  section.shopping_banner .item .text_container .line_btn {
+    margin-top: 320px;
+  }
+  
+  section.shopping_banner .item {
+    height: 740px;
+  }
+  
+  section.qkLinks .ql .it {
+    overflow: hidden;
+  }
+  
+  section.qkLinks .ql .it h2 {
+    font-family: 'teshrin_arltlight';
+    margin-bottom: 0;
+    margin-top: 30px;
+  }
+  
+  section.qkLinks .ql .it h1 {
+    font-family: 'teshrin_arltmedium';
+  }
+  
+  section.qkLinks .ql .it i.icon-light {
+    right: 7%;
+    left: unset;
+    font-size: 215px;
+    top: -32%;
+  }
+  
+  section.qkLinks .ql .it i.second {
+    right: 15%;
+    left: unset;
+    font-size: 275px;
+    top: -25%;
+  }
+  
+  section.qkLinks .ql .it i.icon-moon {
+    font-size: 170px;
+    left: 10%;
+  }
+  
+  .card-body {
+    padding: 2rem;
+    background: #4f5b69;
+    color: white;
+    font-size: 14pt;
+    font-family: 'teshrin_arltmedium';
+  }
+  
+  .pagination {
+    display: inline-block;
+    padding-left: 0;
+    border-radius: 4px;
+    margin: 60px 0 100px 60px;
+  }
+  
+  .pagination > li {
+    display: inline;
+  }
+  
+  .pagination > li:first-child > a, .pagination > li:first-child > span {
+    margin-left: 0;
+    border-top-left-radius: 4px;
+    border-bottom-left-radius: 4px;
+  }
+  
+  .pagination > .disabled > a, .pagination > .disabled > a:focus, .pagination > .disabled > a:hover, .pagination > .disabled > span, .pagination > .disabled > span:focus, .pagination > .disabled > span:hover {
+    color: #777;
+    cursor: not-allowed;
+    background-color: #fff;
+    border-color: #ddd;
+  }
+  
+  .pagination > li > a, .pagination > li > span {
+    position: relative;
+    float: left;
+    padding: 6px 12px;
+    margin-left: -1px;
+    line-height: 1.42857143;
+    color: #337ab7;
+    text-decoration: none;
+    background-color: #fff;
+    border: 1px solid #ddd;
+  }
+  
+  a {
+    cursor: pointer;
+  }
+  
+  .pagination {
+    margin: 60px 0 100px;
+  }
+  
+  .pagination > li > a {
+    color: #00c0f3;
+    background-color: #fff;
+    border: none;
+    font-size: 26pt;
+  }
+  
+  .pagination > li.active > a {
+    color: #00c0f3;
+    font-family: 'teshrin_arltmedium', sans-serif;
+  }
+  
+  .pagination > li:first-child > a,
+  .pagination > li:last-child > a {
+    background-color: #fff;
+    border: none;
+    visibility: hidden;
+    display: none;
+  }
+  
+  .pagination > li:nth-child(2) > a,
+  .pagination > li:nth-last-child(2) > a {
+    background-color: #fff;
+    border: none;
+    visibility: hidden;
+  }
+  
+  .pagination > li:nth-child(2) > a:after {
+    content: "\003e";
+    color: #00c0f3;
+    font-size: 55pt;
+    visibility: visible;
+    display: block;
+    position: absolute;
+    font-weight: bold;
+    top: -33pt;
+    right: 25pt;
+    -webkit-transform: rotate(180deg);
+            transform: rotate(180deg);
+  }
+  
+  .pagination > li:nth-last-child(2) > a:after {
+    content: "\003e";
+    color: #00c0f3;
+    font-size: 55pt;
+    visibility: visible;
+    display: block;
+    position: absolute;
+    font-weight: bold;
+    top: -10pt;
+    left: 20pt;
+  }
+  
+  .pagination > li.disabled > a:after {
+    color: #cacdd2;
+  }
+  
+  section.brands {
+    padding-bottom: 45px;
+  }
+  
+  section.brands p {
+    color: #4f5b69;
+    font-size: 18pt;
+  }
+  
+  section.brands p span {
+    letter-spacing: 6pt;
+  }
+  
+  section.brands p span.active {
+    color: #00c0f3;
+  }
+  
+  section.brands hr {
+    opacity: 0.5;
+  }
+  
+  section.brands .let-space {
+    letter-spacing: 1pt;
+  }
+  
+  section.brands .let-space span {
+    cursor: pointer;
+    &:hover
+    {
+      text-decoration: underline;
+    }
+  }
+  
+  section.category {
+    padding: 10px 0;
+  }
+  
+  .no-orders {
+    text-align: center;
+    font-size: 20px;
+    font-weight: 600;
+  }
+  
+  .pagination > li:nth-child(2) > a,
+  .pagination > li:nth-last-child(2) > a {
+    padding-left: 0;
+    width: 30px;
+  }
+  
+  .box-shadow {
+    cursor: pointer;
+  }
+
+.mid{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50% -50%);
+    z-index: 1;
+  }
+
+  .overlay{
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: black;
+    opacity: 0.5;
+    z-index: 0;
+    left: 0;
+    top: 0;
+  }

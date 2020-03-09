@@ -1,0 +1,27 @@
+<section class="accounts walletbackground ">
+  <div class="text_container">
+    <div class="container">
+
+      <div class="row justify-content-md-center">
+        <div class="col-md-4">
+          <div class="profile success-bg ">
+            <div class="address text-center">
+
+              <img class="" [src]="checkinfo">
+              <h2>Failed!</h2>
+              <h6 *ngIf="paymentResponse != null">
+                Your payment was not successfully processed due to following reason(s).
+              </h6>
+              <p *ngIf="paymentResponse != null" style="    background: #f2f2f2; padding: 10px; text-align: left">
+                <span>Reason : </span> {{ paymentResponse.message }}
+
+              </p>
+            </div>
+          </div>
+          <div class="ftxt" [routerLink]="isFromOrder ? [returnURL] : ['/customer/wallet-topup']">Click here to
+            re-process</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,26 @@
+section.accounts .text_container .leftPanel p.small {
+  font-size: 14pt;
+}
+
+@media screen and (max-width: 475px) {
+  .changepassword .center {
+    padding: 30px 30px 0 30px;
+  }
+}
+
+.disable {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.line_btn.sblue {
+  background-position: 8px 40px;
+  background-color: transparent;
+  border: none;
+  outline: none;
+}
+
+.line_btn.sblue:hover {
+  background-position: 8px -20px;
+}
+/*# sourceMappingURL=terms-conditions.component.css.map */

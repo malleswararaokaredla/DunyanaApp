@@ -1,0 +1,292 @@
+<app-admin-menu></app-admin-menu>
+
+<section class="ad_legal ">
+  <div class="container  admin_promo">
+    <p-tabView [hidden]="childMessage">
+      <p-tabPanel header="Current promotions">
+
+        <button type="button" (click)="AddorUpdateclick('A','null')" pButton icon="fa fa-plus" label="Add"
+          class=" pull-right">
+        </button>      
+        <div>
+
+          <div class="ui-g radio_container">
+            <div class="ui-g-12">
+              <p-radioButton name="prolang" value="Arabic" label="Arabic" [(ngModel)]="lang" inputId="preopt21"
+                (onClick)="selectedcurrentLang()"></p-radioButton>
+
+              <p-radioButton name="prolang" value="English" label="English" [(ngModel)]="lang" inputId="preopt11"
+                (onClick)="selectedcurrentLang()"></p-radioButton>
+            </div>
+          </div>
+
+          <div *ngIf="lang==='Arabic'">
+            <div *ngFor="let bnr of cpagedItems" class="mb-3 bnr_cont">
+              <img class="oldbannerimgsty" [src]="bnr.arabicImage" (click)="AddorUpdateclick('U',bnr)">
+            </div>
+          </div>
+          <div *ngIf="lang==='English'">
+            <div *ngFor="let bnr of cpagedItems" class="mb-3 bnr_cont">
+              <img class="oldbannerimgsty" [src]="bnr.englishImage" (click)="AddorUpdateclick('U',bnr)">
+            </div>
+          </div>
+
+          <div class="col-md-12 text-center">
+            <ul *ngIf="cpager.pages && cpager.pages.length" class="pagination">
+              <li [ngClass]="{disabled:cpager.currentPage === 1}">
+                <a (click)="setPageforcurrentpromotions(1)">First</a>
+              </li>
+              <li [ngClass]="{disabled:cpager.currentPage === 1}">
+                <a
+                  (click)="cpager.currentPage === 1?'': setPageforcurrentpromotions(cpager.currentPage - 1)">Previous</a>
+              </li>
+              <li *ngFor="let page of cpager.pages" [ngClass]="{active:cpager.currentPage === page}">
+                <a (click)="setPageforcurrentpromotions(page)">{{page}}</a>
+              </li>
+              <li [ngClass]="{disabled:cpager.currentPage === cpager.totalPages}">
+                <a
+                  (click)="cpager.currentPage === cpager.totalPages?'':setPageforcurrentpromotions(cpager.currentPage + 1)">Next</a>
+              </li>
+              <li [ngClass]="{disabled:cpager.currentPage === cpager.totalPages}">
+                <a (click)="setPageforcurrentpromotions(cpager.totalPages)">Last</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div *ngIf="cpagedItems.length==0" class="no-orders"><span>No promotions found</span></div>
+      </p-tabPanel>
+      <p-tabPanel header="Old promotions">
+
+        <div class="pull-right text-right from_wrapper oldBnrCal" style="width:300px">
+          <p-calendar #rcalendar [(ngModel)]="rangeDates" selectionMode="range" [monthNavigator]="true"
+            [yearNavigator]="true" [readonlyInput]="true" (onSelect)="checkrangedates()" yearRange="2000:2030"
+            [readonlyInput]="false" placeholder="Select created date" dateFormat="mm-dd-yy" [showIcon]="true">
+            <p-footer>
+              <button pButton type="button" label="Filter" class="pcalfooterFilter" [disabled]="Isdaterangeselect"
+                (click)="rcalendar.hideOverlay();filterDates();">
+              </button>
+              <button pButton type="button" label="Clear" class="pcalfooter" (click)="rcalendar.hideOverlay();clear()">
+              </button>
+            </p-footer>
+          </p-calendar>
+        </div>
+        <div>
+
+          <div class="ui-g radio_container">
+            <div class="ui-g-12">
+              <p-radioButton name="prooldlang" value="Arabic" label="Arabic" [(ngModel)]="oldlang" inputId="preopt2"
+                (onClick)="selectedoldLang()"></p-radioButton>
+
+              <p-radioButton name="prooldlang" value="English" label="English" [(ngModel)]="oldlang" inputId="preopt1"
+                (onClick)="selectedoldLang()"></p-radioButton>
+            </div>
+          </div>
+
+          <div *ngIf="oldlang==='Arabic'">
+            <div *ngFor="let bnr of pagedItems" class="mb-3 bnr_cont">
+              <img class="oldbannerimgsty" [src]="bnr.arabicImage" (click)="AddorUpdateclick('O',bnr)">
+            </div>
+          </div>
+          <div *ngIf="oldlang==='English'">
+            <div *ngFor="let bnr of pagedItems" class="mb-3 bnr_cont">
+              <img class="oldbannerimgsty" [src]="bnr.englishImage" (click)="AddorUpdateclick('O',bnr)">
+            </div>
+          </div>
+
+          <div class="col-md-12 text-center">
+            <ul *ngIf="pager.pages && pager.pages.length" class="pagination">
+              <li [ngClass]="{disabled:pager.currentPage === 1}">
+                <a (click)="setPage(1)">First</a>
+              </li>
+              <li [ngClass]="{disabled:pager.currentPage === 1}">
+                <a (click)="pager.currentPage === 1?'': setPage(pager.currentPage - 1)">Previous</a>
+              </li>
+              <li *ngFor="let page of pager.pages" [ngClass]="{active:pager.currentPage === page}">
+                <a (click)="setPage(page)">{{page}}</a>
+              </li>
+              <li [ngClass]="{disabled:pager.currentPage === pager.totalPages}">
+                <a (click)="pager.currentPage === pager.totalPages?'':setPage(pager.currentPage + 1)">Next</a>
+              </li>
+              <li [ngClass]="{disabled:pager.currentPage === pager.totalPages}">
+                <a (click)="setPage(pager.totalPages)">Last</a>
+              </li>
+            </ul>
+
+          </div>
+
+        </div>
+
+        <div *ngIf="pagedItems.length==0" class="no-orders"><span>No old promotions found</span></div>
+
+      </p-tabPanel>
+      <p-tabPanel header="Default promotions">
+        <div>
+          <button type="button" (click)="AddorUpdateclick('D','null')" pButton icon="fa fa-plus" label="Add"
+            class=" pull-right" [hidden]="showAdd">
+          </button>
+          <div class="ui-g radio_container">
+            <div class="ui-g-12">
+              <p-radioButton name="dpromlang" value="Arabic" label="Arabic" [(ngModel)]="deflang" inputId="preopt2">
+              </p-radioButton>
+              <p-radioButton name="dpromlang" value="English" label="English" [(ngModel)]="deflang" inputId="preopt1">
+              </p-radioButton>
+            </div>
+          </div>
+
+          <div *ngIf="deflang==='Arabic'">
+            <div *ngFor="let bnr of Totaldefaultpromotions" class="mb-3 bnr_cont">
+              <div *ngIf="bnr.arabicImage!=''">
+                <img class="bannerimgsty" [src]="bnr.arabicImage" (click)="AddorUpdateclick('Du',bnr)">
+              </div>
+            </div>
+
+          </div>
+          <div *ngIf="deflang==='English'">
+            <div *ngFor="let bnr of Totaldefaultpromotions" class="mb-3 bnr_cont">
+              <div *ngIf="bnr.englishImage!=''">
+                <img class="bannerimgsty" [src]="bnr.englishImage" (click)="AddorUpdateclick('Du',bnr)">
+              </div>
+            </div>
+          </div>
+          <div *ngIf="Totaldefaultpromotions.length==0" class="no-orders"><span>No default promotions found</span></div>
+
+        </div>
+      </p-tabPanel>
+
+    </p-tabView>
+  </div>
+
+  <div [hidden]="!childMessage" class="admin_promo_add">
+    <div class="container mt-3 addBnr">
+      <h4>{{header}} Promotion</h4>
+      <button class="btn btn-primary float-right back" (click)="RedirectTobannerList()">Back</button>
+      <div style="width:100%; float:left;margin-top:25px;">
+        <form class="from_wrapper" class="from_wrapper" [formGroup]="promotionForm" novalidate>
+          <div class="row inputset">
+            <div class="col-sm-6">
+              <input class="upload_input" style="cursor:default" [ngClass]="deletebtndisable" pInputText type="text"
+                autofocus placeholder="Upload English Image" id="reqCR">
+              <input type="file" accept="image/x-png,image/gif,image/jpeg" #euploader (click)="euploader.value = null"
+                (change)="engfileChangeEvent($event)" class="" [hidden]=true />
+
+              <button type="button" (click)="euploader.click()" pButton label="Upload "
+                class="upl_btn line_btn swhite add_btn pull-right" [ngClass]="deletebtndisable"></button>
+              <img class="imgsty" [src]="promotion.EnglishImage" />
+            </div>
+
+            <div class="col-sm-6">
+              <input class="upload_input" style="cursor:default" [ngClass]="deletebtndisable" pInputText type="text"
+                autofocus placeholder="Upload Arabic Image" id="reqCR">
+              <input type="file" accept="image/x-png,image/gif,image/jpeg" #auploader (click)="auploader.value = null"
+                (change)="fileChangeEvent($event)" class="" [hidden]=true />
+              <button type="button" [ngClass]="deletebtndisable" (click)="auploader.click()" pButton label="Upload "
+                class="upl_btn line_btn swhite add_btn pull-right" [ngClass]="btnArb"></button>
+              <img class="imgsty" [src]="promotion.ArabicImage" />
+
+            </div>
+          </div>
+
+          <div class="row inputset">
+            <div class="col-sm-6">
+              <input pInputText type="text" autofocus placeholder="URL" [ngClass]="deletebtndisable"
+                formControlName="AdminPromotionalURL" [(ngModel)]="promotion.AdminPromotionalURL">
+            </div>
+
+            <div class="col-sm-6" *ngIf="defaultpromo!='default'">
+              <p-multiSelect [ngClass]="deletebtndisable" [ngClass]="nocountry" placeholder="select country"
+                defaultLabel="Choose countries *" [panelStyle]="{minWidth:'12em'}" [options]="countries"
+                formControlName="Countries">
+              </p-multiSelect>
+
+            </div>
+
+          </div>
+
+          <div class="row inputset " *ngIf="defaultpromo!='default'" style="margin-bottom:30px;">
+            <div class="col-sm-6">
+              <p-calendar #scalendar placeholder="Start Date *" [minDate]="minimumDate" [showIcon]="true"
+                (onInput)="checkdates()" [disabled]="Disablestartdate" [showTime]="true" formControlName="StartDate"
+                [(ngModel)]="promotion.StartDate" [monthNavigator]="true" [yearNavigator]="true" yearRange="2000:2040"
+                [ngClass]="deletebtndisable">
+                <p-footer>
+                  <button pButton type="button" label="Close" class="pcalfooter"
+                    [disabled]="promotion.StartDate!=null?false:true" (click)="checkdates();scalendar.hideOverlay();">
+                  </button>
+                </p-footer>
+              </p-calendar>
+            </div>
+
+            <div class="col-sm-6 ">
+              <div class="">
+                <p-calendar #ecalendar placeholder="End Date *" (onSelect)="checkdates()" [showIcon]="true"
+                  (onInput)="checkdates()" [disabled]="Disableenddate" [showTime]="true" [minDate]="minimumendDate"
+                  formControlName="EndDate" [(ngModel)]="promotion.EndDate" [monthNavigator]="true"
+                  [yearNavigator]="true" yearRange="2000:2040" [ngClass]="tocaldisable">
+                  <p-footer>
+                    <button pButton type="button" label="Close" class="pcalfooter"
+                      [disabled]="promotion.EndDate!=null?false:true" (click)="checkdates();ecalendar.hideOverlay();">
+                    </button>
+                  </p-footer>
+                </p-calendar>
+              </div>
+            </div>
+          </div>
+
+          <div class="row inputset">
+            <div class="col-sm-12">
+              <textarea pTextarea autofocus placeholder="Description" [ngClass]="deletebtndisable"
+                formControlName="AdminPromotionalDescription" maxlength="200"
+                [(ngModel)]="promotion.AdminPromotionalDescription" name="Description"></textarea>
+            </div>
+            <div class="col-sm-12">
+              <small style="float: right;">Max 200 characters</small>
+            </div>
+          </div>
+
+
+
+          <div class="btn_cont text-center" [hidden]="Isoldpromotion">
+            <a href="javascript:void(0)" *ngIf="defaultpromo!='default'" (click)="SaveAddorUpdate(header)"
+              [ngClass]="btndisable" style="width:80px; text-align: center" class="line_btn sblue mr-5">{{header}}</a>
+            <a href="javascript:void(0)" *ngIf="defaultpromo=='default'" (click)="SaveAddorUpdate(header)"
+              [ngClass]="btndisable" style="width:80px; text-align: center" class="line_btn sblue mr-5">{{header}}</a>
+            <a href="javascript:void(0);" (click)="RedirectToList(secondbtn)" [ngClass]="deletebtndisable"
+              class="line_btn sblue">{{secondbtn}}</a>
+          </div>
+          <div class="row mt-4">
+            <div class="col-sm-12 mt-4">
+              <div [ngClass]="responsesty">
+                <span>{{response}}</span>
+              </div>
+            </div>
+          </div>
+        </form>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="loading-indicator mid" *ngIf="ProgressSpinnerDlg">
+  <p-progressSpinner></p-progressSpinner>
+</div>
+<div class="overlay" *ngIf="ProgressSpinnerDlg"></div>
+
+
+<div class="changepassword">
+  <p-dialog header="delete banner" [(visible)]="display" [modal]="true" [responsive]="true" [style]="{width: '641px'}"
+    [closeOnEscape]="true" (onHide)="onClose()">
+    <h2>{{informationdialog}}</h2>
+    <div class="delete_btn_cont" [hidden]="isdeletedialog">
+      <a href="javascript:void(0)" style="width:60px; text-align: center" [ngClass]="btndisable"
+        class="line_btn sblue mr-4" (click)="ConfirmDeletepromotion()">Yes</a>
+      <a href="javascript:void(0);" (click)="closedialog()" class="line_btn sblue">No</a>
+    </div>
+
+    <div>
+      <div [ngClass]="responsesty">
+        <span>{{deleteresponse}}</span>
+      </div>
+    </div>
+  </p-dialog>
+</div>

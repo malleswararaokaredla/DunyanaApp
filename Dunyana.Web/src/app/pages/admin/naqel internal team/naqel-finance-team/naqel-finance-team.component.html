@@ -1,0 +1,176 @@
+<app-admin-menu></app-admin-menu>
+
+<section class="ad_legal">
+    <div class="container">
+        <div class="row ">
+            <div class="col-sm-6">
+
+            </div>
+            <div class="col-sm-6 mb-3">
+                <div class="ui-helper-clearfix">
+                    <button type="button" pButton icon="pi pi-download" [disabled]="btnExcel" (click)="exportToExcel()"
+                        label="Download to CSV" class="pull-right"></button>
+                    <button pButton label="Clear All Filters" (click)="onClick()" class="pull-right"
+                        style="margin-right:10px;"></button>
+                </div>
+            </div>
+
+
+            <div class="col-sm-12">
+                <p-table #dt [columns]="cols" class="dun_table" [value]="naqelfinanceteamdataCopy"
+                    [paginator]="naqelfinanceteamdataCopy.length > 0 ? true : false" [rows]="10">
+
+                    <ng-template pTemplate="caption">
+
+                        <div *ngIf="naqelFinanceTeamdata.length==0">
+                            No records found
+                        </div>
+
+                    </ng-template>
+                    <ng-template pTemplate="header" let-columns>
+
+                        <tr>
+                            <th *ngFor="let col of columns">
+                                {{col.header}}
+                                <p-sortIcon [pSortableColumn]="col.field" [field]="col.field"
+                                    ariaLabel="Activate to sort" ariaLabelDesc="Activate to sort in descending order"
+                                    ariaLabelAsc="Activate to sort in ascending order"></p-sortIcon>
+                                <i class="pi pi-filter" style="font-size: 1em;cursor: pointer;"
+                                    (click)="showfilter(col.field)"></i>
+                            </th>
+                        </tr>
+                        <tr *ngIf='naqelFinanceTeamdata.length != 0'>
+                            <th *ngFor="let col of columns" [ngSwitch]="col.field">
+                                <input *ngSwitchCase="'orderNo'" pInputText type="text"
+                                    (input)="dt.filter($event.target.value, col.field, col.filterMatchMode)"
+                                    [value]="dt.filters[col.field] ? dt.filters[col.field].value : ''"
+                                    [hidden]="orderNo" (focusout)="filterExcel()">
+                            
+                                <p-calendar #calendar [(ngModel)]="rangeDates" showButtonBar="true"
+                                    *ngSwitchCase="'orderDate'" [hidden]="orderDate" selectionMode="range"
+                                    [monthNavigator]="true" (onSelect)="filterDates($event)" [yearNavigator]="true"
+                                    [readonlyInput]="true" yearRange="2000:2030" [readonlyInput]="false"
+                                    [styleClass]="pcalender" placeholder="Enter order date range"
+                                    (onClearClick)="clear()" dateFormat="mm-dd-yy">
+                                </p-calendar>
+                            
+                                <input *ngSwitchCase="'orderStatus'" pInputText type="text"
+                                    (input)="dt.filter($event.target.value, col.field, col.filterMatchMode)"
+                                    [value]="dt.filters[col.field] ? dt.filters[col.field].value : ''"
+                                    [hidden]="orderStatus" (focusout)="filterExcel()">
+
+                                <input *ngSwitchCase="'merchantID'" pInputText type="text"
+                                    (input)="dt.filter($event.target.value, col.field, col.filterMatchMode)"
+                                    [value]="dt.filters[col.field] ? dt.filters[col.field].value : ''"
+                                    [hidden]="merchantID" (focusout)="filterExcel()">
+
+                                <input *ngSwitchCase="'merchantName'" pInputText type="text"
+                                    (input)="dt.filter($event.target.value, col.field, col.filterMatchMode)"
+                                    [value]="dt.filters[col.field] ? dt.filters[col.field].value : ''"
+                                    [hidden]="merchantName" (focusout)="filterExcel()">
+
+                                <input *ngSwitchCase="'customerFirstName'" pInputText type="text"
+                                    (input)="dt.filter($event.target.value, col.field, col.filterMatchMode)"
+                                    [value]="dt.filters[col.field] ? dt.filters[col.field].value : ''"
+                                    [hidden]="customerFirstName" (focusout)="filterExcel()">
+
+                                <input *ngSwitchCase="'orderAmount'" pInputText type="text"
+                                    (input)="dt.filter($event.target.value, col.field, col.filterMatchMode)"
+                                    [value]="dt.filters[col.field] ? dt.filters[col.field].value : ''"
+                                    [hidden]="orderAmount" (focusout)="filterExcel()">
+
+                                <input *ngSwitchCase="'paidbyWallet'" pInputText type="text"
+                                    (input)="dt.filter($event.target.value, col.field, col.filterMatchMode)"
+                                    [value]="dt.filters[col.field] ? dt.filters[col.field].value : ''"
+                                    [hidden]="paidbyWallet" (focusout)="filterExcel()">
+
+                                <input *ngSwitchCase="'paidbycard'" pInputText type="text"
+                                    (input)="dt.filter($event.target.value, col.field, col.filterMatchMode)"
+                                    [value]="dt.filters[col.field] ? dt.filters[col.field].value : ''"
+                                    [hidden]="paidbycard" (focusout)="filterExcel()">
+
+                                    <input *ngSwitchCase="'paidatMerchant'" pInputText type="text"
+                                    (input)="dt.filter($event.target.value, col.field, col.filterMatchMode)" 
+                                    [value]="dt.filters[col.field] ? dt.filters[col.field].value : ''"
+                                    [hidden]="paidatMerchant" (focusout)="filterExcel()">
+
+                                <input *ngSwitchCase="'cod'" pInputText type="text"
+                                    (input)="dt.filter($event.target.value, col.field, col.filterMatchMode)"
+                                    [value]="dt.filters[col.field] ? dt.filters[col.field].value : ''" [hidden]="cod"
+                                    (focusout)="filterExcel()">
+                            </th>
+
+                        </tr>
+                    </ng-template>
+                    <ng-template pTemplate="body" let-rowData let-columns="columns">
+                        <tr>
+                            <td *ngFor="let col of columns">
+                                {{rowData[col.field]}}
+                            </td>
+                        </tr>
+
+                    </ng-template>
+                </p-table>
+
+            </div>
+
+        </div>
+
+        <div class="row ">
+            <div class="col-sm-6">
+
+            </div>
+            <div class="col-sm-6 mb-3">
+                <div class="ui-helper-clearfix">
+                    <button type="button" pButton icon="pi pi-download" [disabled]="btnExcel" (click)="exportCustToExcel()"
+                        label="Download to CSV" class="pull-right"></button>
+                </div>
+            </div>
+
+
+            <div class="col-sm-12">
+                <p-table #cdt [columns]="walletTabCols" class="dun_table" [value]="naqelCustomers"
+                    [paginator]="naqelCustomers.length > 0 ? true : false" [rows]="10">
+
+                    <ng-template pTemplate="header" let-columns>
+                        <tr>
+                            <th *ngFor="let col of columns">
+                                {{col.header}}
+                                <p-sortIcon [pSortableColumn]="col.field" [field]="col.field"
+                                    ariaLabel="Activate to sort" ariaLabelDesc="Activate to sort in descending order"
+                                    ariaLabelAsc="Activate to sort in ascending order"></p-sortIcon>
+                            </th>
+                        </tr>
+                    </ng-template>
+                    <ng-template pTemplate="body" let-rowData let-columns="columns">
+                        <tr>
+                            <td *ngFor="let col of columns">
+                                {{rowData[col.field]}}
+                            </td>
+                        </tr>
+
+                    </ng-template>
+                    <ng-template pTemplate="caption">
+
+                        <!-- <div *ngIf="naqelCustomers.length==0">
+                            No records found
+                        </div> -->
+                        <div>
+                            Customers Wallet Info
+                        </div>
+
+                    </ng-template>
+                </p-table>
+
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+<div class="loading-indicator mid" *ngIf="ProgressSpinnerDlg">
+    <p-progressSpinner></p-progressSpinner>
+  </div>
+
+  <div class="overlay" *ngIf="ProgressSpinnerDlg"></div>

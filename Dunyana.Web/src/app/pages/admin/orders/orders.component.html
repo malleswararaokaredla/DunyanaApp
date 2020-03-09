@@ -1,0 +1,526 @@
+<app-admin-menu></app-admin-menu>
+
+<section class="ad_legal">
+  <div class="container">
+
+      <div class="row ">
+          <div class="col-sm-6"></div>
+          <div class="col-sm-6 mb-3">
+              <div class="ui-helper-clearfix">
+                  <button type="button" pButton (click)="displayAddDialog()"
+                      label="Add Order" class="pull-right"></button>
+                      <!-- <p-fileUpload #fubauto mode="basic" name="file" accept=".xlsx, .xls" maxFileSize="1000000" 
+                      (onUpload)="onBasicUploadAuto($event)" [auto]="true" chooseLabel="Browse"></p-fileUpload> -->
+                      <!-- <input id="file" type="file" accept=".xlsx" (change)="fileUpload($event.target.files[0])"> -->
+              </div>
+          </div>
+          <div class="col-sm-12">
+              <p-table #cdt [columns]="orderCols" class="dun_table" [value]="orders"
+                  [paginator]="orders.length > 0 ? true : false" [rows]="10">
+
+                  <ng-template pTemplate="header" let-columns>
+                      <tr>
+                          <th *ngFor="let col of columns">
+                              {{col.header}}
+                              <p-sortIcon [pSortableColumn]="col.field" [field]="col.field"
+                                  ariaLabel="Activate to sort" ariaLabelDesc="Activate to sort in descending order"
+                                  ariaLabelAsc="Activate to sort in ascending order"></p-sortIcon>
+                          </th>
+                      </tr>
+                  </ng-template>
+                  <ng-template pTemplate="body" let-rowData let-columns="columns">
+                      <tr>
+                          <td *ngFor="let col of columns">
+                              {{rowData[col.field]}}
+                          </td>
+                      </tr>
+
+                  </ng-template>
+                  <ng-template pTemplate="caption">
+
+                      <!-- <div *ngIf="naqelCustomers.length==0">
+                          No records found
+                      </div> -->
+                      <div>
+                          Orders
+                      </div>
+
+                  </ng-template>
+              </p-table>
+          </div>
+      </div>
+
+  </div>
+</section>
+
+<div class="changepassword">
+    <p-dialog header="New Order" [(visible)]="addDialogDisplay" [modal]="true" [responsive]="true"
+        [closeOnEscape]="true" (onHide)="onClose()" [style]="{height: '700px', overflow: 'auto'}">
+  
+        <form class="from_wrapper" [formGroup]="ordersForm" novalidate>
+  
+            <div class="row inputset ui-g-12 ui-md-4">
+              <div class="col-sm-12"><input id="input" class="inputFullWidth" pInputText type="text" placeholder='Merchant ID*' formControlName="merchantID" (keyup)="formvalidate()"></div>
+              <div class="col-sm-12">
+                <div *ngIf="ordersForm.controls['merchantID'].errors && !ordersForm.controls['merchantID'].pristine"
+                  class="text-danger float-right error">
+                  <div [hidden]="!ordersForm.controls['merchantID'].errors.required">Merchant ID is required</div>
+                </div>
+              </div>
+  
+              <div class="col-sm-12">
+                <hr>
+              </div>
+            </div>
+
+            <div class="row inputset ui-g-12 ui-md-4">
+              <div class="col-sm-12"><input id="input" class="inputFullWidth" type="text" placeholder='Merchant Username*' formControlName="merchantUserName" (keyup)="formvalidate()"></div>
+              <div class="col-sm-12">
+                <div *ngIf="ordersForm.controls['merchantUserName'].errors && !ordersForm.controls['merchantUserName'].pristine"
+                  class="text-danger float-right error">
+                  <div [hidden]="!ordersForm.controls['merchantUserName'].errors.required">Merchant Username is required</div>
+                </div>
+              </div>
+              <div class="col-sm-12"> <hr> </div>
+            </div>
+
+            <div class="row inputset ui-g-12 ui-md-4">
+              <div class="col-sm-12"><input id="input" class="inputFullWidth" placeholder='Customer ID*' type="text" formControlName="customerID" (keyup)="formvalidate()"></div>
+              <div class="col-sm-12">
+                <div *ngIf="ordersForm.controls['customerID'].errors && !ordersForm.controls['customerID'].pristine"
+                  class="text-danger float-right error">
+                  <div [hidden]="!ordersForm.controls['customerID'].errors.required">Customer ID is required</div>
+                </div>
+              </div>
+              <div class="col-sm-12"> <hr> </div>
+            </div>
+
+            <div class="row inputset ui-g-12 ui-md-12">
+              <div class="col-sm-6"> 
+                <h5> Order Details </h5> 
+              </div>
+            </div>
+
+            <div class="row inputset ui-g-12 ui-md-4" formGroupName="orderDetails">
+              <div class="col-sm-12"><input id="input" class="inputFullWidth" placeholder='Order No*' type="text" formControlName="orderNo" (keyup)="formvalidate()"></div>
+              <div class="col-sm-12">
+                <div *ngIf="ordersForm.get('orderDetails')['controls']['orderNo'].errors && !ordersForm.get('orderDetails')['controls']['orderNo'].pristine"
+                  class="text-danger float-right error">
+                  <div [hidden]="!ordersForm.get('orderDetails')['controls']['orderNo'].errors.required">Order No is required</div>
+                </div>
+              </div>
+              <div class="col-sm-12"> <hr> </div>
+            </div>   
+
+            <div class="row inputset ui-g-12 ui-md-4" formGroupName="orderDetails">
+              <div class="col-sm-12">
+                <p-calendar #ecalendar [style]="{height: '41px'}"
+                  formControlName="orderDate" [monthNavigator]="true" placeholder='Order Date*'
+                  [yearNavigator]="true" yearRange="2000:2040">
+                  <p-footer>
+                    <button pButton type="button" label="Close" class="pcalfooter"
+                      (click)="ecalendar.hideOverlay();">
+                    </button>
+                  </p-footer>
+                </p-calendar>
+              </div>
+              <div class="col-sm-12">
+                <div *ngIf="ordersForm.get('orderDetails')['controls']['orderDate'].errors && !ordersForm.get('orderDetails')['controls']['orderDate'].pristine"
+                  class="text-danger float-right error">
+                  <div [hidden]="!ordersForm.get('orderDetails')['controls']['orderDate'].errors.required">Order Date is required</div>
+                </div>
+              </div>
+              <div class="col-sm-12"> <hr> </div>
+            </div>
+
+            <div class="row inputset ui-g-12 ui-md-4" formGroupName="orderDetails">
+              <div class="col-sm-12"><input id="input" class="inputFullWidth" placeholder='Order Amount*' type="text" formControlName="orderAmount" (keyup)="formvalidate()"></div>
+                <div class="col-sm-12">
+                  <div *ngIf="ordersForm.get('orderDetails')['controls']['orderAmount'].errors && !ordersForm.get('orderDetails')['controls']['orderAmount'].pristine"
+                    class="text-danger float-right error">
+                    <div [hidden]="!ordersForm.get('orderDetails')['controls']['orderAmount'].errors.required">Order Amount is required</div>
+                  </div>
+                </div>
+              <div class="col-sm-12"> <hr> </div>
+            </div>
+
+            <div class="row inputset ui-g-12 ui-md-4" formGroupName="orderDetails">
+              <div class="col-sm-12"><input id="input" class="inputFullWidth" type="text" maxlength="1" placeholder='COD*' formControlName="cod" (keyup)="formvalidate();enableAddPayment()"></div>
+              <div class="col-sm-12">
+                <div *ngIf="ordersForm.get('orderDetails')['controls']['cod'].errors && !ordersForm.get('orderDetails')['controls']['cod'].pristine"
+                  class="text-danger float-right error">
+                  <div [hidden]="!ordersForm.get('orderDetails')['controls']['cod'].errors.required">Payment Type is required</div>
+                </div>
+              </div>
+              <div class="col-sm-12"> <hr> </div>
+            </div>
+
+            <div class="row inputset ui-g-12 ui-md-4" formGroupName="orderDetails">
+              <div class="col-sm-12"><input id="input" class="inputFullWidth" type="text" placeholder='Order Status*' formControlName="orderStatus" (keyup)="formvalidate()"></div>
+              <div class="col-sm-12">
+                <div *ngIf="ordersForm.get('orderDetails')['controls']['orderStatus'].errors && !ordersForm.get('orderDetails')['controls']['orderStatus'].pristine"
+                  class="text-danger float-right error">
+                  <div [hidden]="!ordersForm.get('orderDetails')['controls']['orderStatus'].errors.required">Order Status is required</div>
+                </div>
+              </div>
+              <div class="col-sm-12"> <hr> </div>              
+            </div>         
+
+            <div class="row inputset ui-g-12 ui-md-4" formGroupName="orderDetails">
+              <div class="col-sm-12"><input id="input" class="inputFullWidth" placeholder='Address Line1*' type="text" formControlName="consigneeAddressLine1" (keyup)="formvalidate()"></div>
+                <div class="col-sm-12">
+                  <div *ngIf="ordersForm.get('orderDetails')['controls']['consigneeAddressLine1'].errors && !ordersForm.get('orderDetails')['controls']['consigneeAddressLine1'].pristine"
+                    class="text-danger float-right error">
+                    <div [hidden]="!ordersForm.get('orderDetails')['controls']['consigneeAddressLine1'].errors.required">Order Date is required</div>
+                  </div>
+                </div>
+                <div class="col-sm-12"> <hr> </div>                
+            </div>
+
+            <div class="row inputset ui-g-12 ui-md-4" formGroupName="orderDetails">
+                <div class="col-sm-12"><input id="input" class="inputFullWidth" placeholder='Address Line2' type="text" formControlName="consigneeAddressLine2" (keyup)="formvalidate()"></div>
+                <div class="col-sm-12"> <hr> </div>                  
+            </div>
+                    
+            <div class="row inputset ui-g-12 ui-md-4" formGroupName="orderDetails">
+                <div class="col-sm-12"><input id="input" class="inputFullWidth" placeholder='City*' type="text" formControlName="consigneeAddressCity" (keyup)="formvalidate()"></div>
+                <div class="col-sm-12">
+                  <div *ngIf="ordersForm.get('orderDetails')['controls']['consigneeAddressCity'].errors && !ordersForm.get('orderDetails')['controls']['consigneeAddressCity'].pristine"
+                    class="text-danger float-right error">
+                    <div [hidden]="!ordersForm.get('orderDetails')['controls']['consigneeAddressCity'].errors.required">City is required</div>
+                  </div>
+                </div>
+                <div class="col-sm-12"> <hr> </div>                      
+            </div>
+
+            <div class="row inputset ui-g-12 ui-md-4" formGroupName="orderDetails">
+                <div class="col-sm-12"><input id="input" class="inputFullWidth" placeholder='State*' type="text" formControlName="consigneeAddressState" (keyup)="formvalidate()"></div>
+                <div class="col-sm-12">
+                  <div *ngIf="ordersForm.get('orderDetails')['controls']['consigneeAddressState'].errors && !ordersForm.get('orderDetails')['controls']['consigneeAddressState'].pristine"
+                    class="text-danger float-right error">
+                    <div [hidden]="!ordersForm.get('orderDetails')['controls']['consigneeAddressState'].errors.required">State is required</div>
+                  </div>
+                </div>
+                <div class="col-sm-12"> <hr> </div>                      
+            </div>
+
+            <div class="row inputset ui-g-12 ui-md-4" formGroupName="orderDetails">
+                <div class="col-sm-12"><input id="input" class="inputFullWidth" placeholder='Country*' type="text" formControlName="consigneeAddressCountry" (keyup)="formvalidate()"></div>
+                <div class="col-sm-12">
+                  <div *ngIf="ordersForm.get('orderDetails')['controls']['consigneeAddressCountry'].errors && !ordersForm.get('orderDetails')['controls']['consigneeAddressCountry'].pristine"
+                    class="text-danger float-right error">
+                    <div [hidden]="!ordersForm.get('orderDetails')['controls']['consigneeAddressCountry'].errors.required">Country is required</div>
+                  </div>
+                </div>
+                <div class="col-sm-12"> <hr> </div>                      
+            </div>
+
+            <div class="row inputset ui-g-12 ui-md-4" formGroupName="orderDetails">
+                <div class="col-sm-12"><input id="input" class="inputFullWidth" placeholder='Zipcode*' type="text" formControlName="consigneeAddresszip" (keyup)="formvalidate()"></div>
+                <div class="col-sm-12">
+                  <div *ngIf="ordersForm.get('orderDetails')['controls']['consigneeAddresszip'].errors && !ordersForm.get('orderDetails')['controls']['consigneeAddresszip'].pristine"
+                    class="text-danger float-right error">
+                    <div [hidden]="!ordersForm.get('orderDetails')['controls']['consigneeAddresszip'].errors.required">Zipcode is required</div>
+                  </div>
+                </div>
+                <div class="col-sm-12"> <hr> </div>                      
+            </div>
+
+            <div class="row inputset ui-g-12 ui-md-4" formGroupName="orderDetails">
+                <div class="col-sm-12"><input id="input" class="inputFullWidth" placeholder='Mobile*' type="text" formControlName="consigneeAddressMobileNo" (keyup)="formvalidate()"></div>
+                <div class="col-sm-12">
+                  <div *ngIf="ordersForm.get('orderDetails')['controls']['consigneeAddressMobileNo'].errors && !ordersForm.get('orderDetails')['controls']['consigneeAddressMobileNo'].pristine"
+                    class="text-danger float-right error">
+                    <div [hidden]="!ordersForm.get('orderDetails')['controls']['consigneeAddressMobileNo'].errors.required">Mobile is required</div>
+                  </div>
+                </div>
+                <div class="col-sm-12"> <hr> </div>                      
+            </div>
+
+            <div class="row inputset ui-g-12 ui-md-4" formGroupName="orderDetails">
+                <div class="col-sm-12"><input id="input" class="inputFullWidth" type="text" placeholder='Phone*' formControlName="consigneeAddressPhone" (keyup)="formvalidate()"></div>
+                <div class="col-sm-12">
+                  <div *ngIf="ordersForm.get('orderDetails')['controls']['consigneeAddressPhone'].errors && !ordersForm.get('orderDetails')['controls']['consigneeAddressPhone'].pristine"
+                    class="text-danger float-right error">
+                    <div [hidden]="!ordersForm.get('orderDetails')['controls']['consigneeAddressPhone'].errors.required">City is required</div>
+                  </div>
+                </div>
+                <div class="col-sm-12"> <hr> </div>                      
+            </div>
+
+            <div class="row inputset ui-g-12 ui-md-4" formGroupName="orderDetails">
+                <div class="col-sm-12"><input id="input" class="inputFullWidth" type="text" placeholder='Latitude*' formControlName="latitude" (keyup)="formvalidate()"></div>
+                <div class="col-sm-12">
+                  <div *ngIf="ordersForm.get('orderDetails')['controls']['latitude'].errors && !ordersForm.get('orderDetails')['controls']['latitude'].pristine"
+                    class="text-danger float-right error">
+                    <div [hidden]="!ordersForm.get('orderDetails')['controls']['latitude'].errors.required">Latitude is required</div>
+                  </div>
+                </div>
+                <div class="col-sm-12"> <hr> </div>                      
+            </div>
+
+            <div class="row inputset ui-g-12 ui-md-4" formGroupName="orderDetails">
+                <div class="col-sm-12"><input id="input" class="inputFullWidth" type="text" placeholder='Longitude*' formControlName="longitude" (keyup)="formvalidate()"></div>
+                <div class="col-sm-12">
+                  <div *ngIf="ordersForm.get('orderDetails')['controls']['longitude'].errors && !ordersForm.get('orderDetails')['controls']['longitude'].pristine"
+                    class="text-danger float-right error">
+                    <div [hidden]="!ordersForm.get('orderDetails')['controls']['longitude'].errors.required">Longitude is required</div>
+                  </div>
+                </div>
+                <div class="col-sm-12"> <hr> </div>                      
+            </div>
+
+            <div class="row inputset ui-g-12 ui-md-12">
+              <div class="col-sm-6"> 
+                <h5> Payment Details </h5> 
+              </div>
+              <div class="col-sm-6"> 
+                <button class="line_btn sblue" (click)="addPayment()" [ngClass]="pymtAddBtn">Add</button> 
+              </div>
+            </div>
+
+            <div class="row inputset ui-g-12 ui-md-12" formArrayName="payments">
+              <div *ngFor="let item of payments.controls; let i = index">
+                <div [formGroupName]="i">
+                  <div class="row inputset ui-g-12 ui-md-4">
+                      <div class="col-sm-12">
+                        <p-calendar [style]="{height: '41px'}"
+                          formControlName="paymentDate" [monthNavigator]="true" placeholder='Payment Date*'
+                          [yearNavigator]="true" yearRange="2000:2040" (onSelect)="formvalidate()">
+                          <p-footer>
+                            <button pButton type="button" label="Close" class="pcalfooter"
+                              (click)="checkdates();ecalendar.hideOverlay();">
+                            </button>
+                          </p-footer>
+                        </p-calendar>
+                      </div>
+                      <div class="col-sm-12">
+                        <div *ngIf="getPaymentsValidity(i, 'paymentDate') == 'INVALID'" class="text-danger float-right error">
+                          <div [hidden]="getPaymentsValidity(i, 'paymentDate') == 'VALID'">Payment Date is required</div>
+                        </div>
+                      </div>
+                      <div class="col-sm-12"> <hr> </div>
+                    </div>
+
+                  <div class="row inputset ui-g-12 ui-md-4">
+                      <div class="col-sm-12"><input id="input" class="inputFullWidth" type="text" placeholder='Amount*' formControlName="amount" (keyup)="formvalidate()"></div>
+                      <div class="col-sm-12">
+                        <div *ngIf="getPaymentsValidity(i, 'amount') == 'INVALID'" class="text-danger float-right error">
+                          <div [hidden]="getPaymentsValidity(i, 'amount') == 'VALID'">Amount is required</div>
+                        </div>
+                      </div>
+                      <div class="col-sm-12"> <hr> </div>                      
+                  </div>
+
+                  <div class="row inputset ui-g-12 ui-md-4">
+                      <div class="col-sm-12"><input id="input" class="inputFullWidth" type="text" placeholder='Currency*' formControlName="currency" (keyup)="formvalidate()"></div>
+                      <div class="col-sm-12">
+                        <div *ngIf="getPaymentsValidity(i, 'currency') == 'INVALID'" class="text-danger float-right error">
+                          <div [hidden]="getPaymentsValidity(i, 'currency') == 'VALID'">Currency is required</div>
+                        </div>
+                      </div>
+                      <div class="col-sm-12"> <hr> </div>                      
+                  </div>
+
+                  <div class="row inputset ui-g-12 ui-md-4">
+                      <div class="col-sm-12"><input id="input" class="inputFullWidth" type="text" placeholder='Card*' formControlName="card" (keyup)="formvalidate()"></div>
+                      <div class="col-sm-12">
+                        <div *ngIf="getPaymentsValidity(i, 'card') == 'INVALID'" class="text-danger float-right error">
+                          <div [hidden]="getPaymentsValidity(i, 'card') == 'VALID'">Card is required</div>
+                        </div>
+                      </div>
+                      <div class="col-sm-12"> <hr> </div>                      
+                  </div>
+
+                  <div class="row inputset ui-g-12 ui-md-4">
+                      <div class="col-sm-12"><input id="input" class="inputFullWidth" type="text" placeholder='Card Scheme*' formControlName="cardscheme" (keyup)="formvalidate()"></div>
+                      <div class="col-sm-12">
+                        <div *ngIf="getPaymentsValidity(i, 'cardscheme') == 'INVALID'" class="text-danger float-right error">
+                          <div [hidden]="getPaymentsValidity(i, 'cardscheme') == 'VALID'">Card Scheme is required</div>
+                        </div>
+                      </div>
+                      <div class="col-sm-12"> <hr> </div>                      
+                  </div>
+
+                  <div class="row inputset ui-g-12 ui-md-4">
+                      <div class="col-sm-12"><input id="input" class="inputFullWidth" type="text" placeholder='Card Type*' formControlName="cardType" (keyup)="formvalidate()"></div>
+                      <div class="col-sm-12">
+                        <div *ngIf="getPaymentsValidity(i, 'cardType') == 'INVALID'" class="text-danger float-right error">
+                          <div [hidden]="getPaymentsValidity(i, 'cardType') == 'VALID'">Card Type is required</div>
+                        </div>
+                      </div>
+                      <div class="col-sm-12"> <hr> </div>                      
+                  </div>
+
+                  <div class="row inputset ui-g-12 ui-md-4">
+                      <div class="col-sm-12"><input id="input" class="inputFullWidth" type="text" placeholder='Payment Status*' formControlName="paymentStatus" (keyup)="formvalidate()"></div>
+                      <div class="col-sm-12">
+                        <div *ngIf="getPaymentsValidity(i, 'paymentStatus') == 'INVALID'" class="text-danger float-right error">
+                          <div [hidden]="getPaymentsValidity(i, 'paymentStatus') == 'VALID'">Payment Status is required</div>
+                        </div>
+                      </div>
+                      <div class="col-sm-12"> <hr> </div>                      
+                  </div>
+
+                  <div class="row inputset ui-g-12 ui-md-4">
+                      <div class="col-sm-12"><input id="input" class="inputFullWidth" type="text" placeholder='Transaction ID*' formControlName="transactionId" (keyup)="formvalidate()"></div>
+                      <div class="col-sm-12">
+                        <div *ngIf="getPaymentsValidity(i, 'transactionId') == 'INVALID'" class="text-danger float-right error">
+                          <div [hidden]="getPaymentsValidity(i, 'transactionId') == 'VALID'">Transaction ID is required</div>
+                        </div>
+                      </div>
+                      <div class="col-sm-12"> <hr> </div>                      
+                  </div>
+
+                  <div class="row inputset ui-g-12 ui-md-4">
+                      <div class="col-sm-12"><input id="input" class="inputFullWidth" type="text" placeholder='Transaction Type*' formControlName="transactionType" (keyup)="formvalidate()"></div>
+                      <div class="col-sm-12">
+                        <div *ngIf="getPaymentsValidity(i, 'transactionType') == 'INVALID'" class="text-danger float-right error">
+                          <div [hidden]="getPaymentsValidity(i, 'transactionType') == 'VALID'">Transaction Type is required</div>
+                        </div>
+                      </div>
+                      <div class="col-sm-12"> <hr> </div>                      
+                  </div>
+
+                  <div class="row inputset ui-g-12 ui-md-4">
+                      <div class="col-sm-12"><input id="input" class="inputFullWidth" type="text" placeholder='Return Payment Response*' formControlName="returnPaymentResponse" (keyup)="formvalidate()"></div>
+                      <div class="col-sm-12">
+                        <div *ngIf="getPaymentsValidity(i, 'returnPaymentResponse') == 'INVALID'" class="text-danger float-right error">
+                          <div [hidden]="getPaymentsValidity(i, 'returnPaymentResponse') == 'VALID'">Return Payment Response is required</div>
+                        </div>
+                      </div>
+                      <div class="col-sm-12"> <hr> </div>                      
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="row inputset ui-g-12 ui-md-12">
+              <div class="col-sm-6"> 
+                <h5> Waybill & Product Details </h5> 
+              </div>
+              <div class="col-sm-6"> 
+                <button class="line_btn sblue" (click)="addItems()">Add</button> 
+              </div>
+            </div>
+
+            <div class="row inputset ui-g-12 ui-md-12" formArrayName="waybillProduct">
+              <div *ngFor="let item of waybillProduct.controls; let i = index">
+                <div [formGroupName]="i">
+                  <div class="row inputset ui-g-12 ui-md-4">
+                      <div class="col-sm-12"><input id="input" class="inputFullWidth" type="text" placeholder='Waybill No*' formControlName="waybillNo" (keyup)="formvalidate()"></div>
+                      <div class="col-sm-12">
+                          <div *ngIf="getValidity(i, 'waybillNo') == 'INVALID'"
+                          class="text-danger float-right error">
+                          <div [hidden]="getValidity(i, 'waybillNo') == 'VALID'">Waybill is required</div>
+                        </div>
+                      </div>
+                      <div class="col-sm-12"> <hr> </div>
+                  </div>
+                  <div class="row inputset ui-g-12 ui-md-4">
+                      <div class="col-sm-12"><input id="input" class="inputFullWidth" type="text" placeholder='Product ID*' formControlName="ProductID" (keyup)="formvalidate()"></div>
+                      <div class="col-sm-12">
+                          <div *ngIf="getValidity(i, 'ProductID') == 'INVALID'" class="text-danger float-right error">
+                            <div [hidden]="getValidity(i, 'ProductID') == 'VALID'">Product ID is required</div>
+                        </div>
+                      </div>
+                      <div class="col-sm-12"> <hr> </div>
+                  </div>
+                  <div class="row inputset ui-g-12 ui-md-4">
+                      <div class="col-sm-12"><input id="input" class="inputFullWidth" type="text" placeholder='Product SKU*' formControlName="productSKU" (keyup)="formvalidate()"></div>
+                      <div class="col-sm-12">
+                          <div *ngIf="getValidity(i, 'productSKU') == 'INVALID'" class="text-danger float-right error">
+                            <div [hidden]="getValidity(i, 'productSKU') == 'VALID'">Product SKU is required</div>
+                        </div>
+                      </div>
+                      <div class="col-sm-12"> <hr> </div>
+                  </div>
+                  <div class="row inputset ui-g-12 ui-md-4">
+                      <div class="col-sm-12"><input id="input" class="inputFullWidth" type="text" placeholder='Product Image*' formControlName="productImage" (keyup)="formvalidate()"></div>
+                      <div class="col-sm-12">
+                          <div *ngIf="getValidity(i, 'productImage') == 'INVALID'" class="text-danger float-right error">
+                            <div [hidden]="getValidity(i, 'productImage') == 'VALID'">Product Image is required</div>
+                        </div>
+                      </div>
+                      <div class="col-sm-12"> <hr> </div>
+                  </div>
+                  <div class="row inputset ui-g-12 ui-md-4">
+                      <div class="col-sm-12"><input id="input" class="inputFullWidth" type="text" placeholder='Product Name*' formControlName="productName" (keyup)="formvalidate()"></div>
+                      <div class="col-sm-12">
+                          <div *ngIf="getValidity(i, 'productName') == 'INVALID'" class="text-danger float-right error">
+                            <div [hidden]="getValidity(i, 'productName') == 'VALID'">Product Name is required</div>
+                        </div>
+                      </div>
+                      <div class="col-sm-12"> <hr> </div>
+                  </div>
+                  <div class="row inputset ui-g-12 ui-md-4">
+                      <div class="col-sm-12"><input id="input" class="inputFullWidth" type="text" placeholder='Description*' formControlName="description" (keyup)="formvalidate()"></div>
+                      <div class="col-sm-12">
+                          <div *ngIf="getValidity(i, 'description') == 'INVALID'" class="text-danger float-right error">
+                            <div [hidden]="getValidity(i, 'description') == 'VALID'">Description is required</div>
+                        </div>
+                      </div>
+                      <div class="col-sm-12"> <hr> </div>
+                  </div>
+                  <div class="row inputset ui-g-12 ui-md-4">
+                      <div class="col-sm-12"><input id="input" class="inputFullWidth" type="text" placeholder='Quantity*' formControlName="quantity" (keyup)="formvalidate()"></div>
+                      <div class="col-sm-12">
+                          <div *ngIf="getValidity(i, 'quantity') == 'INVALID'" class="text-danger float-right error">
+                            <div [hidden]="getValidity(i, 'quantity') == 'VALID'">Quantity is required</div>
+                        </div>
+                      </div>
+                      <div class="col-sm-12"> <hr> </div>
+                  </div>
+                  <div class="row inputset ui-g-12 ui-md-4">
+                      <div class="col-sm-12"><input id="input" class="inputFullWidth" type="text" placeholder='Unit Cost*' formControlName="unitCost" (keyup)="formvalidate()"></div>
+                      <div class="col-sm-12">
+                          <div *ngIf="getValidity(i, 'unitCost') == 'INVALID'" class="text-danger float-right error">
+                            <div [hidden]="getValidity(i, 'unitCost') == 'VALID'">Unit Cost is required</div>
+                        </div>
+                      </div>
+                      <div class="col-sm-12"> <hr> </div>
+                  </div>
+                  <div class="row inputset ui-g-12 ui-md-4">
+                      <div class="col-sm-12"><input id="input" class="inputFullWidth" type="text" placeholder='Currency Code*' formControlName="currencyCode" (keyup)="formvalidate()"></div>
+                      <div class="col-sm-12">
+                          <div *ngIf="getValidity(i, 'currencyCode') == 'INVALID'" class="text-danger float-right error">
+                            <div [hidden]="getValidity(i, 'currencyCode') == 'VALID'">Currency Code is required</div>
+                        </div>
+                      </div>
+                      <div class="col-sm-12"> <hr> </div>
+                  </div>
+                  <div class="row inputset ui-g-12 ui-md-4">
+                    <div class="col-sm-12">
+                      <p-calendar [style]="{height: '41px'}"
+                        formControlName="returndate" [monthNavigator]="true" placeholder='Return Date*'
+                        [yearNavigator]="true" yearRange="2000:2040" (onSelect)="formvalidate()">
+                        <p-footer>
+                          <button pButton type="button" label="Close" class="pcalfooter"
+                            (click)="ecalendar.hideOverlay();">
+                          </button>
+                        </p-footer>
+                      </p-calendar>
+                      </div>
+                    <div class="col-sm-12">
+                      <div *ngIf="getValidity(i, 'returndate') == 'INVALID'" class="text-danger float-right error">
+                        <div [hidden]="getValidity(i, 'returndate') == 'VALID'">Return Date is required</div>
+                      </div>
+                    </div>
+                    <div class="col-sm-12"> <hr> </div>
+                  </div>
+
+                </div>  
+              </div>  
+            </div>
+  
+            <div class="row justify-content-center mt-4  ui-g-12 ui-md-12">
+  
+                <button class="line_btn sblue mr-4" [ngClass]="btndisable"
+                    (click)="saveOrder()">Submit</button>
+                <button class="line_btn sblue" (click)="onClose()">Cancel</button>
+  
+            </div>
+         
+        </form>
+    </p-dialog>
+  </div>

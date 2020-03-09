@@ -1,0 +1,68 @@
+<section class="accounts srch">
+    <div class="text_container">
+        <div class="container">
+            <section class="category brands">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-10 offset-md-1">
+                            <h2>Merchants</h2>
+
+                            <p class="text-center let-space">
+                                <span *ngFor="let char of alphabetpaging" [ngClass]="{'active':char == selectedchar}"
+                                    (click)="Filterbyalphabet(char)">{{char}}</span>
+                            </p>
+                        </div>
+                    </div>
+                    <hr />
+                </div>
+            </section>
+
+            <section class="row">
+                <div class="col-md-6" *ngFor="let res of pagedItems">
+                    <div class="card mb-4 box-shadow" (click)="redirecturl(res.website)">
+                        <img alt="Thumbnail [100%x225]" class="card-img-top" src="{{res.companyImage}}">
+                        <div class="card-body">
+                            <p class="card-text">{{res.name}}</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- pager -->
+                <div class="col-md-12 text-center">
+                    <ul *ngIf="pager.pages && pager.pages.length" class="pagination">
+                        <li [ngClass]="{disabled:pager.currentPage === 1}">
+                            <a (click)="setPage(1)">First</a>
+                        </li>
+                        <li [ngClass]="{disabled:pager.currentPage === 1}">
+                            <a (click)="pager.currentPage === 1?'': setPage(pager.currentPage - 1)">Previous</a>
+                        </li>
+                        <li *ngFor="let page of pager.pages" [ngClass]="{active:pager.currentPage === page}">
+                            <a (click)="setPage(page)">{{page}}</a>
+                        </li>
+                        <li [ngClass]="{disabled:pager.currentPage === pager.totalPages}">
+                            <a
+                                (click)="pager.currentPage === pager.totalPages?'':setPage(pager.currentPage + 1)">Next</a>
+                        </li>
+                        <li [ngClass]="{disabled:pager.currentPage === pager.totalPages}">
+                            <a (click)="setPage(pager.totalPages)">Last</a>
+                        </li>
+                    </ul>
+
+                </div>
+
+            </section>
+            <div class="no-orders" [hidden]="isempty">
+                <p>No Merchants Found</p>
+            </div>
+        </div>
+    </div>
+
+
+</section>
+
+<div class="loading-indicator mid" *ngIf="ProgressSpinnerDlg">
+    <p-progressSpinner></p-progressSpinner>
+</div>
+<div class="overlay" *ngIf="ProgressSpinnerDlg"></div>
+
+<app-merchant-url-not-found [display]="display" (displayChange)="onDialogClose($event)"></app-merchant-url-not-found>

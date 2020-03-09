@@ -1,0 +1,77 @@
+<section class="accounts">
+    <div class="text_container">
+        <div class="container">
+
+            <section class="category brands">
+                <div class="container-fluid">
+                    <div class="row">
+
+                        <h2 class="text-center col-md-12">Customer Service</h2>
+                        <hr class=" col-md-12">
+                    </div>
+                    <div class="row">
+
+                        <div class="col-md-6 cust-serv">
+
+                            <form class="from_wrapper">
+                                <div class="row inputset">
+                                    <div class="col-sm-12">
+                                        <input class="w-100" placeholder="Name" type="text">
+                                        <input class="w-100" placeholder="Company" type="text">
+                                        <input class="w-100" placeholder="Phone Number" type="text">
+                                        <textarea rows="8" class="w-100" placeholder="Description"></textarea>
+                                    </div>
+                                </div>
+                                <div class="row btns justify-content-end">
+                                    <div class="col-sm-6">
+                                        <p-button class="line_btn sblue" label="Submit"></p-button>
+
+                                    </div>
+                                </div>
+                            </form>
+                            <div></div>
+                        </div>
+                        <div class="col-md-6 si cust-serv pl-lg">
+                            <h4>Nice to Hear from You!</h4>
+                            <p class="para">At dunyana, we focus on client and customer satisfaction. We continue strive to earn your trust and help your business grow by providing end to end express ecommerce solution & increase your reach and drive sales by advertising your products on dunyana.</p>
+                            <h5>Contact Information</h5>
+                            <p class="para">Feel free to drop us a line!
+                            </p>
+
+                            <div class="address">
+                                <div class="info">
+                                    <div class="i-div"> <i class="icomoon icon-tracking"></i></div>
+                                    <h5>Address</h5>
+                                    <p class="para">Exit 17 Suly Area P.O.Box 99931 Riyadh, 11625 Kingdom of Saudi Arabia</p>
+                                </div>
+                                <div class="info">
+                                    <div class="i-div"> <i class="icomoon icon-tracking"></i></div>
+                                    <h5>phone</h5>
+                                    <p class="para">8002464444</p>
+                                </div>
+                                <div class="info">
+                                    <div class="i-div"> <i class="icomoon icon-edit"></i></div>
+
+                                    <h5>Email</h5>
+                                    <p class="para">admin@dunyana.com</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <hr />
+                </div>
+            </section>
+
+        </div>
+
+        <div class="g-map">
+            <agm-map [latitude]="lat" [longitude]="lng">
+                <agm-marker [latitude]="lat" [longitude]="lng" ></agm-marker>
+            </agm-map>
+        </div>
+
+        <!-- <div #map style="width:100%;height:400px"></div> -->
+    </div>
+
+</section>

@@ -1,0 +1,115 @@
+.walletbackground {
+    background-color: #00bdef;
+    height: calc(100% - 452px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding:30px 0;
+    min-height: 600px;
+    .text_container
+    {
+        flex-basis: 100%;
+        padding: 0;
+        .profile
+        {
+            background-color: #fff;
+            .address
+            {
+                margin: 25px;
+              img
+              {
+                max-height: 125px;
+                margin-bottom:20px;
+              }
+            }
+        }
+    }
+    
+  }
+  
+      .success-bg .text-center h2 {
+      color: #00c0f3;
+      font-size: 20pt;
+      margin-bottom: 10pt;
+    }
+    .success-bg .text-center h6 {
+      color: #4f5b69; 
+      font-weight: 600;    
+      margin-bottom: 15px;
+    }
+    .fxdMsg
+    {
+      position: fixed;
+      top:50%;
+      margin-top:-120px;
+      left: 0;
+      width:100%;
+      z-index: 9999;
+      h5
+      {
+        font-weight:500; 
+        color:#fff; 
+        text-align: center;
+        line-height: 1.7;
+      }
+    }
+    .success-bg .text-center > p {
+      color: #4f5b69;
+      font-size: 9pt;
+      line-height: 1.7;
+    }
+    .success-bg .text-center > p span
+    {
+      color: #000;
+      font-weight: 600;
+    }
+    
+  
+    .success-bg .text-center > p:last-child {
+      font-family: 'teshrin_arltmedium', sans-serif;
+      margin-top: 20px;
+    }
+    
+    .ftxt {
+      color: white;
+      position: relative;
+      float: left;
+      margin-top:20px;
+      text-align: center;
+      width: 100%;
+      font-family: 'teshrin_arltmedium', sans-serif;
+      padding: 0 20px;
+      cursor: pointer;
+      outline: none;
+    }
+      //spinner styles
+  .loading-indicator {
+    position: fixed;
+    z-index: 999;
+    height: 98px;
+    width: 98px;
+    overflow: show;
+    margin: auto;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    }
+    
+    // Transparent Overlay 
+    .loading-indicator:before {
+    content: '';
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.53);
+    }
+    @media screen and (max-width: 475px) {
+      .success-bg .center {
+        padding: 30px 30px 0 30px;
+      }
+    }
+    /*# sourceMappingURL=emailverification-success.component.css.map */

@@ -1,0 +1,58 @@
+.success-bg {
+  background: #00bdef;
+  height: 100%;
+}
+
+.success-bg .center {
+  background: white;
+  height: 470px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  border-radius: 20px;
+  max-width: 465px;
+  padding: 60px 60px 0 60px;
+  height: auto;
+}
+
+.success-bg .center img {
+  width: 155px;
+  margin-bottom: 24px;
+}
+
+.success-bg .center h2 {
+  color: #00c0f3;
+  font-size: 20pt;
+  margin-bottom: 30pt;
+}
+
+.success-bg .center > p {
+  color: #4f5b69;
+  font-size: 16pt;
+}
+
+.success-bg .center > p:last-child {
+  font-family: 'teshrin_arltmedium', sans-serif;
+  margin-top: 50px;
+}
+
+.success-bg .ftxt {
+  color: white;
+  position: absolute;
+  bottom: 2%;
+  text-align: center;
+  width: 100%;
+  font-family: 'teshrin_arltmedium', sans-serif;
+  padding: 0 20px;
+  cursor: pointer;
+  outline: none;
+}
+
+@media screen and (max-width: 475px) {
+  .success-bg .center {
+    padding: 30px 30px 0 30px;
+  }
+}
+/*# sourceMappingURL=emailverification-success.component.css.map */

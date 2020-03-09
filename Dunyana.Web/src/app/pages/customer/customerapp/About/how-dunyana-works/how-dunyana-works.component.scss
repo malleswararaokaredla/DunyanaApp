@@ -1,0 +1,170 @@
+section
+{
+    &.story-banner
+    {
+        max-height: 75vh;
+        overflow: hidden;
+        h1
+        {
+            color: #fff;
+            text-align: center;
+            max-width: 470px;
+            &::after
+            {
+                background: url(../../../../../../assets/layout/images/btn_lines.png) no-repeat left -406px;
+                left: 50%;
+                margin-left: -130px;
+            }
+        }
+    }
+    &.master_text
+    {
+        h2
+        {
+            width: 360px;
+            &::after
+            {
+                background: url(../../../../../../assets/layout/images/btn_lines.png) no-repeat left -170px;
+                width:220px;
+                left: 50%;
+                margin-left: -110px;
+            }
+        }
+    }
+    &.accounts 
+    {
+        min-height: calc(100% - 451px);
+        .text_container
+        {
+            .leftPanel
+            {
+                margin-bottom: 0;
+                p.small 
+                {
+                    font-size: 14pt;
+                }
+                h2
+                {
+                    font-size: 26pt;
+                    line-height: 100%;
+                }
+            }
+        }
+    }
+    &.history 
+    {
+        .hist_line
+        {
+            &::after{
+                display:none;
+            }
+            li
+            {
+                &::after
+                {
+                    left: 58px;
+                }
+                &:first-child::before
+                {
+                    background-image: url(../../../../../../assets/layout/images/hw_1.png);
+                    border:0;
+                    width:133px;
+                    height: 121px;
+                    border-radius: unset;
+                    background-color: transparent;
+                }
+                &:nth-child(2)::before
+                {
+                    background-image: url(../../../../../../assets/layout/images/hw_2.png);
+                    border:0;
+                    width:133px;
+                    height: 121px;
+                    border-radius: unset;
+                    background-color: transparent;
+                }
+                &:last-child::before
+                {
+                    background-image: url(../../../../../../assets/layout/images/hw_3.png);
+                    border:0;
+                    width:133px;
+                    height: 121px;
+                    border-radius: unset;
+                    background-color: transparent;
+                }
+                &:nth-child(odd)
+                {
+                    &::after
+                    {
+                        bottom:0;
+                    }
+                    &::before
+                    {
+                        bottom: -122px;
+                        left: -20px;
+                    }
+                    > div
+                    {
+                        margin-top: -100px;
+                    }
+                }
+                &:nth-child(even)
+                {
+                    &::before
+                    {
+                        top: -146px;
+                    }
+                    &::after
+                    {
+                        top: -22px;
+                        left: 42px;
+                    }
+                    > div
+                    {
+                        top: 51px;
+                        position: relative;
+                        margin-left: -99px;
+                    }
+                }
+                
+                &.y15
+                {
+                    left:48%;
+                }
+                &.y17
+                {
+                    left:93%;
+                    width:10%;
+                    > div
+                    {
+                        width:150px;
+                    }
+                }
+            }
+        }
+    }
+    &.steps
+    {
+        padding:60px 0 0;
+        h3
+        {
+            font-size:24px;
+            text-align: center;
+            margin-bottom: 50px;
+            color:#212529;
+        }
+        h4
+        {
+            font-size:18px;
+            font-weight: 600;
+            color: #00b4e6;
+            margin: 0 0 15px;
+        }
+        p
+        {
+            font-weight: 600;
+            line-height: 1.9;
+            font-size: 16px;
+        }
+    }
+}
+

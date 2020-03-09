@@ -1,0 +1,31 @@
+<section class="accounts walletbackground ">
+  <div class="text_container">
+    <div class="container">
+      <div class="row justify-content-md-center">
+        <div class="col-md-4">
+          <div class="profile success-bg ">
+            <div class="address text-center">
+              <img class="text-center" [src]="checkinfo">
+              <h2>Success!</h2>
+              <h6>
+                Your wallet payment was successfully processed.
+              </h6>
+
+              <p>
+                You will be redirected in 5 seconds. <br />
+                <strong style="font-size:20px">Redirecting...</strong>
+              </p>
+
+            </div>
+
+          </div>
+          <div class="ftxt" [routerLink]="['/customer/customeraccount']">Click here if your browser doesn’t redirect you
+            automatically.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="loading-indicator mid" style="display: none;" id="ProgressSpinnerDlg">
+    <p-progressSpinner></p-progressSpinner>
+  </div>
+</section>

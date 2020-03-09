@@ -1,0 +1,77 @@
+.walletbackground {
+    background-color: #00bdef;
+    height: calc(100% - 452px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding:30px 0;
+    min-height: 550px;
+    .text_container
+    {
+        flex-basis: 100%;
+        padding: 0;
+        .profile
+        {
+            background-color: #fff;
+            .address
+            {
+                margin: 25px;
+              img
+              {
+                max-height: 125px;
+                margin-bottom:20px;
+              }
+                        }
+        }
+    }
+    
+  }
+  
+    
+    .success-bg .address  h2 {
+      color: #ce0e0e;
+      font-size: 20pt;
+      margin-bottom: 10pt;
+    }
+    
+   
+    .success-bg .address   p {
+      color: #4f5b69;
+      font-size: 9pt;
+      line-height: 1.7;
+    }
+    .success-bg .text-center > p span
+    {
+      color: #000;
+      font-weight: 600;
+    }
+    .success-bg .address  h6 
+    {
+      font-size: 12pt;
+      font-weight: 600;
+      color: #4f5b69;
+    }
+    
+    .ftxt {
+      color: white;
+      position: relative;
+      float: left;
+      margin-top:20px;
+      text-align: center;
+      width: 100%;
+      font-family: 'teshrin_arltmedium', sans-serif;
+      padding: 0 20px;
+      cursor: pointer;
+      outline: none;
+      &:hover
+      {
+        text-decoration: underline;
+      }
+    }
+    
+    @media screen and (max-width: 475px) {
+      .success-bg .center {
+        padding: 30px 30px 0 30px;
+      }
+    }
+    /*# sourceMappingURL=emailverification-success.component.css.map */

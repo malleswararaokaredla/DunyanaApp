@@ -1,0 +1,79 @@
+.from_wrapper
+{
+    input[type="text"]
+    {
+        padding:5px 10px;
+        background-color: #fff;
+        margin-bottom: 10px;
+        width:100%;
+        border: solid 1px #ccc;
+        color: #4f5b69;
+        &:read-only
+        {
+            background-color: transparent;
+            border: 0;
+            border-bottom: solid 0px #ccc;
+            padding: 0;
+            height: auto;
+            border-radius: 0;
+        }
+    }
+    .lbl{
+        font-weight: bold;
+         line-height: 49px;
+         color: #4f5b69;
+    }
+}
+.profile
+{
+    height: 95%  !important;
+}
+.disable {
+    opacity: 0.5;
+    pointer-events: none;
+}
+
+.line_btn {
+    height:47px;
+    &.sblue {
+        background-position: center 33px;
+        background-color: #00c0f3;
+        padding-top:3px;
+        background-image: url('../../../../../assets/layout/images/line_white.png');
+        background-repeat: no-repeat;
+        border: none;
+        outline: none;
+        color: #fff;
+        width: 200px;
+        margin:20px 10px 0;
+        border-radius: 20px;
+        font-size:16pt;
+        border: 1px solid transparent;
+        text-align: center;
+  
+    }
+
+    .errormsg
+    {
+        right: 0;
+        position: absolute;
+        bottom:5px;
+        text-align: center;
+        width:100%;
+    }
+      .succsmsg{  
+        right: 0;
+        position: absolute;
+        bottom:5px;
+        text-align: center;
+        width:100%;
+    }
+}
+
+.error_msg{
+    font-size: 9pt;
+}
+
+.succsmsg {
+    position: unset;
+}

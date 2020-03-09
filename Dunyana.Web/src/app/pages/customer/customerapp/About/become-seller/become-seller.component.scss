@@ -1,0 +1,159 @@
+section
+{
+    &.story-banner
+    {
+        max-height: 75vh;
+        overflow: hidden;
+        h1
+        {
+            color: #fff;
+            text-align: center;
+            max-width: 300px;
+            &::after
+            {
+                background: url(../../../../../../assets/layout/images/btn_lines.png) no-repeat left -406px;
+                left: 50%;
+                margin-left: -130px;
+            }
+        }
+    }
+    &.master_text
+    {
+        h2
+        {
+            width: 360px;
+            &::after
+            {
+                background: url(../../../../../../assets/layout/images/btn_lines.png) no-repeat left -170px;
+                width:220px;
+                left: 50%;
+                margin-left: -110px;
+            }
+        }
+    }
+    &.accounts 
+    {
+        min-height: calc(100% - 451px);
+        .text_container
+        {
+            .leftPanel
+            {
+                margin-bottom: 0;
+                p.small 
+                {
+                    font-size: 14pt;
+                }
+                h2
+                {
+                    font-size: 26pt;
+                    line-height: 100%;
+                }
+            }
+        }
+        
+    }
+    &.join-steps
+    {
+        margin-bottom: 0;
+        .join_line
+        {
+            margin:120px 0 50px;
+            padding:0;
+            display: flex;
+            flex-direction: row;
+            list-style: none;
+            li
+            {
+                background: url(../../../../../../assets/layout/images/bs_dots.png) no-repeat 260px 0;
+                width: 41%;
+                position: relative;
+                &:before
+                {
+                    content:'2';
+                    width:40px;
+                    height:40px;
+                    border-radius: 50%;
+                    border:solid 3px #fff;
+                    line-height: 44px;
+                    color: #fff;
+                    position: absolute;
+                    top:-70px;
+                    left:0;
+                    font-weight: 600;
+                }
+                > div
+                {
+                    text-align: left;
+                    color:#fff;
+                    width: 240px;
+                    p
+                    {
+                        font-size:20px;
+                        font-weight: 600;
+                    }
+                }
+                &:last-child
+                {
+                    background: none transparent;
+                    width:22%;
+                    > div
+                    {
+                        float:right;
+                    }
+                    &:before
+                    {
+                        content: '3';
+                        left:22px;
+                    }
+                }
+                &:first-child
+                {
+                    background-position: 182px 0;
+                    width: 37%;
+                    &:before
+                    {
+                        content: '1';
+                    }
+                }
+                
+            }
+        }
+    }
+}
+
+
+
+.line_btn {
+    margin-top: 0px;
+    &.line_sellerbtn {
+        &.sblue {
+            background-position: center -38px;
+            background-image: url('../../../../../../assets/layout/images/blue_line_mem.png');
+            background-repeat: no-repeat;
+            border: none;
+            outline: none;
+            font-size: 24px;
+            width: auto;
+            border-radius: 20px;
+            text-align: center;
+            cursor: pointer;
+            margin-bottom:10px;
+            &:hover {
+                background-position: center 23px;
+                outline: none;
+                color: #000;
+                background-image: url('../../../../../../assets/layout/images/blue_line_mem.png');
+            }
+        }
+    }
+}
+
+.bswhite{
+    background-position: 0 -219px;
+    color: #28a745;
+    font-size: 2rem;
+}
+.seller_link{
+  cursor: pointer;
+  outline: none;
+}

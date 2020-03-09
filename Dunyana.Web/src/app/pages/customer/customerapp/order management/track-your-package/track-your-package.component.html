@@ -1,0 +1,71 @@
+<section class="accounts">
+    <div class="text_container">
+        <div class="container">
+
+            <div>
+                <h2>Track Your Package</h2>
+            </div>
+            <div class="row mt-5 mb-3 ">
+
+                <div class="col-xl-2">
+                    <p-radioButton name="group2" value="O" label="Order No" [(ngModel)]="selectedtracknumber"
+                        inputId="preopt2" (onClick)="selectedtrackno($event)"></p-radioButton>
+
+                </div>
+                <div class="col-xl-2">
+                    <p-radioButton name="group2" value="W" label="Waybill No" [(ngModel)]="selectedtracknumber"
+                        inputId="preopt3" (onClick)="selectedtrackno($event)"></p-radioButton>
+                </div>
+            </div>
+            <div class="row mb-3">
+                <div class="col-xl-4">
+                    <input type="text" class="track-input form-control" placeholder="Enter valid no"
+                        [(ngModel)]="trackparameters.id" maxlength="25" (keyup)="validateform()"
+                        [disabled]="isradioselected">
+                    <div>
+                        <span class="errormsg">{{errormsg}}</span>
+                    </div>
+
+                </div>
+                <div class="col-xl-4">
+                    <p-button class="line_btn lblue edit mt-3 " label="Track now" [disabled]="isdisabled"
+                        (click)="Trackpackage()"></p-button>
+                </div>
+            </div>
+            <div class="row">
+
+                <div class="col-xl-offset-2 col-xl-5 col-lg-5" [hidden]="isnoorders">
+
+
+                    <div class="profile mb-5">
+
+                        <div class="order-details">
+                            <div *ngFor="let trackpoints of trackingdata let last = last">
+                                <div class="fade-o" *ngIf="!last">
+                                    <p class="hd"><span></span>{{trackpoints.activity}} </p>
+                                    <p class="addr"> {{trackpoints.stationCode}}, CA 95673</p>
+                                </div>
+                                <div class="hd" *ngIf="last">
+                                    <p class="hd"><span></span>{{trackpoints.activity}} </p>
+                                    <p class="addr"> {{trackpoints.stationCode}}, CA 95673</p>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+                <div [hidden]="noordermsg" class="no-orders"><span>{{norecordes}}</span></div>
+            </div>
+            <div>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="loading-indicator mid" *ngIf="ProgressSpinnerDlg">
+    <p-progressSpinner></p-progressSpinner>
+</div>
+
+<div class="overlay" *ngIf="ProgressSpinnerDlg"></div>

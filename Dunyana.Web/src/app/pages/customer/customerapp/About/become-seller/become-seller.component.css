@@ -1,0 +1,38 @@
+section.accounts .text_container .leftPanel p.small {
+  font-size: 14pt;
+}
+
+.btns {
+  margin-top: 4rem;
+}
+
+.btns .line_sellerbtn.sblue {
+  background-position: center 43px;
+  background-color: #00c0f3;
+  background-image: url("../../../../../../assets/layout/images/line_white.png");
+  background-repeat: no-repeat;
+  border: none;
+  outline: none;
+  font-size: 2rem;
+  width: 100%;
+  border-radius: 20px;
+  text-align: center;
+  cursor: pointer;
+  margin-bottom: 22px;
+}
+
+.btns .line_sellerbtn.sblue:hover {
+  background-position: center 43px;
+  outline: none;
+  background-color: #ffffff;
+  color: #00c0f3;
+  border: 1px solid #03A9F4;
+  background-image: url("../../../../../../assets/layout/images/line_white.png");
+}
+
+.bswhite {
+  background-position: 0 -219px;
+  color: #28a745;
+  font-size: 2rem;
+}
+/*# sourceMappingURL=become-seller.component.css.map */

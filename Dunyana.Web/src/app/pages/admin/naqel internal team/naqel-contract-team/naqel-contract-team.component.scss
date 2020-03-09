@@ -1,0 +1,62 @@
+.imgsty{
+    width: 150px;
+    height: 100px;
+}
+.delete_btn_cont{
+    text-align: center;
+  }
+
+  .mid{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50% -50%);
+    z-index: 1;
+  }
+
+  .overlay{
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: black;
+    opacity: 0.5;
+    z-index: 0;
+    left: 0;
+    top: 0;
+  }
+  .disable{
+    opacity: 0.5;
+    pointer-events: none;
+}
+.doc_info .file_nm ,
+.doc_info .file_nm2
+{
+  width: 50%;
+  display: inline-block;
+}
+.doc_info .file_nm a,
+.doc_info .file_nm2 a
+{
+  color: #00c0f3;
+}
+.doc_info .file_nm:empty ,
+.doc_info .file_nm2:empty
+{
+  display:none;
+}
+.doc_info .ar_ic  
+{
+  width: 10%;
+  display: inline-block;
+  padding-right: 10px;
+}
+.downld_ic 
+{
+  color: #00c0f3;
+  padding:10px 0;
+  display: inline-block;
+}
+.downld_ic  a
+{
+    color: #00c0f3;
+}

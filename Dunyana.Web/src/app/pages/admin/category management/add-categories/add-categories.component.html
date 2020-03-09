@@ -1,0 +1,121 @@
+<div class="changepassword">
+    <p-dialog header="Add Categories" [(visible)]="display" [modal]="true" [responsive]="true"
+        [style]="{width: '475px'}" [closeOnEscape]="true" (onHide)="onClose()">
+
+        <form class="from_wrapper" [formGroup]="categoryForm" novalidate>
+            <div class="row inputset">
+                <h2 class="col-md-12 text-center">Add Category</h2>
+                <div class="col-sm-6"><label>Name</label><span class="r">*</span></div>
+                <div class="col-sm-6"><input id="input" type="text" formControlName="Name" (keyup)="formvalidate()">
+                </div>
+                <div class="col-sm-12">
+                    <div *ngIf="categoryForm.controls['Name'].errors && !categoryForm.controls['Name'].pristine"
+                        class="text-danger float-right error">
+                        <div [hidden]="!categoryForm.controls['Name'].errors.required">Category name required</div>
+                        <div [hidden]="!categoryForm.controls['Name'].errors.pattern">
+                            Please enter valid category name</div>
+                    </div>
+                </div>
+
+                <div class="col-sm-12">
+                    <hr>
+                </div>
+            </div>
+            <div class="row inputset">
+                <div class="col-sm-6"><label>Priority</label><span class="">*</span></div>
+                <div class="col-sm-6">
+                    <p-dropdown [options]="categorypriority" formControlName="Priority" [autoWidth]="false"
+                        [filter]="false" (keyup)="formvalidate()">
+                        <option *ngFor="let c of categorypriority" [ngValue]="c">{{c}}</option>
+                    </p-dropdown>
+                </div>
+                <div class="col-sm-12">
+                </div>
+                <div class="col-sm-12">
+                    <hr>
+                </div>
+            </div>
+            <div class="row inputset">
+                <div class="col-sm-6"><label>Status</label><span class="">*</span></div>
+                <div class="col-sm-6">
+                    <p-dropdown [options]="categorystatus" formControlName="IsActive" [autoWidth]="false"
+                        [filter]="false" (keyup)="formvalidate()">
+                        <option *ngFor="let c of categorystatus" [ngValue]="c">{{c}}</option>
+                    </p-dropdown>
+                </div>
+                <div class="col-sm-12">
+                </div>
+                <div class="col-sm-12">
+                    <hr>
+                </div>
+            </div>
+
+            <div class="row inputset">
+                <div class="col-sm-6"><label>Image</label><span class="">*</span></div>
+                <div class="col-sm-6">
+                    <input type="file" accept="image/x-png,image/gif,image/jpeg" #uploader
+                        (change)="fileChangeEvent($event)" (click)="uploader.value = null"
+                        accept="image/x-png,image/gif,image/jpeg" class="" [hidden]=true />
+                    <button type="button" (click)="uploader.click()" pButton label="Upload Image"
+                        class="btn btn-primary float-right mt-2" class="btn-small"></button>
+                </div>
+                <div class="col-sm-12">
+                    <hr>
+                </div>
+            </div>
+
+            <div class="row inputset">
+                <div class="col-sm-12">
+                    <img [src]="finalImage" class="uploadimgsty" style="height: 80px" />
+                </div>
+            </div>
+
+            <div class="row justify-content-center mt-4">
+
+                <button class="line_btn sblue mr-4" [ngClass]="btndisable" (click)="AddCategory()">Add</button>
+                <button class="line_btn sblue" (click)="redirectcustomerlist()">Cancel</button>
+
+            </div>
+            <div class="">
+                <div [ngClass]="responsesty">
+                    <span>{{response}}</span>
+                </div>
+            </div>
+        </form>
+    </p-dialog>
+</div>
+<div class="modal" id="myModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Category Image</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="row inputset">
+
+                    <div class="col-sm-12">
+                        <image-cropper [imageChangedEvent]="imageChangedEvent" [maintainAspectRatio]="true"
+                            [aspectRatio]="4 / 3" [resizeToWidth]="150" [resizeToHeight]="150" format="png"
+                            (imageCropped)="imageCropped($event)" (imageLoaded)="imageLoaded()"
+                            (cropperReady)="cropperReady()" (loadImageFailed)="loadImageFailed()" [roundCropper]="true">
+                        </image-cropper>
+                    </div>
+                    <div class="col-sm-12">
+                        <img [src]="croppedImage" class="uploadimgsty" />
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                <button class="line_btn sblue mr-4" [ngClass]="savebtndisable" (click)="saveCropImage()"
+                    data-dismiss="modal">Save</button>
+                <button class="line_btn sblue" data-dismiss="modal">Close</button>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<p-toast></p-toast>

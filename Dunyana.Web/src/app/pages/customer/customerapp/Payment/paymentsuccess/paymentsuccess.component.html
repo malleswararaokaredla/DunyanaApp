@@ -1,0 +1,47 @@
+<section class="accounts walletbackground ">
+    <div class="text_container">
+        <div class="container">
+            <div class="row justify-content-md-center" *ngIf="!showPage">
+                <div class="fxdMsg">
+                    <h5>Please wait while your transaction is being processed.<br />
+                        Do not refresh the page.</h5>
+                </div>
+            </div>
+            <div class="row justify-content-md-center" *ngIf="showPage">
+                <div class="col-md-4">
+                    <div class="profile success-bg ">
+                        <div class="address text-center">
+                            <img class="text-center" [src]="checkinfo">
+                            <h2>Success!</h2>
+                            <h6 *ngIf="paymentResponse != null">
+                                Your payment was successfully processed.
+                            </h6>
+                            <p *ngIf="paymentResponse != null"
+                                style="    background: #f2f2f2; padding: 10px; text-align: left">
+                                <span>Card Status :
+                                </span>{{ isNewCard ?  paymentResponse.status  : paymentResponse.payment.status}}
+                                <br />
+                                <span>Transaction Id : </span>
+                                {{ isNewCard ? paymentResponse.id : paymentResponse.payment.id  }}
+                                <br />
+                                <span>Payment Status: </span>
+                                {{ isNewCard ?   paymentResponse.actions[0].responseSummary : paymentResponse.payment.responseSummary }}
+                            </p>
+                            <p>
+                                You will be redirected in 5 seconds. <br />
+                                <strong style="font-size:20px">Redirecting...</strong>
+                            </p>
+
+                        </div>
+
+                    </div>
+                    <div class="ftxt" [routerLink]="['/customer/customeraccount']">Click here if your browser doesn’t
+                        redirect you automatically.</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="loading-indicator mid" style="display: none;" id="ProgressSpinnerDlg">
+        <p-progressSpinner></p-progressSpinner>
+    </div>
+</section>

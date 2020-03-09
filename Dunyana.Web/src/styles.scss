@@ -1,0 +1,79 @@
+/* You can add global styles to this file, and also import other style files */
+
+//  @import url("//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css");
+
+@import  '../node_modules/font-awesome/css/font-awesome.css';
+
+$teshrin_arltlight-font-path: "../src/assets/scss/fonts/teshrinarlt-light-webfont.woff";
+$teshrin_arltmedium-font-path: "../src/assets/scss/fonts/teshrinarlt-medium-webfont.woff";
+
+$icon-font: "../src/assets/scss/fonts/icomoon.eot?yjmyys";
+$icon-font1 :"../src/assets/scss/fonts/icomoon.eot?yjmyys#iefix";
+$icon-font2 : "../src/assets/scss/fonts/icomoon.ttf?yjmyys";
+$icon-font3 :"../src/assets/scss/fonts/icomoon.woff?yjmyys";
+$icon-font4 :"../src/assets/scss/fonts/icomoon.svg?yjmyys#icomoon";
+
+
+@import "../src/assets/scss/_fonts.scss";
+@import "../src/assets/scss/_variables.scss";
+@import "../src/assets/scss/_mixins.scss";
+
+/* basic */
+
+@import "../src/assets/scss/_basic.scss";
+
+/* basic ends */
+
+
+/* header */
+
+@import "../src/assets/scss/_header.scss";
+
+/* header ends */
+
+
+/* footer */
+
+@import "../src/assets/scss/_footer.scss";
+
+/* footer ends */
+
+
+/* sections */
+
+@import "../src/assets/scss/_sections.scss";
+
+/* sections ends */
+
+
+/* signin */
+
+@import "../src/assets/scss/_signin.scss";
+
+/* signin ends */
+
+
+/* accounts */
+
+@import "../src/assets/scss/_accounts.scss";
+
+/* accounts ends */
+
+
+/* ourstory */
+
+@import "../src/assets/scss/_ourstory.scss";
+
+/* ourstory ends */
+
+/* merchantparameter */
+
+@import "../src/assets/scss/_merchant.scss";
+
+/* marchentparameter ends */
+
+
+.error-msg{
+    color:red;
+    text-align: right;
+}

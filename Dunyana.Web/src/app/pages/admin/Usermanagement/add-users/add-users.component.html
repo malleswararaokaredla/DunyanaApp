@@ -1,0 +1,152 @@
+ <div class="changepassword">
+        <p-dialog header="Add User" [(visible)]="display" [modal]="true" [responsive]="true" [style]="{width: '475px'}"
+        [closeOnEscape]="true" (onHide)="onClose()">
+    
+        <form class="from_wrapper" [formGroup]="userForm" novalidate>
+    
+          <div class="row inputset">
+            <div class="col-sm-6"><label>First Name</label><span class="">*</span></div>
+            <div class="col-sm-6"><input onfocus="this.value = '';" type="text" placeholder="Ali" maxlength="25" formControlName="firstname" (keyup)="formvalidate()" appInputSpace>
+            </div>
+            <div class="col-sm-12">
+              <div *ngIf="userForm.controls['firstname'].errors && !userForm.controls['firstname'].pristine" class="text-danger float-right error-msg">
+                <div [hidden]="!userForm.controls['firstname'].errors.required">Please enter first name </div>
+                <div [hidden]="!userForm.controls['firstname'].errors.pattern">Please enter first name</div>
+              </div> 
+            </div>
+            <div class="col-sm-12">
+              <hr>
+            </div>
+          </div>
+          <div class="row inputset">
+            <div class="col-sm-6"><label>Last Name</label><span class="">*</span></div>
+            <div class="col-sm-6"><input type="text" maxlength="25" placeholder="Raza" appInputSpace formControlName="lastname"
+                (keyup)="formvalidate()" /></div>
+            <div class="col-sm-12">
+              <div *ngIf="userForm.controls['lastname'].errors && !userForm.controls['lastname'].pristine"
+                class="text-danger float-right error-msg">
+                <div [hidden]="!userForm.controls['lastname'].errors.required">Please enter last name </div>
+                <div [hidden]="!userForm.controls['lastname'].errors.pattern">Please enter last name</div>
+              </div>
+            </div>
+            <div class="col-sm-12">
+              <hr>
+            </div>
+          </div>
+          <div class="row inputset">
+            <div class="col-sm-6"><label>Email</label><span class="">*</span></div>
+            <div class="col-sm-6"><input type="text" maxlength="50" appInputSpace placeholder="email@domian.com" formControlName="email"
+                (keyup)="formvalidate()" /></div>
+            <div class="col-sm-12">
+              <div *ngIf="userForm.controls['email'].errors && !userForm.controls['email'].pristine"
+                class="text-danger float-right error-msg">
+                <div [hidden]="!userForm.controls['email'].errors.required">Please enter email </div>
+                <div [hidden]="!userForm.controls['email'].errors.pattern">Please enter email</div>
+              </div>
+            </div>
+            <div class="col-sm-12">
+              <hr>
+            </div>
+          </div>
+    
+          <div class="row inputset">
+            <div class="col-sm-6"><label>Mobile</label><span class="">*</span></div>
+            <div class="col-sm-6"><input type="text" appInputSpace [minlength]="7" [maxlength]="10" placeholder="9876543210" formControlName="mobile"
+                (keypress)="_keyPress($event)" (keyup)="formvalidate()" /></div>
+            <div class="col-sm-12">
+              <div *ngIf="userForm.controls['mobile'].errors && !userForm.controls['mobile'].pristine"
+                class="text-danger error-msg float-right">
+                <div [hidden]="!userForm.controls['mobile'].errors.required">Please enter mobile number </div>
+                <div
+                  [hidden]="!userForm.controls['mobile'].errors?.minlength && !userForm.controls['mobile'].errors?.maxlength">
+                 Pleae enter mobile number</div>
+              </div>
+            </div>
+            <div class="col-sm-12">
+              <hr>
+            </div>
+          </div>
+    
+    
+    
+          <div class="row inputset">
+            <div class="col-sm-6"><label>Address</label><span class="">*</span></div>
+            <div class="col-sm-6"><textarea  maxlength="500" placeholder="Address" rows="2" formControlName="address" 
+                (keyup)="formvalidate()"></textarea></div>
+            <div class="col-sm-12">
+              <div *ngIf="userForm.controls['address'].errors && !userForm.controls['address'].pristine"
+                class="text-danger error-msg float-right">
+                <div [hidden]="!userForm.controls['address'].errors.required">Please enter address </div>
+                <div [hidden]="!userForm.controls['address'].errors.pattern">Please enter correct address</div>
+              </div>
+            </div>
+            <div class="col-sm-12">
+              <hr>
+            </div>
+          </div>
+    
+    
+          <div class="row inputset">
+            <div class="col-sm-6"><label>Country</label><span class="">*</span></div>
+            <div class="col-sm-6">
+              
+              <p-dropdown [options]="countries" formControlName="country" (onChange)="formvalidate()"  [autoWidth]="false" [filter]="false">
+                <option *ngFor="let c of countries" [ngValue]="c">{{c}}</option>
+            </p-dropdown>
+            </div>
+            <div class="col-sm-12">
+              <hr>
+            </div>
+          </div>
+
+          <div class="row inputset">
+            <div class="col-sm-6"><label>Status</label><span class="">*</span></div>
+            <div class="col-sm-6">
+                  <p-dropdown [options]="userStatuses" formControlName="isActive" (onChange)="formvalidate()" [autoWidth]="false"  [filter]="false">          
+                        <option *ngFor="let s of userStatuses" [ngValue]="s">{{s}}</option>
+                    </p-dropdown>   
+            </div>
+            <div class="col-sm-12">
+            </div>
+            <div class="col-sm-12">
+                <hr>
+            </div>
+        </div> 
+    
+        <div class="row inputset">
+          <div class="col-sm-6"><label>User Type</label><span class="">*</span></div>
+          <div class="col-sm-6">
+                <p-dropdown [options]="naqelUserTypes" formControlName="userType" (onChange)="formvalidate()" [autoWidth]="false"  [filter]="false">          
+                      <option *ngFor="let s of naqelUserTypes" [ngValue]="s">{{s}}</option>
+                  </p-dropdown>   
+          </div>
+          <div class="col-sm-12">
+          </div>
+          <div class="col-sm-12">
+              <hr>
+          </div>
+      </div> 
+ 
+    
+         
+     
+          
+    
+          <div class="row justify-content-center mt-4">
+    
+                <button class="line_btn sblue mr-4" [ngClass]="btndisable" (click)="AddUser()">Add</button>
+                <button class="line_btn sblue" (click)="redirectUserlist()">Cancel</button>
+ 
+          </div>
+          <div class="">
+              <div [ngClass]="responsesty">
+                  <span >{{response}}</span>
+              </div>
+          </div>
+        </form>
+        
+           <div class="loading-indicator mid" *ngIf="ProgressSpinnerDlg">
+            <p-progressSpinner></p-progressSpinner>    
+        </div> 
+      </p-dialog> 
+</div>

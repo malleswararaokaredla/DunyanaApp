@@ -1,0 +1,119 @@
+section.accounts .text_container .leftPanel p.small {
+  font-size: 14pt;
+}
+
+.mid {
+  position: absolute;
+  left: 50%;
+  top: 60%;
+  -webkit-transform: translate(-50% -50%);
+          transform: translate(-50% -50%);
+  z-index: 1;
+}
+
+.overlay {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background: black;
+  opacity: 0.5;
+  z-index: 0;
+  left: 0;
+  top: 0;
+}
+
+.back {
+  position: absolute;
+  left: 10%;
+  top: 3%;
+}
+
+.no-orders {
+  color: #02a7d4;
+  font-weight: bold;
+  font-size: 22pt;
+}
+
+.track-input {
+  border: 0;
+  border-bottom: solid 1px #ccc;
+  border-radius: 0;
+  background: transparent;
+  padding: 10px 0;
+  line-height: 55px;
+  height: 55px;
+  font-size: 24px;
+  outline: none;
+  font-family: "teshrin_arltmedium", sans-serif;
+  max-width: 315px;
+  outline: none;
+}
+
+.track-input:focus {
+  -webkit-box-shadow: 0 0 0 !important;
+          box-shadow: 0 0 0 !important;
+}
+
+.track-input::-webkit-input-placeholder {
+  opacity: 0.3;
+}
+
+.track-input:-ms-input-placeholder {
+  opacity: 0.3;
+}
+
+.track-input::-ms-input-placeholder {
+  opacity: 0.3;
+}
+
+.track-input::placeholder {
+  opacity: 0.3;
+}
+
+:host ::ng-deep .ui-button {
+  background: transparent;
+  border: none;
+  outline: none;
+  width: 100%;
+  opacity: 1 !important;
+}
+
+:host ::ng-deep .ui-button span.ui-button-text {
+  color: #00c0f3;
+  margin-top: -10px;
+  opacity: 1 !important;
+  padding: 0 !important;
+  font-family: "teshrin_arltlight", sans-serif;
+}
+
+:host ::ng-deep .ui-button:enabled, :host ::ng-deep .ui-button:active {
+  outline: none;
+  border: none;
+}
+
+:host ::ng-deep .ui-button:enabled:hover, :host ::ng-deep .ui-button:enabled:focus, :host ::ng-deep .ui-button:active:hover, :host ::ng-deep .ui-button:active:focus {
+  background-position: 0px 0px;
+  background: transparent;
+  outline: none;
+  border: none;
+}
+
+:host ::ng-deep .ui-button:hover {
+  background-position: 0px 0px;
+  background: transparent;
+  outline: none;
+  border: none;
+}
+
+:host ::ng-deep .ui-button span {
+  font-size: 20pt !important;
+  padding: 0.2em 1em 0.7em !important;
+  outline: none;
+  border: none;
+  height: 60px;
+}
+
+:host ::ng-deep .ui-button span:hover {
+  color: #000 !important;
+}
+/*# sourceMappingURL=track-your-package.component.css.map */

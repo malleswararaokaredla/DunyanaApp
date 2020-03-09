@@ -1,0 +1,156 @@
+<div class="changepassword">
+  <p-dialog header="Edit Profile" [(visible)]="display" [modal]="true" [responsive]="true" [style]="{width: '641px'}"
+    [closeOnEscape]="true" (onHide)="onClose()">
+
+    <form class="from_wrapper" [formGroup]="EditprofileForm" novalidate>
+
+      <div class="row inputset">
+        <div class="col-sm-6"><label>Company Name</label><span class="">*</span></div>
+        <div class="col-sm-6"><input type="text" placeholder="dunyana" formControlName="company"
+            (keyup)="formvalidate()">
+        </div>
+        <div class="col-sm-12">
+          <div *ngIf="EditprofileForm.controls['company'].errors && !EditprofileForm.controls['company'].pristine"
+            class="text-danger float-right error-msg">
+            <div [hidden]="!EditprofileForm.controls['company'].errors.required">Please enter company name </div>
+            <div [hidden]="!EditprofileForm.controls['company'].errors.pattern">Please enter valid compnay name</div>
+          </div>
+        </div>
+        <div class="col-sm-12">
+          <hr>
+        </div>
+      </div>
+
+      <div class="row inputset">
+        <div class="col-sm-6"><label>Company Website URL</label><span class="">*</span></div>
+        <div class="col-sm-6"><input type="text" placeholder="www.dunyana.com" formControlName="website"
+            (keyup)="formvalidate()">
+        </div>
+        <div class="col-sm-12">
+          <div *ngIf="EditprofileForm.controls['website'].errors && !EditprofileForm.controls['website'].pristine"
+            class="text-danger float-right error-msg">
+            <div [hidden]="!EditprofileForm.controls['website'].errors.required">Please enter website name </div>
+            <div [hidden]="!EditprofileForm.controls['website'].errors.pattern">Please enter valid website name</div>
+          </div>
+        </div>
+        <div class="col-sm-12">
+          <hr>
+        </div>
+      </div>
+      <div class="row inputset">
+        <div class="col-sm-6"><label>Categories</label><span class="">*</span></div>
+        <div class="col-sm-6">
+          <p-multiSelect formControlName="categorie" (onChange)="dropdownvalidate($event)"
+            [panelStyle]="{minWidth:'12em'}" [options]="categories" [(ngModel)]="selectedcategories"></p-multiSelect>
+        </div>
+        <div class="col-sm-12">
+          <hr>
+        </div>
+      </div>
+
+      <div class="row inputset">
+        <div class="col-sm-6"><label>Country</label><span class="">*</span></div>
+        <div class="col-sm-6">
+          <p-dropdown [options]="countries" formControlName="country" Placeholder="Country"
+            [(ngModel)]="selectedcountry" [style]="{'width':'12em'}" [autoWidth]="false" [filter]="false">
+
+          </p-dropdown>
+        </div>
+        <div class="col-sm-12">
+          <hr>
+        </div>
+      </div>
+      <div class="row inputset">
+        <div class="col-sm-6"><label>Where to sell</label><span class="">*</span></div>
+        <div class="col-sm-6">
+          <p-multiSelect formControlName="sellCountries" (onChange)="dropdownvalidate($event)"
+            [panelStyle]="{minWidth:'12em'}" [options]="sellcountry" [(ngModel)]="SellCountries">
+          </p-multiSelect>
+
+        </div>
+        <div class="col-sm-12">
+          <hr>
+        </div>
+      </div>
+
+      <div class="row inputset">
+        <div class="col-sm-6"><label>Change Image</label></div>
+        <div class="col-sm-6 upl-btn">
+
+          <input type="file" accept="image/x-png,image/gif,image/jpeg" #uploader (click)="uploader.value = null"
+            (change)="fileChangeEvent($event)" class="" [hidden]=true />
+
+          <button type="button" (click)="uploader.click()" pButton label="Upload Image" class="btn btn-primary"
+            class="btn-small"></button>
+
+        </div>
+        <div class="col-sm-12">
+          <hr>
+        </div>
+      </div>
+
+      <div class="row inputset">
+        <div class="col-sm-12 text-center">
+          <img [src]="finalImage" class="uploadimgsty radius" />
+        </div>
+      </div>
+
+      <div class="row justify-content-center mt-4">
+
+        <button class="line_btn sblue mr-4" [ngClass]="btndisable" (click)="updatemerchantprofile()">Update</button>
+        <button class="line_btn sblue" (click)="closemerchantdialog()">Cancel</button>
+
+      </div>
+      <div class="">
+        <div [ngClass]="responsesty">
+          <span>{{response}}</span>
+        </div>
+      </div>
+    </form>
+
+    <div class="loading-indicator mid" *ngIf="ProgressSpinnerDlg">
+      <p-progressSpinner></p-progressSpinner>
+    </div>
+    <div class="overlay" *ngIf="ProgressSpinnerDlg"></div>
+
+  </p-dialog>
+
+</div>
+
+<p-toast position="bottom-right"></p-toast>
+
+<!-- The Modal -->
+<div class="modal" id="myModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title">Profile Photo</h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body">
+        <div class="row inputset">
+
+          <div class="col-sm-12">
+            <image-cropper [imageChangedEvent]="imageChangedEvent" [maintainAspectRatio]="true" [aspectRatio]="4 / 3"
+              [resizeToWidth]="150" [resizeToHeight]="150" format="png" (imageCropped)="imageCropped($event)"
+              [roundCropper]="true"></image-cropper>
+          </div>
+          <div class="col-sm-12">
+            <img [src]="croppedImage" class="uploadimgsty" />
+          </div>
+        </div>
+      </div>
+
+      <!-- Modal footer -->
+      <div class="modal-footer">
+        <button class="line_btn sblue mr-4" [ngClass]="savebtndisable" (click)="saveCropImage()"
+          data-dismiss="modal">Save</button>
+        <button class="line_btn sblue" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>

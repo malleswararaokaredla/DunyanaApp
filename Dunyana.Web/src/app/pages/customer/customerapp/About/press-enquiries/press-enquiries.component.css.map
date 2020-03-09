@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,OAAO,AAAA,SAAS,CAAC,eAAe,CAAC,UAAU,CAAC,CAAC,AAAA,MAAM,CAAC;EAChD,SAAS,EAAE,IAAI;CAClB",
+    "sources": [
+        "press-enquiries.component.scss"
+    ],
+    "names": [],
+    "file": "press-enquiries.component.css"
+}

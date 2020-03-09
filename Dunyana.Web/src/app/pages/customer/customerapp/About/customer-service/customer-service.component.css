@@ -1,0 +1,157 @@
+.cust-serv {
+  margin-top: 80px;
+}
+
+.cust-serv input[type="text"],
+.cust-serv textarea {
+  border: 1px solid #cdcdcd;
+  border-radius: 30px;
+  margin-bottom: 20px;
+}
+
+.cust-serv h4 {
+  font-size: 22pt;
+  color: #4f5b69;
+  font-family: "teshrin_arltmedium", sans-serif;
+  font-weight: 500;
+  margin-bottom: 25px;
+}
+
+.cust-serv .para {
+  font-size: 11pt;
+  font-family: "teshrin_arltmedium", sans-serif;
+  color: #4f5b69;
+  opacity: 1;
+  margin-bottom: 1rem;
+}
+
+.cust-serv h5 {
+  color: #00c0f3;
+  font-family: "teshrin_arltmedium", sans-serif;
+  font-size: 15pt;
+  margin: 20px 0 15px;
+}
+
+.cust-serv .address {
+  margin-top: 40px;
+}
+
+.cust-serv .address .info {
+  margin-bottom: 25px;
+}
+
+.cust-serv .address .info .i-div {
+  background: none;
+  border: 1px solid #e2e2e2;
+  border-radius: 12px;
+  width: 60px;
+  height: 60px;
+  float: left;
+}
+
+.cust-serv .address .info .i-div i {
+  color: #00c0f3;
+  font-size: 25pt;
+  text-align: center;
+  position: relative;
+  top: 11px;
+  left: 14px;
+}
+
+.cust-serv .address .info h5 {
+  margin: 15px 0 10px;
+  margin-left: 90px;
+}
+
+.cust-serv .address .info p {
+  margin-left: 90px;
+}
+
+.cust-serv.pl-lg {
+  padding-left: 65px;
+}
+
+agm-map {
+  height: 450px;
+}
+
+.map {
+  padding: 0;
+}
+
+:host ::ng-deep .ui-dialog .ui-dialog-titlebar {
+  padding: 0;
+  border-radius: 10px 10px 0 0;
+}
+
+:host ::ng-deep .ui-dialog .ui-dialog-content {
+  border-radius: 0 0 10px 10px;
+  height: 450px;
+  padding: 0;
+}
+
+.btns {
+  margin-top: 1rem;
+}
+
+.btns .line_btn.sblue {
+  background-position: center 43px;
+  background-color: #00c0f3;
+  background-image: url("../../../../../../assets/layout/images/line_white.png");
+  background-repeat: no-repeat;
+  border: none;
+  outline: none;
+  color: #00c0f3;
+  width: 100%;
+  border-radius: 20px;
+  text-align: center;
+}
+
+.btns .line_btn.sblue:hover {
+  background-position: center 43px;
+  outline: none;
+  background-color: #ffffff;
+  color: #00c0f3;
+  border: 1px solid #03A9F4;
+  background-image: url("../../../../../../assets/layout/images/line_blue.png");
+}
+
+:host ::ng-deep .ui-button {
+  background: transparent;
+  border: none;
+  outline: none;
+  width: 100%;
+}
+
+:host ::ng-deep .ui-button:enabled, :host ::ng-deep .ui-button:active {
+  outline: none;
+  border: none;
+}
+
+:host ::ng-deep .ui-button:enabled:hover, :host ::ng-deep .ui-button:enabled:focus, :host ::ng-deep .ui-button:active:hover, :host ::ng-deep .ui-button:active:focus {
+  background-position: 0px 0px;
+  background: transparent;
+  outline: none;
+  border: none;
+}
+
+:host ::ng-deep .ui-button:hover {
+  background-position: 0px 0px;
+  background: transparent;
+  outline: none;
+  border: none;
+}
+
+:host ::ng-deep .ui-button span {
+  color: white !important;
+  font-size: 20pt !important;
+  padding: 0.2em 1em 0.7em !important;
+  outline: none;
+  border: none;
+  height: 60px;
+}
+
+:host ::ng-deep .ui-button span:hover {
+  color: #00c0f3 !important;
+}
+/*# sourceMappingURL=customer-service.component.css.map */

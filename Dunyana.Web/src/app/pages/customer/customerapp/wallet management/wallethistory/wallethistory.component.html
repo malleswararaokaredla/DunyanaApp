@@ -1,0 +1,82 @@
+<section class="wal-hist">
+    <div class="container">
+        <div class="row justify-content-md-center">
+
+            <div class="col-sm-12 cont">
+                <h4 class="walletheader">Your Wallet <span class="float-right"><button class="line_btn blue edit back"
+                            (click)="backtoaccountpage()">Back</button></span></h4>
+                <div class="row clear-both" >
+                    <div class="col-lg-6">
+                        <div class="pnts_container">
+                            <p>{{currencytype}}</p>
+                            <h2 class="b-font">{{Walletamount}}</h2>
+                            <i class="icomoon icon-cust_serv"></i>
+                        </div>
+
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="topup_contianer">
+                            <p>Topup</p>
+                            <h2 style="cursor:pointer" [routerLink]="['/customer/wallet-topup']">wallet</h2>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-8 cont">
+                <h4>Summary</h4>
+                <div class="row smry">
+                    <div class="col-md-12 col-lg-12 category" *ngFor="let order of pagedItems">
+                        <div class="cat_container">
+                            <div class="float-left col-lg-6 col-sm-6 pr-0">
+                                <h3 class="acnt">
+                                    {{ order.transactionDescription === 'Order Wallet Payment' ? 'Cash Paid' : 'Cash Added' }}
+                                </h3>
+                                <p class="orDesc">To wallet</p>
+                                <p> {{order.transactionDate | date:'MMM d, y'}}</p>
+                            </div>
+                            <div class="float-right text-right col-lg-6 col-sm-6">
+                                <h3 class="crd">{{currencytype}} {{order.transactionAmount}}</h3>
+                                <p>{{order.transactionDescription}}</p>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-12 no-orders" [hidden]="isempty">
+                        <span>No data found</span>
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-md-12 text-center float-right pr-0">
+                <ul *ngIf="pager.pages && pager.pages.length" class="pagination">
+                    <li [ngClass]="{disabled:pager.currentPage === 1}">
+                        <a (click)="setPage(1)">First</a>
+                    </li>
+                    <li [ngClass]="{disabled:pager.currentPage === 1}">
+                        <a (click)="pager.currentPage === 1?'': setPage(pager.currentPage - 1)">Previous</a>
+                    </li>
+                    <li *ngFor="let page of pager.pages" [ngClass]="{active:pager.currentPage === page}">
+                        <a (click)="setPage(page)">{{page}}</a>
+                    </li>
+                    <li [ngClass]="{disabled:pager.currentPage === pager.totalPages}">
+                        <a (click)="pager.currentPage === pager.totalPages?'':setPage(pager.currentPage + 1)">Next</a>
+                    </li>
+                    <li [ngClass]="{disabled:pager.currentPage === pager.totalPages}">
+                        <a (click)="setPage(pager.totalPages)">Last</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div>
+        <app-categoriesslider [childMessage]="parentMessage"></app-categoriesslider>
+    </div>
+</section>
+
+<div class="loading-indicator mid" *ngIf="ProgressSpinnerDlg">
+    <p-progressSpinner></p-progressSpinner>
+</div>
+
+<div class="overlay" *ngIf="ProgressSpinnerDlg"></div>

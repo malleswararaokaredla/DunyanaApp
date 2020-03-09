@@ -1,0 +1,159 @@
+header .info-bar ul.lang li.search {
+  position: relative;
+}
+
+header .info-bar ul.lang li.search > a {
+  color: #00c0f3;
+  line-height: 12pt;
+  cursor: pointer;
+}
+header .info-bar ul.lang li.flag a {
+  width: 24px;
+  height: 24px;
+  background-color: #0e9354;
+  display: block;
+  border-radius: 50%;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  text-align: center;
+  line-height: 24px;
+}
+header .info-bar  .search_container .closebtn, header  .search_container .filterbtn{
+  cursor: pointer;
+}
+
+header .info-bar .search_container {
+  position: absolute;
+  width: 750px;
+  max-width: 100%;
+  top: 35px;
+  right: 0;
+  text-align: left;
+  background: #262c33;
+  border-bottom: solid 1px #4f5b69;
+  z-index: 2;
+  max-height: 0;
+  overflow: hidden;
+  border: 0;
+  -webkit-transition: max-height 0.15s ease-out;
+  transition: max-height 0.15s ease-out;
+}
+
+header .info-bar .search_container.showDiv {
+  max-height: 100px;
+  -webkit-transition: max-height 0.15s ease-out;
+  transition: max-height 0.15s ease-out;
+  border-bottom: solid 1px #4f5b69;
+}
+
+header .info-bar .search_container.emptytextshowDiv {
+  max-height: 100px;
+  border-color: red;
+  -webkit-transition: max-height 0.15s ease-out;
+  transition: max-height 0.15s ease-out;
+  border-bottom: solid 1px red;
+}
+
+
+header .info-bar .search_container input {
+  background: transparent;
+  border: 0;
+  margin-top: 20px;
+  padding: 10px 10px 0px 0;
+  line-height: 40px;
+  font-size: 16pt;
+  width: 80%;
+  outline: none;
+  color: #ffffff;
+}
+
+header .info-bar .search_container a {
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  top: 18px;
+  position: relative;
+  margin: 18px  0 0 10px;
+  float: right;
+  &.searchSubmit
+  {
+    color: #00c0f3;
+    font-size: 20px;
+    font-weight: 600;
+    cursor: pointer;
+  }
+}
+
+header .info-bar ul.lang li.langSel {
+  position: relative;
+cursor: pointer;
+}
+header .info-bar ul.lang li.langSel:hover {
+  color: white;
+  cursor: pointer;
+}
+
+header .info-bar .lang_container {
+  position: absolute;
+  width: 100px;
+  background: #1d2126;
+  top: 30px;
+  right: 0;
+  height: auto;
+  z-index: 2;
+  max-height: 0;
+  overflow: hidden;
+}
+
+header .info-bar .lang_container.showDiv {
+  max-height: 100px;
+  -webkit-transition: max-height 0.15s ease-out;
+  transition: max-height 0.15s ease-out;
+  border-bottom: solid 1px #4f5b69;
+}
+
+header .info-bar .lang_container ul {
+  list-style: none;
+  display: block;
+}
+
+header .info-bar .lang_container ul li {
+  width: 100%;
+  padding: 8px 10px 5px;
+  border-bottom: solid 1px #4f5b69;
+  text-align: left;
+  margin: 0;
+
+}
+
+header .info-bar .lang_container ul li a {
+  font-size: 11pt;
+  font-family: "teshrin_arltmedium", sans-serif;
+  color: #ffffff;
+  cursor: pointer;
+}
+
+header .info-bar .lang_container ul li a:hover {
+  color: #ffffff;
+}
+
+.ac{
+  cursor: pointer;
+  outline: none;
+}
+.langiconsty{
+  cursor: pointer;
+}
+.langSel{
+  cursor: pointer;
+}
+.emptytext {
+ border-color: red;
+}
+
+.search_data_rest
+{
+
+  color: red;
+  float: right;
+}

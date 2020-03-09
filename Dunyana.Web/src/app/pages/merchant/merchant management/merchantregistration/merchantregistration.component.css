@@ -1,0 +1,384 @@
+.ht-auto img.uploadimgsty {
+  border-radius: 100%;
+  width: 80px;
+  height: 80px;
+}
+
+.upldbtnsty {
+  background-color: #5f5a5a;
+  height: 28px;
+  padding: 0;
+  margin-top: 10px;
+  float: right;
+}
+
+.ht-auto img.uploadimgsty2 {
+  border-radius: 100%;
+  width: 80px;
+  height: 80px;
+  display: none;
+}
+
+.ht-auto img.uploadimgsty1 {
+  border-radius: 100%;
+  width: 80px;
+  height: 80px;
+  display: none;
+}
+
+.loading-indicator {
+  position: fixed;
+  z-index: 999;
+  height: 2em;
+  width: 2em;
+  overflow: show;
+  margin: auto;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+}
+
+/* Transparent Overlay */
+.loading-indicator:before {
+  content: '';
+  display: block;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.53);
+}
+
+.required {
+  color: red;
+}
+
+.disable {
+  opacity: 1;
+  pointer-events: none;
+}
+
+.ui-dropdown-panel .ui-dropdown-items .ui-dropdown-item.ui-state-highlight,
+.ui-dropdown-panel .ui-dropdown-items .ui-dropdown-item-group.ui-state-highlight {
+  color: #ffffff;
+  background-color: #00c0f3;
+  -webkit-transition: 0s;
+  transition: 0s;
+}
+
+.ui-dropdown-panel .ui-dropdown-items .ui-dropdown-item,
+.ui-dropdown-panel .ui-dropdown-items .ui-dropdown-item-group {
+  margin: 0;
+  padding: 9px 0.857em;
+  -webkit-transition: 0s;
+  transition: 0s;
+}
+
+.ui-dropdown {
+  -webkit-transition: 0s;
+  transition: 0s;
+  border: none;
+}
+
+.ui-dropdown .ui-dropdown-trigger {
+  color: #00c0f3;
+  -webkit-transition: 0s;
+  transition: 0s;
+}
+
+.ui-dropdown .ui-dropdown-trigger .ui-dropdown-trigger-icon {
+  margin-top: -.9em;
+  margin-left: -.9em;
+}
+
+.pi-chevron-down:before {
+  content: "\e902";
+  font-size: 22px;
+}
+
+.signin .signin_wrap .si {
+  min-height: 475px;
+}
+
+.signin .signin_wrap .si h4._top {
+  margin-bottom: 20px;
+  margin-top: 50px;
+}
+
+.signin .signin_wrap .si .para {
+  font-size: 12pt;
+  font-family: "teshrin_arltmedium", sans-serif;
+  color: #4f5b69;
+  opacity: 0.8;
+  margin-bottom: 1rem;
+}
+
+.signin .signin_wrap .si .backBtn {
+  width: 30px;
+  height: 30px;
+  border-radius: 100%;
+  background: #edeeef;
+  text-align: center;
+  margin-bottom: 1.5rem !important;
+  position: absolute;
+  margin-top: 0px;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.signin .signin_wrap .si .backBtn:hover {
+  text-decoration: none;
+}
+
+.signin .signin_wrap .si .backBtn i.icon-arrows {
+  color: #00c0f3;
+  top: 7px;
+  font-size: 10pt;
+  position: relative;
+  text-decoration: none;
+}
+
+.signin .signin_wrap .si .backBtn i.icon-arrows:hover {
+  text-decoration: none;
+}
+
+.signin .signin_wrap .si .from_wrapper label {
+  font-size: 13pt;
+  margin: 0;
+  line-height: 44px;
+  font-family: "teshrin_arltmedium", sans-serif;
+  color: #4f5b69;
+  opacity: 0.4;
+}
+
+.signin .signin_wrap .si .from_wrapper input[type="text"] {
+  font-size: 12pt;
+  outline: none;
+  border: none;
+}
+
+.signin .signin_wrap .si .from_wrapper .otp {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin-top: 50px;
+}
+
+.signin .signin_wrap .si .from_wrapper .otp input[type="number"] {
+  font-size: 18pt;
+  outline: none;
+  border: none;
+  width: 25px;
+  border-bottom: 1px solid black;
+  margin-right: 15px;
+  color: black;
+  padding: 0;
+  text-align: center;
+}
+
+.signin .signin_wrap .si .from_wrapper .otp input[type="number"]::-webkit-inner-spin-button, .signin .signin_wrap .si .from_wrapper .otp input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.signin .signin_wrap .si .from_wrapper hr {
+  border-top: 1px solid #4f5b69;
+}
+
+.btns {
+  margin-top: 4rem;
+}
+
+.btns .line_btn.sblue {
+  background-position: center 43px;
+  background-color: #00c0f3;
+  background-image: url("../../../../../assets/layout/images/line_white.png");
+  background-repeat: no-repeat;
+  border: none;
+  outline: none;
+  color: white;
+  width: 100%;
+  border-radius: 20px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.btns .line_btn.sblue:hover {
+  background-position: center 43px;
+  outline: none;
+  background-color: #ffffff;
+  color: #00c0f3;
+  border: 1px solid #03A9F4;
+  background-image: url("../../../../../assets/layout/images/line_blue.png");
+}
+
+:host ::ng-deep .ui-button {
+  background: transparent;
+  border: none;
+  outline: none;
+  width: 100%;
+}
+
+:host ::ng-deep .ui-button:enabled, :host ::ng-deep .ui-button:active {
+  outline: none;
+  border: none;
+}
+
+:host ::ng-deep .ui-button:enabled:hover, :host ::ng-deep .ui-button:enabled:focus, :host ::ng-deep .ui-button:active:hover, :host ::ng-deep .ui-button:active:focus {
+  background-position: 0px 0px;
+  background: transparent;
+  outline: none;
+  border: none;
+}
+
+:host ::ng-deep .ui-button:hover {
+  background-position: 0px 0px;
+  background: transparent;
+  outline: none;
+  border: none;
+}
+
+:host ::ng-deep .ui-button span {
+  color: white !important;
+  font-size: 20pt !important;
+  padding: 0.2em 1em 0.7em !important;
+  outline: none;
+  border: none;
+  height: 60px;
+}
+
+:host ::ng-deep .ui-button span:hover {
+  color: #00c0f3 !important;
+}
+
+:host ::ng-deep .ui-dropdown {
+  width: 100%;
+}
+
+.carousel-inner {
+  overflow: visible;
+}
+
+.carousel-item {
+  min-height: 231px;
+  background: white;
+}
+
+.carousel-indicators li {
+  width: 30px;
+  height: 30px;
+  background-color: red;
+  pointer-events: none;
+}
+
+.carousel-control-next {
+  display: none;
+}
+
+.carousel-indicators {
+  position: absolute;
+  right: -85px;
+  bottom: -210px;
+  left: 0;
+  z-index: 15;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  padding-left: 0;
+  margin-right: 15%;
+  margin-left: 15%;
+  list-style: none;
+  text-align: right;
+}
+
+.carousel-indicators li {
+  width: 20px;
+  height: 20px;
+  background-color: #f5f5f5;
+  border-radius: 100%;
+  pointer-events: none;
+}
+
+.carousel-item:first-child:active .para {
+  margin-bottom: 3rem;
+}
+
+.upl-btn button {
+  background-color: #00c0f3;
+  color: white;
+  border-radius: 10px;
+  text-align: center;
+  border: 0;
+  font-size: 10pt;
+  padding: 5px 7px 0 7px;
+  margin-bottom: 5px;
+  margin-top: 13px;
+}
+
+.ht {
+  height: 0px;
+}
+
+.ht img {
+  display: none;
+}
+
+.ht-auto {
+  height: auto;
+}
+
+.ht-auto img {
+  padding-bottom: 15px;
+  display: block;
+}
+
+.mid {
+  position: absolute;
+  -webkit-transform: translate(-50% -50%);
+          transform: translate(-50% -50%);
+  z-index: 1;
+}
+
+.overlay {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background: black;
+  opacity: 0.5;
+  z-index: 0;
+  left: 0;
+  top: 0;
+}
+
+.errormsg {
+  right: 10%;
+  position: initial;
+}
+
+.succsmsg {
+  right: 10%;
+  position: initial;
+}
+
+.text-danger {
+  font-size: 13px;
+  float: right;
+}
+
+.signin_wrap {
+  min-height: 648px;
+}
+
+footer.trans {
+  margin-top: 43px;
+}
+
+button {
+  padding-top: 7px;
+}
+/*# sourceMappingURL=merchantregistration.component.css.map */

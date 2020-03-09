@@ -1,0 +1,485 @@
+<div class="changepassword terms">
+    <p-dialog header="Change Password" [(visible)]="display" [modal]="true" [responsive]="true"
+        [style]="{width: '740px'}" [closeOnEscape]="true" (onHide)="onClose()">
+
+        <!-- <div class="col-sm-12 mt-2 terms_chk" *ngIf="isChecked != null">
+        <p-checkbox class="chk" (onChange)="IsAcceptterms($event)"
+                binary="true">
+            </p-checkbox>
+            <p class="terms">I agree to the Terms & Conditions of Dunyana.</p>
+
+            <p-button class="timersty" [hidden]="timerbtndisplay" (click)="IsAcceptterms(true)">
+                <span id="time" class="text-primary timer"> I Accept </span>
+            </p-button>
+
+        </div> -->
+
+        <div style="text-align: justify;" class="mb-3">
+
+            <meta charset="utf-8">
+            <div class="row mb-3" >
+
+                <div class="col-6" style="text-align: justify;">
+                    <h4 id = 'terms'>Terms & Conditions <span class="font-weight-bold"></span></h4>
+                    <p> These Terms and Conditions represent the legal and contractual framework governing all actions
+                        and activities of purchase, product ordering, and other transactions made through dunyana online
+                        shopping platform whose website is (www.dunyana.com) and/or through its mobile application. </p>
+
+                    <p> The website and application of dunyana are owned and managed by NAQEL Express (hereinafter
+                        referred to as the "Company") headquartered in Riyadh – Kingdom of Saudi Arabia. </p>
+
+                    <p> These Terms and Conditions are agreed and made applicable with the consent of the purchaser who
+                        uses dunyana website or app (hereinafter referred to as the “Purchaser”). Purchaser’s access to
+                        and/or use of dunyana website or app is subject to these Terms and Conditions, any modifications
+                        thereto as issued by Company, and to all relevant laws and regulations in the Kingdom of Saudi
+                        Arabia. The Purchaser shall be considered to have reviewed and made himself fully aware of these
+                        Terms. Moreover, the use of Website or App and/or online purchasing through the same shall
+                        hereby constitute express acceptance and full consent to the context of these Terms and
+                        Conditions.</p>
+
+                    <p> The nature of relationship between Company and Purchaser is such that between online shopping
+                        platform offering products and services from different sources, and internet or app user who
+                        orders and executes purchase electronically through the website or app. It is understood for the
+                        Purchaser that Company carries out a mediator role in the selling of products and services
+                        ultimately provided by suppliers and manufacturers, which Company has no control over them or
+                        their actions, behavior, or the quality of the products and services they provide. </p>
+
+                    <p> Company has no liability on the outcomes or any direct or indirect damages realized by
+                        Purchasers as a result of the actions by the on-line suppliers. </p>
+
+                    <p> The website and app provide information concerning various products and services and the
+                        opportunity to obtain additional information concerning those products and services or to
+                        purchase them. These Terms and the information provided in the Website or App in no way override
+                        the terms and conditions of Purchaser’s purchase of any specific product or service wherein
+                        additional or special terms and conditions may apply as required in respect of the nature of the
+                        product or service.</p>
+
+                    <h5>Change in Terms</h5>
+                    <p> Company shall have right at any time and without prior notice, at its sole discretion, to revise
+                        these Terms or to impose new terms and conditions with respect to access to or use of the
+                        dunyana Website & App. Such revisions and additions shall be effective immediately upon notice
+                        thereof, which may be given by any means, including but not limited to posting the revised or
+                        additional terms and conditions on dunyana Website & App. Purchaser are responsible for
+                        reviewing dunyana Website & App periodically for any modification to this Agreement that may
+                        affect Purchaser’s rights or obligations hereunder. Purchaser agrees that Purchaser shall be
+                        deemed to be informed of and bound by any modification by Company to these Terms. Any access or
+                        use of dunyana Website & App by Purchaser after notice of revisions or additions to these terms
+                        shall constitute and be deemed to be purchaser’s agreement to such revisions or additions. No
+                        modification to these Terms shall be done by any party other than the Company. </p>
+
+
+                    <h5> Compliance with Laws</h5>
+                    <p> Purchaser agree to comply with all applicable laws, bylaws, ordinances and regulations regarding
+                        Purchaser’s use of dunyana Website & App and the purchase of the items therefrom. Purchaser must
+                        be at least 18 years old to use dunyana Website & App. </p>
+
+
+                    <h5> Content</h5>
+                    <p> The text, images, photographs, graphics, logos, illustrations, descriptions, data, and other
+                        material provided on dunyana Website & App, as well as the selection, assembly and arrangement
+                        thereof, are referred to collectively as the "Content." </p>
+
+
+                    <p> The Content may contain errors, omissions, or typographical errors or may be out of date.
+                        Company may change, delete, or update any Content at any time and without prior notice. The
+                        Content is provided for informational purposes only and is not binding on Company in any way
+                        except to the extent it is specifically indicated to be so. Unless otherwise noted, all Content
+                        is protected by copyrights, trademarks, service marks, and other proprietary rights that are
+                        owned by Company or by third parties that have licensed their use to Company. Purchaser may view
+                        and use the Content only for Purchaser’s personal information and for shopping and ordering on
+                        dunyana Website & App, and for no other purpose.</p>
+
+                    <p> Except as provided in the foregoing, Company does not grant to Purchaser or any person any right
+                        to use, reproduce, copy, modify, transmit, display, publish, sell, license, create derivative
+                        works, publicly perform, or distribute by any means, method, or process whatsoever, now known or
+                        hereafter developed, any of the Content on or transmitted through dunyana Website & App,
+                        including without limitation by transferring, downloading or otherwise copying any Content onto
+                        any disk drive or other storage medium. Any use of the Content, except as specifically permitted
+                        in these Terms or as otherwise expressly permitted in the Content or in a writing signed by
+                        Company, is strictly prohibited.</p>
+
+
+                    <h5> Linking with Third Party Sites</h5>
+                    <p> Links to other Internet sites operated by third parties, including Company suppliers, do not
+                        constitute sponsorship, endorsement, or approval by Company of the content thereof, and
+                        therefore Purchaser’s access thereto is at Purchaser’s own risk. </p>
+
+
+                    <h5> Prices & Online Purchase Orders</h5>
+                    <p> All prices displayed on dunyana Website & App are quoted in Saudi Riyals. Company may restrict
+                        delivery to addresses within Saudi Arabia or the other countries covered by its delivery service
+                        network. Company will add shipping and handling fees and applicable extra charges. Company
+                        reserves the right without prior notice to discontinue or change specifications and prices on
+                        products and services offered on dunyana Website & App without incurring any obligation to
+                        Purchaser. </p>
+
+
+                    <p> Products displayed on dunyana Website & App are available while supplies last. Descriptions of,
+                        or references to, products or services on dunyana Website & App do not imply endorsement of that
+                        product or service, or constitute a warranty, by Company.</p>
+
+                    <p> The receipt by Purchaser of an order confirmation does not constitute Company's final acceptance
+                        of an order. Prior to Company's acceptance of an order, verification of information and receipt
+                        of products’ price is required. Company reserves the right at any time after receipt of
+                        Purchaser’s order to accept or decline Purchaser’s order, or any portion thereof, even after
+                        Purchaser’s receipt of an order confirmation from Company, for any reason. </p>
+
+                    <p> Company reserves the right to limit the order quantity on any item and to refuse service to any
+                        customer without prior notification.</p>
+
+                    <p> In the event that a product or service is listed at an incorrect price due to supplier pricing
+                        information or typographical error, Company shall have the right to refuse or cancel orders
+                        placed for the product listed at the incorrect price, regardless of whether the order has been
+                        confirmed and Purchaser’s credit card charged. If Purchaser’s credit card has already been
+                        charged for the purchase and Purchaser’s order is canceled, Company shall promptly issue a
+                        credit to Purchaser’s credit card account in the amount of the incorrect price.</p>
+
+                    <p> The Company reserves the right to cancel the Order and/or suspend delivery of the products in
+                        the event of doubt that the electronic payment or other method of payment by the Purchaser
+                        involves fraud, manipulation, violation of law, or possible harm to the Company legitimate
+                        rights and interests, in any way whatsoever. </p>
+
+                    <h5> Return, Exchange & Warranty</h5>
+                    <p> The Company shall at its sole discretion determine, set out, and apply the policy and conditions
+                        of return, exchange and product warranty. The Company reserves the right to amend and update the
+                        same from time to time whilst being in line with the consumer protection laws and regulations
+                        applicable in Saudi Arabia. The conditions of return, exchange or warranty may vary from one
+                        product to another depending on the nature or source of the Product and/or any other relevant
+                        factors or circumstances.
+                        In all events, the Purchaser must examine the Product immediately upon receipt, and inform the
+                        Company within (3) days from delivery of any observations or comments he might have on the
+                        Product. </p>
+
+                    <h5> Risk & Title</h5>
+                    <p> The risk of loss and title for all products purchased by Purchaser and shipped by Company pass
+                        to Purchaser upon Company's delivery to the carrier for shipment. The risk of loss and title for
+                        all products purchased by Purchaser and shipped directly by one of Company's suppliers pass
+                        directly from such supplier to Purchaser upon such supplier's delivery to the carrier for
+                        shipment.</p>
+
+                    <h5> Disclaimer and Limitation of Liability as to dunyana Website & App and Content.</h5>
+                    <p> Company makes no warranties or representations whatsoever with respect to dunyana Website & App
+                        or any linked site or its content, including the availability of any site or the content,
+                        information and materials on it or the accuracy, completeness, or timeliness of that content,
+                        information and materials. Company also does not warrant or represent that purchaser’s access to
+                        or use of dunyana Website & App or any linked site will be uninterrupted or free of errors or
+                        omissions, that defects will be corrected, or that dunyana Website & App or any linked site is
+                        free of computer viruses or other harmful components.</p>
+
+                    <p> Without limiting the foregoing, all content provided on dunyana Website & App is provided to
+                        users "as is," with no warranty of any kind, either express or implied, including but not
+                        limited to implied warranties of merchantability and fitness for a particular purpose. </p>
+
+
+                    <h5> Disclaimer and Limitation of Liability as to Products and Services.</h5>
+                    <p> Many products are packaged with the manufacturer's warranty and service information detailing
+                        specific terms and conditions. Manufacturers' warranties may vary from product to product. All
+                        products and services sold by Company are subject to any applicable warranties and
+                        representations of their respective manufacturers, as well as the applicable terms and
+                        conditions, exclusions and limitations. </p>
+
+                    <p> Accordingly, Company makes no representation or warranty with respect to any product or service
+                        sold. Except as expressly stated herein, Company expressly disclaims all warranties, express or
+                        implied, of any kind with respect to products and services sold on dunyana Website & App.</p>
+
+                    <h5> Indemnification</h5>
+                    <p> Purchaser agree to defend, indemnify, and hold harmless Company, Company's suppliers, and their
+                        affiliates and related entities and their respective directors, officers, employees, and agents
+                        from and against all claims, losses, damages, liabilities, and costs (including but not limited
+                        to reasonable attorneys' fees and court costs), arising out of or relating to Purchaser’s breach
+                        of these Terms or Purchaser’s access to or use of dunyana Website & App. The foregoing
+                        indemnification obligation shall remain valid unlimitedly.</p>
+
+                    <h5> Miscellaneous.</h5>
+                    <p> These Terms constitute the entire agreement of the parties with respect to the subject matter
+                        hereof, and supersede all previous written or oral agreements between the parties with respect
+                        to such subject matter.</p>
+
+                    <p> No waiver by Company of any breach or default hereunder shall be deemed to be a waiver of any
+                        preceding or subsequent breach or default.</p>
+
+                    <p> Company shall not be liable for any nonperformance or delay in performance caused by any act
+                        beyond its reasonable control, including but not limited to acts or omissions of third parties,
+                        unavailability of supplies, war, strikes, lock-outs, fire, flood, or any other Act of God, any
+                        law, regulation, ordinance, or other act or order of any court, government, or governmental
+                        agency, or delays, unavailability, errors, or other failures of the Internet or other data
+                        networks. </p>
+
+                    <h5> Termination</h5>
+                    <p> These Terms are effective until terminated by Company. Company may terminate these Terms without
+                        notice and at any time. In the event of termination, Purchaser are no longer authorized to
+                        access dunyana Website & App, and the restrictions imposed on Purchaser with respect to the
+                        Content, and the disclaimers, indemnities, and limitations of liabilities set forth in these
+                        Terms shall survive termination. Company shall also have the right without notice and at any
+                        time to terminate dunyana Website & App or any portion thereof, or any products or services
+                        offered thereby, or to terminate any individual's right to access or use dunyana Website & App
+                        or any portion thereof. </p>
+
+                    <h5> Arbitration and Law Applicable</h5>
+                    <p>In case of dispute among the parties related to the performance/application and/or interpretation
+                        of these Terms & Conditions, such dispute shall be settled amicably. If this fails, the dispute
+                        should be referred to an Arbitral Tribunal in accordance with the rules and procedures provided
+                        for the Commercial Arbitration Centre of the States of the Cooperation Council for the Arab
+                        States of the Gulf (hereinafter referred to as the “GCC Arbitration Centre”).</p>
+
+                    <p> Arbitration under this section shall be conducted by a single Arbitrator selected jointly by the
+                        Parties. If within (30) days after the demand for Arbitration is made, the Parties are unable to
+                        agree on a single Arbitrator, the said Arbitrator shall be appointed by the GCC Arbitration
+                        Centre. On request of either party the Centre shall appoint an approved Arbitrator.</p>
+
+                    <p> The Arbitration shall take place in Riyadh, Saudi Arabia or such place as is mutually agreed by
+                        the Parties. The Arbitrator shall in rendering his decision apply to the substantive laws of the
+                        Kingdom of Saudi Arabia. An award rendered in connection with Arbitration pursuant to this
+                        section shall be final and binding and judgment upon such an award may be entered and enforced
+                        in any court of competent jurisdiction.</p>
+
+
+                </div>
+                <div class="col-6" dir="rtl" lang="ar">
+                    <h4 style="text-align: right;">الشروط والأحكام</h4>
+                    <p>إن هذه الشروط والأحكام تمثّل الإطار القانوني والتعاقدي الذي ينظم كافة أنشطة وأعمال الشراء وطلب
+                        المنتجات وسائر التعاملات الأخرى التي يتم إجراؤها عبر منصة التسوّق الالكتروني دنيانا من خلال
+                        موقعها (www.dunyana.com) و/أو عبر تطبيق الهواتف المتحركة التابع لها.</p>
+
+                    <p>
+                        إن موقع وتطبيق دنيانا تملكه وتديره شركة ناقل إكسبرس (ويشار لها فيما بعد بـ"الشركة") والتي مقرها
+                        الرئيسي مدينة الرياض – المملكة العربية السعودية.
+                    </p>
+                    <p>
+                        تم الاتفاق على هذه الشروط والأحكام وإنفاذها بموافقة المشتري الذي يقوم باستخدام الموقع الالكتروني
+                        أو التطبيق الخاص بدنيانا (ويشار له فيما بعد بـ"المشتري") ويخضع دخول و/أو استخدام المشتري لموقع
+                        دنيانا أو التطبيق الخاص بها إلى هذه الشروط والأحكام بالإضافة إلى أي تعديلات عليها قد يتم إجراؤها
+                        لاحقاً من قبل الشركة ولكافة الأنظمة والتشريعات ذات العلاقة في المملكة العربية السعودية. ويعتبر
+                        المشتري أنه قد اطلع على هذه الشروط وفهم محتواها بشكل تام، كما يعتبر استخدامه للموقع الالكتروني
+                        أو التطبيق و/أو قيامه بالشراء من خلالها بمثابة موافقة صريحة وقبول كامل بما تضمنته هذه الشروط
+                        والأحكام.
+                    </p>
+
+                    <p>
+                        إن طبيعة العلاقة فيما بين الشركة والمشتري هي مجرد علاقة فيما بين منصة بيع الكترونية تقوم بعرض
+                        منتجات من مصادر مختلفة وبين مستخدم الموقع أو التطبيق الذي يقوم بالطلب وتنفيذ الشراء الكترونياً
+                        عبر الموقع أو التطبيق. ومن المعلوم بالنسبة للمشتري أن الشركة تقوم بدور الوسيط في بيع لمنتجات
+                        وخدمات يقدمها بالنهاية موردون وجهات صانعة ليست للشركة سيطرة عليهم أو على نشاطهم وأعمالهم أو جودة
+                        المنتجات والخدمات التي يقدمونها.
+                    </p>
+                    <p>
+                        يقدّم الموقع الالكتروني والتطبيق خدمة توفير المعلومات المتعلقة بعديد من المنتجات المتنوعة
+                        والخدمات وذلك من أجل تمكين المشتري من الحصول على المعلومات التي تتعلق بتلك المنتجات أو الخدمات
+                        أو لشرائها غير أن أن هذه الشروط والمعلومات المنصوص عليها في الموقع أو التطبيق لا تلغي بأي حال من
+                        الأحوال الشروط والأحكام التي تخص شراء أي منتج أو خدمة بعينها حيث أنه قد تطبق شروط وأحكام إضافية
+                        حسب الحاجة وبما يتناسب مع طبية
+                    </p>
+
+
+                    <h5> تغيير الشروط</h5>
+                    <p>
+                        يحق للشركة في أي وقت ودون سابق إنذار وبناء على تقديرها الخاص تعديل وتنقيح هذه الشروط أو فرض شروط
+                        وأحكام جديدة فيما يتعلق باستخدام والدخول إلى موقع أو تطبيق دنيانا وتسري هذه التعديلات والتغييرات
+                        فور الإخطار بها والتي قد تصدر بأي وسيلة من الوسائل بما في ذلك على سبيل المثال لا الحصر الإعلان
+                        ووضع الشروط والأحكام الإضافية على موقع وتطبيق دنيانا كما إن المشتري مسؤول عن مراجعة والإطلاع على
+                        موقع وتطبيق دنيانا بصفة دورية لمعرفة أي تعديلات قد تطرأ على هذه الشروط والتي قد تؤثر على حقوق أو
+                        التزامات المشتري المنصوص عليها كما يقر المشتري بأنه قد تم إخطاره بهذه التعديلات ويقر بالتزامه
+                        بأي تعديلات من قبل الشركة على هذه الشروط وأي دخول أو استخدام من قبل المشتري إلى موقع وتطبيق
+                        دنيانا يعتبر بمثابة موافقة على هذه التعديلات والتغيرات كما أنه ليس لأي طرف إدخال أي تعديلات على
+                        هذه الشروط عدا الشركة.
+
+
+                    </p>
+
+                    <h5>الالتزام بالقوانين </h5>
+                    <p>
+                        يوافق المشتري على الالتزام بالقوانين المعمول بها والتشريعات المتعلقة باستخدام المشتري لموقع
+                        وتطبيق دنيانا وشراء للمواد منها كما أنه يتعين ألا يقل عمر المشتري عن 18 عام من أجل استخدام موقع
+                        وتطبيق دنيانا .
+
+                    </p>
+                    <h5>المحتوى </h5>
+                    <p>
+                        النصوص والأشكال والصور الفوتوغرافية والرسوم والشعارات والرسوم التوضيحية والمعلومات والمعطيات
+                        وغيرها من المواد المتوفرة في موقع وتطبيق دنيانا بالإضافة إلى الفرز والتجميع والترتيب لما سبق
+                        يشار إليهم مجتمعين بــ"المحتوى".
+                    </p>
+                    <p>
+                        قد يتضمن المحتوى أخطاء أو عيوب مطبعية أو معلومات متقادمة، ويجوز للشركة تغيير وحذف وتحديث أي
+                        محتوى في أي وقت دون سابق إنذار وجدير بالذكر أن المحتوى المقدم هنا هو للأغراض المعلوماتية فقط
+                        وغير ملزم للشركة بأي حال من الأحوال إلا بالقدر الذي المشار إليه بصفة خاصة، وما لم يتم الإخطار
+                        بغير ذلك فإن كافة ما بالمحتوى من معلومات وخلافه محمي ومصون بموجب حقوق التأليف والعلامات التجارية
+                        وعلامات الخدمة وغيرها من حقوق الملكية المملوكة للشركة أو من قبل الغير الحاصلين على ترخيص
+                        باستخدامها من الشركة ويجوز للمشتري الإطلاع واستخدام المحتوى لمعلوماته الشخصية فقط ومن أجل التسوق
+                        وشراء الطلبيات من على موقع وتطبيق دنيانا وليس لأي أغراض أخرى.
+                    </p>
+
+                    <p>عدا ما هو منصوص عليه أعلاه لا تمنح الشركة للمشتري أو أي شخص أي حق لاستخدام أو إعادة نسخ أو طبع أو
+                        تعديل وتحويل وعرض ونشر وبيع وترخيص أو إعداد أي اقتباسات مشتقة أو اتاحتها للعموم أو توزيعها بأي
+                        من الوسائل والطرق المعروفة في الوقت الراهن أو مستقبلاً وذلك فيما يخص المحتوى المتوفر على أو
+                        المنشور من خلال موقع وتطبيق دنيانا بما في ذلك على سبيل المثال لا الحصر أي تحويل أو تحميل أو نسخ
+                        أي محتوى بكافة طرق النسخ لأي محتوى على أي مشغل أقراص أو وسيط تخزين آخر، وأي استخدام للمحتوى عدا
+                        ما هو مسموح به بصفة خاصة في هذه الشروط أو ما هو مسموح به بصفة خاصة في المحتوى أو بطريقة خطية
+                        موقع عليها من قبل الشركة يعتبر محظوراً بشكل بات.</p>
+
+                    <h5>
+                        الربط مع مواقع الغير
+                    </h5>
+                    <p>الربط والاتصال مع مواقع الغير على شبكة الإنترنت والمشغلة من قبل الغير بما في ذلك مورّدي الشركة لا
+                        يعتبر ضمانة أو كفالة أو إقرار أو موافقة من قبل الشركة على محتواها ويكون دخول المشتري إليها على
+                        مسؤوليته الشخصية.</p>
+                    <h5>الأسعار وأوامر الشراء الالكترونية</h5>
+                    <p>
+                        جميع الأسعار المعروضة على موقع وتطبيق دنيانا معروضة بالريال السعودي ويجوز للشركة أن تقتصر
+                        التسليم على عناوين داخل المملكة العربية السعودية أو البلدان الأخرى التي تغطيها شبكة خدماتها في
+                        التوصيل، وللشركة إضافة رسوم الشحن والمناولة والأجور الإضافية المعمول بها، وتحتفظ الشركة بحقها
+                        دون إشعار مسبق في إيقاف أو تغيير المواصفات والأسعار والمنتجات والخدمات المقدمة على موقع وتطبيق
+                        دنيانا دون أي مسؤولية تجاه المشتري.
+                    </p>
+                    <p>
+
+                        المنتجات المعروضة على موقع وتطبيق دنيانا تعتبر مرتبطة بتوفر المخزون. لا تشير المواصفات أو
+                        المراجع أو المنتجات أو الخدمات على موقع وتطبيق دنيانا إلى أي موافقة أو ضمان على هذا المنتج أو
+                        الخدمة ولا تشكل ضمان من قبل الشركة.
+
+                    </p>
+                    <p>
+
+                        إن تلقي المشتري تأكيد على أمر الشراء لا يشكل موافقة نهائية على الأمر من قبل الشركة، أما عن مرحلة
+                        ما قبل موافقة الشركة على الأمر فإنه بتم التحقق من صحة المعلومات واستيفاء قيمة المنتجات، وتحتفظ
+                        الشركة بحقها في أي وقت فن استلام تأكيد أمر المشتري بقبول أو رفض أمر الشراء أو أي جزء منه حتى بعد
+                        تلقي المشتري لتأكيد الأمر من الشركة ولأي سبب من الأسباب.
+
+                    </p>
+                    <p>
+
+                        تحتفظ الشركة بحقها في الحد من كمية أمر الشراء على أي مادة أو منتج ورفض تقديم الخدمات لأي عميل
+                        دون إخطار مسبق.
+
+                    </p>
+                    <p>
+
+                        في حال كون المنتج أو الخدمات مدرجة بسعر خاطئ بسبب المعلومات المتعلقة بالأسعار المقدمة من المزود
+                        أو بسبب خطأ مطبعي فإنه يحق للشركة رفض أو إلغاء الأوامر الخاصة بالمنتج المدون بأسعار خاطئة وبغض
+                        النظر عما إذا تم تأكيد الأمر وسداد قيمته من بطاقة المشتري الائتمانية أم لا، أما في حال تم
+                        استقطاع قيمة هذه المشتريات من بطاقة ائتمان المشتري ثم تم إلغاء الأمر فإنه يتعين على الشركة إصدار
+                        اعتماد مالي لحساب بطاقة ائتمان المشتري بقيمة المبلغ الخاطئ.
+
+                    </p>
+
+                    <p>
+
+                        تحتفظ الشركة بحقها في إلغاء أي أمر شراء و/أو الامتناع عن تسليم المنتجات في حال وجود ما يدعو
+                        للاعتقاد بأن الدفع الالكتروني أو أي وسيلة أخرى من وسائل الدفع التي يقوم بها المشتري تنطوي على
+                        احتيال أو تلاعب أو مخالفة للنظام أو أنها من المحتمل أن تضر بحقوق الشركة ومصالحها المشروعة بأي
+                        شكل من الأشكال.
+
+                    </p>
+                    <h5>الإرجاع والاستبدال والضمان</h5>
+                    <p>
+                        تقوم الشركة وفقاً لقرارها المنفرد بوضع وتحديد وتطبيق سياسة وشروط الإرجاع والاستبدال وضمان المنتج
+                        مع الاحتفاظ بالحق في تعديلها وتحديثها من وقت لآخر على أن تنسجم مع الأنظمة والتشريعات المعمول بها
+                        في المملكة العربية السعودية في شأن حماية المستهلك. قد تختلف تلك شروط المتعلقة بالإرجاع
+                        والاستبدال والضمان باختلاف طبيعة المنتج أو مصدره و/أو أي ظروف أو عوامل أخرى ذات علاقة.
+                    </p>
+                    <p>
+                        بجميع الحالات فإنه يتوجب على المشتري فحص المنتج فور استلامه وإعلام الشركة خلال (3) أيام من تاريخ
+                        الاستلام بأي اعتراضات أو ملاحظات قد تكون لديه على المنتج.
+                    </p>
+
+                    <h5>المخاطر والملكية</h5>
+
+                    <p>
+                        تؤول إلى المشتري المسؤولية عن الخسارة و ملكية كافة المنتجات التي قام بشرائها وقامت الشركة بشحنها
+                        وذلك بمجرد قيام الشركة بتسليم المنتج إلى ناقل الشحنة كما تنتقل مسؤولية الخسارة وملكية المنتجات
+                        التي تم شراؤها من قبل المشتري والتي تم شحنها مباشرة من قبل أحد مورّدي الشركة تنتقل من ذلك المورد
+                        إلى المشتري وذلك عند قيام هذا المورد بتسليم المنتجات لناقل الشحنة.
+                    </p>
+
+                    <h5>الإخلاء من المسؤولية وحدود المسؤولية بالنسبة إلى الشركة والمحتوى</h5>
+
+                    <p>
+                        لا تقدم الشركة أي ضمانات أو تعهدات من أي نوع بخصوص موقع وتطبيق دنيانا أو أي موقع آخر مرتبط أو
+                        متفرع عنها أو محتواه بما في ذلك على سبيل المثال لا الحصر توافر أي موقع أو محتوى أو التسلسل
+                        الزمني لهذا المحتوى والمعلومات والمواد، ولا تضمن الشركة أو تتعهد بأن دخول المشتري واستخدامه
+                        لموقع وتطبيق دنيانا أو أي موقع آخر فرعي مرتبط سيكون متواصل أو خالي من الأخطاء أو الإغفال أو أنه
+                        سيتم تصحيح هذه العيوب أو أن موقع وتطبيق دنيانا أو أي موقع مرتبط بها خالي من فيروسات الكمبيوتر أو
+                        العناصر الأخرى الضارة.
+                    </p>
+                    <p>
+                        مع عدم تقييد ما سبق ذكره آنفاً فإن كافة المحتويات المنصوص عليها في موقع وتطبيق دنيانا يتم
+                        تقديمها على نفس حالتها الراهنة دون أي ضمانات أو تعهدات من أي نوع سواء صريحة أو ضمنية بما في ذلك
+                        على سبيل المثال لا الحصر ضمانات وتعهدات بخصوص صلاحية أو ملائمة المنتج لتحقيق غرض ما.
+                    </p>
+
+                    <h5>الإخلاء من المسؤولية وحدود المسؤولية للمنتجات والخدمات</h5>
+                    <p>
+                        يتم تعبئة المنتجات مرفقة مع ضمان المصنع والمعلومات المتعلقة بالخدمة والشروط والأحكام الخاصة. إن
+                        ضمانات المصنع قد تختلف من منتج لآخر، علماً أن كافة المنتجات والخدمات التي تبيعها الشركة سوف تخضع
+                        للتعهدات والضمانات المعمول بها لدى الجهات الصانعة وكذلك الشروط والأحكام والقيود والاستثناءات ذات
+                        الصلة.
+                    </p>
+                    <p>
+                        وبناء عليه فإن الشركة لا تتعهد أو تضمن أي منتج أو خدمة مباعة، وباستثناء ما هو منصوص عليه صراحة
+                        فإن الشركة تخلي مسؤوليتها تماماً عن كافة الضمانات سواء كانت صريحة أو ضمنية مهما كانت طبيعتها
+                        فيما يتعلق بالمنتجات والخدمات التي يتم بيعها عبر موقع وتطبيق دنيانا .
+                    </p>
+
+                    <h5>الحماية</h5>
+                    <p>يوافق المشتري على القيام بالدفاع وتعويض الشركة ومورّدي الشركة وتابعيهم والجهات المتعلقة بهم
+                        ومديريهم وموظفيهم ووكلائهم عن كافة المطالبات والخسائر والتعويضات والمسؤوليات والالتزامات
+                        والنفقات والتكاليف (بما في ذلك على سبيل المثال لا الحصر أتعاب المحاماة والنفقات والمصاريف
+                        القضائية) الناشئة عن انتهاك المشتري لهذه الشروط والأحكام أو دخوله واستخدامه ل موقع وتطبيق دنيانا
+                        ويظل الالتزام السابق بالحماية ساري لمدة غير محددة.</p>
+
+                    <h5>متفرقات </h5>
+                    <p>تمثل هذه الشروط الاتفاق التام بين الأطراف فيما يتعلق بموضوعها وتنسخ ما عداها من اتفاقات سابقة
+                        سواء خطية أو شفهية بين الأطراف فيما يتعلق بهذا الموضوع.</p>
+
+                    <p>لا يعد أي تنازل من الشركة عن أي انتهاك أو تقصير لا يعد ذلك تنازل عن أي انتهاك سابق أو لاحق وفي
+                        حال بطلان أي حكم من هذه الأحكام أو الشروط لأي سبب من الأسباب.</p>
+                    <p>لن تكون الشركة مسؤولة عن التقصير أو التأخير في العمل والأداء الذي يحدث بسبب أي فعل يخرج عن نطاق
+                        سيطرتها بما في ذلك على سبيل المثال لا الحصر الأفعال والأعمال وإهمال الغير وعدم توافر التوريدات
+                        أو في حالة الحروب والإضرابات والإغلاق والحرائق والفيضانات أو أي أعمال أخرى من أعمال القضاء
+                        والقدر وأي قانون أو لائحة أو أي عمل آخر أو أمر صادر من أي محكمة أو حكومة أو وهيئة حكومية أو
+                        تأخير أو النقص أو الأخطاء أو غير ذلك من الأخطاء و تعطل الإنترنت أو شبكات المعلومات الأخرى.</p>
+
+                    <h5>الإنهاء</h5>
+                    <p>تسري هذه الشروط والأحكام إلى أن يتم إنهاؤها من قبل الشركة كما أنه يجوز للشركة إنهاء هذه الشروط
+                        دون الإخطار بذلك وفي أي وقت، وفي حال الإنهاء فإنه يسقط تفويض المشتري في الدخول لموقع وتطبيق
+                        دنيانا ، إلا أن والقيود المفروضة على المشتري بخصوص المحتوى والإخلاء من المسؤولية والتعويضات
+                        وحدود المسؤوليات المنصوص عليها في هذه الشروط التي تظل سارية حتى بعد الإنهاء ويحق للشركة دون
+                        توجيه إخطار وفي أي وقت إنهاء خدماتها عبر موقع وتطبيق دنيانا أو جزء منه أو إنهاء أي حق لأي شخص
+                        للوصول إلى أو استخدام موقع وتطبيق دنيانا أو أي جزء منه. </p>
+
+                    <h5>التحكيم والقانون واجب التطبيق</h5>
+                    <p>
+                        في حالة نشوب نزاع بين الطرفين بخصوص أداء وتنفيذ و / أو تفسير هذه الشروط والأحكام فسوف يتم تسويته
+                        وديا فيما بين الطرفين . وإذا لم يكن من المستطاع تسوية النزاع بصورة ودية فيجب إحالته للتحكيم وفقا
+                        للوائح واجراءات التحكيم الصادرة عن مركز التحكيم التجاري لمجلس التعاون الخليجي لدول الخليج العربي
+                        (ويشار اليه فيما بعد بـ "مركز التحكيم") .
+                    </p>
+
+                    <p>
+                        إجراءات التحكيم كما هو مذكور بهذه الفقرة يجب أن تنظر من قبل محكم واحد مختار من قبل الطرفين . في
+                        حالة عدم تمكن الطرفان من اختيار محكم واحد بعد مرور 30 يوما من تاريخ تقديم طلب التحكيم فبالتالي
+                        سوف يتم تعيين محكم من قبل مركز التحكيم بناءا على طلب أيا من الطرفين وبالنتيجة فان المركز سوف
+                        يقوم بتعيين محكم معتمد من قبله.
+                    </p>
+
+                    <p>محل التحكيم يجب أن يكون مدينة الرياض بالمملكة العربية السعودية ما لم يتفق الطرفان على محل آخر.
+                        المحكم وخلال إصدار قراره يجب أن يقوم بتطبيق القوانين المطبقة في المملكة العربية السعودية. قرار
+                        التحكيم الصادر استنادا لهذه الفقرة يعتبر حكما نهائيا وملزما للطرفين ويجوز تنفيذ الحكم الصادر
+                        بناءا على قرار التحكيم في أية محكمة مختصة.</p>
+
+
+
+                </div>
+
+
+                           
+            </div>            
+                <div class="col-sm-6 mt-2 terms_chk" *ngIf="isChecked != null">
+                    <a class="timersty" [hidden]="timerbtndisplay" (click)="IsAcceptterms()">
+                        <span id="time" class="text-primary timer">Agree</span>
+                    </a>
+                </div>                   
+        </div>
+
+    </p-dialog>
+</div>

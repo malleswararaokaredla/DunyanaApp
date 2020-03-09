@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,OAAO,CAAA;EACH,KAAK,EAAE,KAAK;EACZ,MAAM,EAAE,KAAK;CAChB",
+    "sources": [
+        "naqel-contract-team.component.scss"
+    ],
+    "names": [],
+    "file": "naqel-contract-team.component.css"
+}

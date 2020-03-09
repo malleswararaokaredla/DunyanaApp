@@ -1,0 +1,164 @@
+<app-admin-menu></app-admin-menu>
+
+
+<section class="ad_legal">
+    <div class="container">
+        <div class="row ">
+            <div class="col-sm-6">
+
+            </div>
+            <div class="col-sm-6 mb-3">
+                <div class="ui-helper-clearfix">                
+                </div>
+            </div>
+
+            <div class="col-sm-12">
+                <p-table #dt [columns]="cols" class="dun_table" [value]="naqelcontractteamdata"
+                    [resizableColumns]="true" [paginator]="naqelcontractteamdata.length > 0 ? true : false" [rows]="10">
+               
+                    <ng-template pTemplate="caption">
+
+                        <div *ngIf="naqelcontractteamdata.length==0">
+                            No records found
+                        </div>
+
+                    </ng-template>
+                    <ng-template pTemplate="header" let-columns>
+                        <tr>
+                            <th *ngFor="let col of columns" pResizableColumn>
+                                {{col.header}}
+                                <p-sortIcon [pSortableColumn]="col.field" [field]="col.field"
+                                    ariaLabel="Activate to sort" ariaLabelDesc="Activate to sort in descending order"
+                                    ariaLabelAsc="Activate to sort in ascending order"></p-sortIcon>
+                                <!-- <i class="pi pi-filter" style="font-size: 1em;cursor: pointer;"
+                                    (click)="showfilter(col.field)"></i> -->
+
+                            </th>
+                            <th class="ui-resizable-column ng-star-inserted">
+                                Document
+
+                            </th>
+                        </tr>
+                        <!-- <tr>
+                            <th *ngFor="let col of columns" [ngSwitch]="col.field">
+                                <input *ngSwitchCase="'merchantrequestID'" pInputText type="text"
+                                    (input)="dtinp.filter($event.target.value, col.field, col.filterMatchMode)"
+                                    [value]="dt.filters[col.field] ? dt.filters[col.field].value : ''"
+                                    [hidden]="merchantrequestID" (keyup)="filterExcel()">
+                                <input *ngSwitchCase="'merchantID'" pInputText type="text"
+                                    (input)="dtinp.filter($event.target.value, col.field, col.filterMatchMode)"
+                                    [value]="dt.filters[col.field] ? dt.filters[col.field].value : ''"
+                                    [hidden]="merchantID" (keyup)="filterExcel()">
+                                <input *ngSwitchCase="'merchantName'" pInputText type="text"
+                                    (input)="dt.filter($event.target.value, col.field, col.filterMatchMode)"
+                                    [value]="dt.filters[col.field] ? dt.filters[col.field].value : ''"
+                                    [hidden]="merchantName" (keyup)="filterExcel()">
+                                <input *ngSwitchCase="'contractstatus'" pInputText type="text"
+                                    (input)="dt.filter($event.target.value, col.field, col.filterMatchMode)"
+                                    [value]="dt.filters[col.field] ? dt.filters[col.field].value : ''"
+                                    [hidden]="contractstatus" (focusout)="filterExcel()">
+                               
+                            </th>
+                        </tr> -->
+                    </ng-template>
+                    <ng-template pTemplate="body" let-member>
+                        <tr>
+
+                            <td class="ui-resizable-column">
+                                {{member.merchantrequestID}}
+                            </td>
+                            <td class="ui-resizable-column">
+                                {{member.merchantID}}
+                            </td>
+                            <td class="ui-resizable-column">
+                                {{member.merchantName}}
+                            </td>
+                       
+                            <td class="ui-resizable-column" *ngIf="member.merchantcontractsHistory==null">
+                                    {{member.contractUploaddate}}
+                            </td>
+                            <td class="ui-resizable-column" *ngIf="member.merchantcontractsHistory!=null">
+                                 Uploaded on {{member.contractUploaddate | date:'M/d/yy'}}
+                            </td>
+
+                            <td class="ui-resizable-column doc_info">
+                               
+                                <input #uploader type="file" [hidden]="true"
+                                    (change)="upload(uploader.files,member)" placeholder="Upload file"
+                                    accept=".pdf,.doc,.docx" />
+                                <span class="file_nm" *ngIf="member.merchantcontractsHistory!=null"><a
+                                        *ngIf="member.merchantcontractsHistory[0].contractFileName.substring(member.merchantcontractsHistory[0].contractFileName.indexOf('.')+1,member.merchantcontractsHistory[0].contractFileName.length)=='pdf'"
+                                        [href]="member.merchantcontractsHistory[0].contractFileURL"
+                                        target="_blank">{{member.merchantcontractsHistory[0].contractFileName}}</a></span>
+
+                                <span class="file_nm2" *ngIf="member.merchantcontractsHistory!=null"><a
+                                        *ngIf="member.merchantcontractsHistory[0].contractFileName.substring(member.merchantcontractsHistory[0].contractFileName.indexOf('.')+1,member.merchantcontractsHistory[0].contractFileName.length)!='pdf'"
+                                        [href]="member.merchantcontractsHistory[0].contractFileURL">{{member.merchantcontractsHistory[0].contractFileName}}</a></span>
+
+                                        <span style="float: right; cursor: pointer;" class="ar_ic" (click)="uploader.click()"><i class="fa fa-upload" aria-hidden="true"></i>                                        </span>
+                                        <span style="float:right; cursor: pointer;" class="ar_ic" 
+                                    *ngIf="member.merchantcontractsHistory!=null && member.merchantcontractsHistory.length>1"
+                                    (click)="Openarchivefiles(member.merchantcontractsHistory)"><i class="fa fa-folder-open" aria-hidden="true"></i>
+                                </span>
+                               
+
+                            </td>
+                        </tr>
+                    </ng-template>
+
+                </p-table>
+            </div>
+
+        </div>
+
+    </div>
+
+    <br />
+</section>
+
+<div class="changepassword">
+    <p-dialog header="Archive" [(visible)]="archivefilesdisplay" [modal]="true" [responsive]="true"
+        [style]="{width: '641px'}" [closeOnEscape]="true">
+        <div>
+            <h2>Contract Files</h2>
+        </div>
+        <div *ngFor="let mercfile of selectedarchfiles">
+            <span class="downld_ic"
+                *ngIf="mercfile.contractFileName.substring(mercfile.contractFileName.indexOf('.')+1,mercfile.contractFileName.length)!='pdf'">
+                <a [href]="mercfile.contractFileURL" ><i class="fa fa-download" aria-hidden="true"></i>&nbsp; {{mercfile.contractFileName}}</a>
+            </span>
+            <span class="downld_ic"
+                *ngIf="mercfile.contractFileName.substring(mercfile.contractFileName.indexOf('.')+1,mercfile.contractFileName.length)=='pdf'">
+                <a [href]="mercfile.contractFileURL" target="_blank"><i class="fa fa-download" aria-hidden="true"></i>&nbsp; {{mercfile.contractFileName}}</a>
+            </span>
+        </div>
+    </p-dialog>
+</div>
+
+
+<div class="changepassword">
+    <p-dialog header="upload contract" [(visible)]="uploadconfirmdisplay" [modal]="true" [responsive]="true"
+        [style]="{width: '641px'}" [closeOnEscape]="true" (onHide)="onuploadconfirmClose()">
+
+        <h2>Do you want to upload this contract file?</h2>
+
+        <div class="delete_btn_cont">
+            <a href="javascript:void(0)" style="width:60px; text-align: center" [ngClass]="yesbtndisable"
+                class="line_btn sblue mr-4" (click)="Confirmupload()">Yes</a>
+            <a href="javascript:void(0);" (click)="Closeupload()" class="line_btn sblue">No</a>
+        </div>
+
+        <div>
+            <div [ngClass]="responsesty">
+                <span>{{uploadconfirmresponse}}</span>
+            </div>
+        </div>
+    </p-dialog>
+</div>
+
+
+<div class="loading-indicator mid" *ngIf="ProgressSpinnerupd">
+    <p-progressSpinner></p-progressSpinner>
+</div>
+
+<div class="overlay" *ngIf="ProgressSpinnerupd"></div>

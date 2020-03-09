@@ -1,0 +1,82 @@
+section.accounts .text_container .leftPanel p.small {
+    font-size: 14pt;
+}
+@media screen and (max-width: 475px) {
+    .changepassword .center {
+        padding: 30px 30px 0 30px;
+    }
+}
+
+
+.disable{
+    opacity: 0.5;
+    pointer-events: none;
+}
+
+.line_btn {
+    &.sblue {
+         background-position: 8px 40px;
+         background-color:transparent;
+         border:none;
+         outline: none;
+
+             &:hover {
+            background-position: 8px -20px;
+
+        }
+     
+    }
+
+   
+}
+
+:host {
+    ::ng-deep {
+       .pdfview {
+        div.ui-dialog {
+            height: 600px;
+            overflow-y: auto;
+            .ui-dialog-titlebar, .ui-dialog-content{
+                border-radius: 0;
+            }
+           }
+       }
+     
+    }
+}
+
+.mid{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50% -50%);
+    z-index: 1;
+  }
+
+  .overlay{
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: black;
+    opacity: 0.5;
+    z-index: 0;
+    left: 0;
+    top: 0;
+  }
+
+
+
+
+
+a.timersty span.timer{
+    border: 1px solid #00c0f3 !important;
+    border-radius: 20px;
+    margin-bottom: 28px;
+    line-height: 41px;
+    color: #00c0f3 !important;
+    font-size: 20pt !important;
+    padding: 0.2em 1em 0.5em !important;
+    outline: none;
+    border: none;
+    cursor: pointer;
+}

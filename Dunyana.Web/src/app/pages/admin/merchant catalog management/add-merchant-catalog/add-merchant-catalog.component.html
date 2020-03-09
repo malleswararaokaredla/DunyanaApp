@@ -1,0 +1,86 @@
+<div class="changepassword">
+  <p-dialog header="Add Categories" [(visible)]="display" [modal]="true" [responsive]="true" [style]="{width: '550px'}"  [closeOnEscape]="true"  (onHide)="onClose()">
+
+    <form class="from_wrapper" [formGroup]="merchantCatlogForm" novalidate>
+      <h2 class="col-md-12 text-center">Add Merchant Catalog</h2>
+      <div class="row inputset">
+          <div class="col-sm-6"><label>Category</label><span class="r">*</span></div>
+          <div class="col-sm-6">
+            <p-dropdown [options]="categories" formControlName="categoryName" (onChange)="formvalidate()"
+            placeholder="Select Category" [autoWidth]="false" [filter]="false">
+            <option *ngFor="let c of categories" [ngValue]="c">{{c}}</option>
+        </p-dropdown>
+          </div>
+          <div class="col-sm-12">
+              <div *ngIf="merchantCatlogForm.controls['categoryName'].errors && !merchantCatlogForm.controls['categoryName'].pristine" class="text-danger float-right error">
+                  <div [hidden]="!merchantCatlogForm.controls['categoryName'].errors.required">Enter merchant category name </div>  
+              </div>
+          </div>
+
+          <div class="col-sm-12">
+              <hr>
+          </div>
+      </div>
+      <div class="row inputset">
+          <div class="col-sm-6"><label>Subcategory</label><span class="r">*</span></div>
+          <div class="col-sm-6"><input id="input" type="text" formControlName="subcategory" maxlength="50" (keyup)="formvalidate()" placeholder="Enter SubCategory"> </div>
+          <div class="col-sm-12">
+              <div *ngIf="merchantCatlogForm.controls['subcategory'].errors && !merchantCatlogForm.controls['subcategory'].pristine" class="text-danger float-right error">
+                  <div [hidden]="!merchantCatlogForm.controls['subcategory'].errors.required">Enter merchant subcategory </div>  
+              </div>
+          </div>
+
+          <div class="col-sm-12">
+              <hr>
+          </div>
+      </div>
+
+      <div class="row inputset">
+        <div class="col-sm-6"><label>Brand</label><span class="r">*</span></div>
+        <div class="col-sm-6"><input id="input" type="text" formControlName="brand" maxlength="50" placeholder="Enter Brand name" (keyup)="formvalidate()"> </div>
+        <div class="col-sm-12">
+            <div *ngIf="merchantCatlogForm.controls['brand'].errors && !merchantCatlogForm.controls['brand'].pristine" class="text-danger float-right error">
+                <div [hidden]="!merchantCatlogForm.controls['brand'].errors.required"> Enter merchant brand name</div>              
+            </div>
+        </div>
+
+        <div class="col-sm-12">
+            <hr>
+        </div>
+      </div>
+
+      <div class="row inputset">
+
+        <div class="col-sm-6"><label>Product</label><span class="r">*</span></div>
+        <div class="col-sm-6"><input id="input" type="text" placeholder="Enter Product name" maxlength="50" formControlName="product"
+                (keyup)="formvalidate()"> </div>
+        <div class="col-sm-12">
+          <div *ngIf="merchantCatlogForm.controls['product'].errors && !merchantCatlogForm.controls['product'].pristine" class="text-danger float-right error">
+            <div [hidden]="!merchantCatlogForm.controls['product'].errors.required"> Enter merchant product name</div>
+           
+        </div>
+        </div>
+
+        <div class="col-sm-12">
+            <hr>
+        </div>
+    </div>
+
+      <div class="row justify-content-center mt-4">
+
+          <button class="line_btn sblue mr-4" [ngClass]="btndisable" (click)="insertcatalog()">Add</button>
+          <button class="line_btn sblue" (click)="redirectcustomerlist()">Cancel</button>
+      </div>
+      <div [ngClass]="responsesty">
+        <span>{{response}}</span>
+    </div>
+  </form>
+
+   <div class="loading-indicator mid" *ngIf="ProgressSpinnerDlg">
+          <p-progressSpinner></p-progressSpinner>
+      </div>    
+      <div class="overlay" *ngIf="ProgressSpinnerDlg"></div>
+
+  </p-dialog>
+  <p-toast></p-toast>
+</div>

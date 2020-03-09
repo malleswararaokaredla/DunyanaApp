@@ -1,0 +1,60 @@
+<header>
+    <div class="info-bar">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-6">
+                    <ul class="ilinks">
+
+                    </ul>
+                </div>
+                <div class="col-sm-6">
+                    <ul class="float-right text-right ml-2">
+                        <li>
+                            <img [src]="englnfimg" class="langiconsty" width="20" height="20" [hidden]="englicon"
+                                [ngClass]="{ blur: lang == 'es' }" (click)="toggleLang('en')" alt="EN"
+                                class="lang-item " />
+                            <img [src]="spanlanimg" class="langiconsty" width="20" height="20" [hidden]="!englicon"
+                                [ngClass]="{ blur: lang == 'en' }" class="lang-item lang-item--es marg-right-20"
+                                (click)="toggleLang('ar')" alt="arbic" />
+                        </li>
+                    </ul>
+                    <div>
+                        <ul class="lang">
+                            <li><a href="javascript:void(0)" class="langSel" [hidden]="englicon"
+                                    (click)="toggleLang('en')">{{currentlang}}</a></li>
+                            <li><a href="javascript:void(0)" class="langSel" [hidden]="!englicon"
+                                    (click)="toggleLang('ar')">{{currentlang}}</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="main-header">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-6">
+                    <a [routerLink]="['/merchant/profile']" class="site-logo"><img
+                            [src]="lang =='en' ? 'assets/layout/images/header_logo.png':'assets/layout/images/header_logo_ar.png'"
+                            alt="dunyaya" /></a>
+                </div>
+                <div class="col-sm-6 right-align">
+                    <ul class="user-actions">
+                        <li class="ac" [hidden]="islogin"><a [routerLink]="['/signin']">{{ 'Hithere' | translate }},
+                                <strong>{{ 'Signin' | translate }}</strong></a></li>
+                        <li class="ac" [hidden]="!islogin" [routerLink]="['/merchant/profile']">
+                            <a>{{'Welcome' | translate}}{{' '|translate}}{{ useremail | translate }},
+                                <strong>{{ 'Account' | translate }}</strong></a></li>
+                        <li class="ac" [hidden]="!islogin" (click)=logout()>
+                            <a> <strong>{{ 'Logout' | translate }}</strong></a>
+                        </li>
+                        <li class="cart" style="display: none">
+                            <div class="icon-cart"><span>12</span></div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</header>

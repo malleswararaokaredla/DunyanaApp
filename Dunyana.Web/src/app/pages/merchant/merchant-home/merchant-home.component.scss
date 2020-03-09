@@ -1,0 +1,91 @@
+
+section
+{
+    &.legal
+    {
+        .text_container
+        {
+            .profile
+            {
+                height:95%;
+                .address .text-blue a 
+                {
+                    cursor: pointer;
+                }
+            }
+        }
+        
+    }
+}
+.links
+{
+    >  h4
+    {
+        padding-left:40px;
+    }
+        .links_container
+        {
+            padding-left: 40px;
+            display: -webkit-box;
+            display: -moz-box;
+            display: -ms-flexbox;
+            display: -webkit-flex;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            
+            .lnks
+            {
+                width:calc(50% - 25px);
+                margin-bottom:25px;
+                height:160px;
+                background: #4e7fe0;
+                display: flex;
+                text-align: center;
+                align-items: center;
+                border-radius: 20px;
+                background: linear-gradient(0deg,#c8c9cb 0,#ebebed 100%);
+                a
+                {
+                    color: #4f5b69;
+                    width:100%;
+                    display: flex;
+                    align-items: center;
+                    width:100%;
+                    height: 100%;
+                    h4
+                    {
+                        margin: 0;
+                        width:100%;
+                        font-size:20pt;
+                        color: #868b91;
+                    }
+                }
+                &:hover,&.active
+                {
+                    background: #00c0f3;
+                    background: linear-gradient(180deg,#00c0f3 0,#009cc6 100%);
+                    a
+                    {                        
+                        text-decoration: none;
+                        h4
+                        {
+                            color: #fff;
+                        }
+                    }
+                }
+            }
+        }
+       
+    
+}
+
+.file_nm 
+{
+  width: 50%;
+  display: inline-block;
+}
+ .file_nm a
+{
+  color: #00c0f3;
+}

@@ -1,0 +1,25 @@
+agm-map {
+    height: 450px;
+  }
+
+  .map{
+    padding: 0;
+  }
+
+
+:host {
+    ::ng-deep {
+    .ui-dialog {
+        .ui-dialog-titlebar{
+            padding: 0;
+            border-radius: 10px 10px 0 0;
+        }
+       .ui-dialog-content{
+            border-radius: 0 0 10px 10px;
+            height: 450px;
+            padding: 0;
+        }
+    }
+    }
+    }
+    

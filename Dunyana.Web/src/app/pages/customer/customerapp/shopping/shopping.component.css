@@ -1,0 +1,225 @@
+section.shopping_banner .item .text_container .line_btn {
+  margin-top: 320px;
+}
+
+section.shopping_banner .item {
+  height: 740px;
+}
+
+section.shopping_banner .item .text_container .line_btn {
+  background-image: url("../../../../../assets/layout/images/line_blue_sprite.png");
+  background-position: center 28px;
+}
+
+section.shopping_banner .item .text_container .line_btn:hover {
+  color: #00c0f3;
+  background-position: center -36px;
+}
+
+section.qkLinks .ql .it {
+  overflow: hidden;
+}
+
+section.qkLinks .ql .it h2 {
+  font-family: 'teshrin_arltlight';
+  margin-bottom: 0;
+  margin-top: 30px;
+}
+
+section.qkLinks .ql .it h1 {
+  font-family: 'teshrin_arltmedium';
+}
+
+section.qkLinks .ql .it i.icon-light {
+  right: 7%;
+  left: unset;
+  font-size: 215px;
+  top: -32%;
+}
+
+section.qkLinks .ql .it i.second {
+  right: 15%;
+  left: unset;
+  font-size: 275px;
+  top: -25%;
+}
+
+section.qkLinks .ql .it i.icon-moon {
+  font-size: 170px;
+  left: 10%;
+}
+
+section.brands {
+  padding-bottom: 45px;
+}
+
+section.brands p {
+  color: #4f5b69;
+  font-size: 18pt;
+}
+
+section.brands p span {
+  letter-spacing: 6pt;
+}
+
+section.brands p span.active {
+  color: #00c0f3;
+}
+
+section.brands hr {
+  opacity: 0.5;
+}
+
+section.brands .let-space {
+  letter-spacing: 1pt;
+}
+
+section.brands .let-space span {
+  cursor: pointer;
+}
+
+section.category {
+  padding: 10px 0;
+}
+
+.card-body {
+  padding: 2rem;
+  background: #4f5b69;
+  color: white;
+  font-size: 14pt;
+  font-family: 'teshrin_arltmedium';
+}
+
+.mid {
+  position: absolute;
+  left: 50%;
+  -webkit-transform: translate(-50% -50%);
+          transform: translate(-50% -50%);
+  z-index: 1;
+}
+
+.overlay {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background: black;
+  opacity: 0.5;
+  z-index: 0;
+  left: 0;
+  top: 0;
+}
+
+.pagination {
+  display: inline-block;
+  padding-left: 0;
+  border-radius: 4px;
+  margin: 60px 0 100px 60px;
+}
+
+.pagination > li {
+  display: inline;
+}
+
+.pagination > li:first-child > a, .pagination > li:first-child > span {
+  margin-left: 0;
+  border-top-left-radius: 4px;
+  border-bottom-left-radius: 4px;
+}
+
+.pagination > .disabled > a, .pagination > .disabled > a:focus, .pagination > .disabled > a:hover, .pagination > .disabled > span, .pagination > .disabled > span:focus, .pagination > .disabled > span:hover {
+  color: #777;
+  cursor: not-allowed;
+  background-color: #fff;
+  border-color: #ddd;
+}
+
+.pagination > li > a, .pagination > li > span {
+  position: relative;
+  float: left;
+  padding: 6px 12px;
+  margin-left: -1px;
+  line-height: 1.42857143;
+  color: #337ab7;
+  text-decoration: none;
+  background-color: #fff;
+  border: 1px solid #ddd;
+}
+
+a {
+  cursor: pointer;
+}
+
+.pagination {
+  margin: 60px 0 100px;
+}
+
+.pagination > li > a {
+  color: #00c0f3;
+  background-color: #fff;
+  border: none;
+  font-size: 26pt;
+}
+
+.pagination > li.active > a {
+  color: #00c0f3;
+  font-family: 'teshrin_arltmedium', sans-serif;
+}
+
+.pagination > li:first-child > a,
+.pagination > li:last-child > a {
+  background-color: #fff;
+  border: none;
+  visibility: hidden;
+  display: none;
+}
+
+.pagination > li:nth-child(2) > a,
+.pagination > li:nth-last-child(2) > a {
+  background-color: #fff;
+  border: none;
+  visibility: hidden;
+}
+
+.pagination > li:nth-child(2) > a:after {
+  content: "\003e";
+  color: #00c0f3;
+  font-size: 55pt;
+  visibility: visible;
+  display: block;
+  position: absolute;
+  font-weight: bold;
+  top: -33pt;
+  right: 25pt;
+  -webkit-transform: rotate(180deg);
+          transform: rotate(180deg);
+}
+
+.pagination > li:nth-last-child(2) > a:after {
+  content: "\003e";
+  color: #00c0f3;
+  font-size: 55pt;
+  visibility: visible;
+  display: block;
+  position: absolute;
+  font-weight: bold;
+  top: -10pt;
+  left: 20pt;
+}
+
+.pagination > li.disabled > a:after {
+  color: #cacdd2;
+}
+
+.no-orders {
+  color: #02a7d4;
+  font-weight: bold;
+  font-size: 22pt;
+  text-align: center;
+}
+
+.pagination > li:nth-child(2) > a,
+.pagination > li:nth-last-child(2) > a {
+  padding-left: 0;
+  width: 30px;
+}
+/*# sourceMappingURL=shopping.component.css.map */

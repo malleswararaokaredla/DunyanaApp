@@ -1,0 +1,241 @@
+<app-admin-menu></app-admin-menu>
+
+<section class="ad_legal merchant-redirect">
+  <div class="container">
+    <div class="row ">
+
+      <div class="col-sm-12 ">
+        <div class="row inputset">
+          <div class="col-sm-5 col-xl-5 text-right">
+            <label>Merchant</label><span class="">*</span>
+          </div>
+          <div class="col-sm-7 col-xl-7">
+            <p-dropdown [options]="merchents" class="sel-dropdown" Placeholder="merchents" [autoWidth]="false"
+              [filter]="false" (onChange)="Merchantdata($event)">
+
+              <option *ngFor="let c of merchents" [value]="c.merchantid">{{c.name}}</option>
+            </p-dropdown>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-12">
+        <hr>
+      </div>
+      <div class="col-sm-12">
+
+        <div [hidden]="btnform">
+
+          <div class="row">
+            <div class="col-sm-12 web_info">
+              <label>Merchant redirect URL<span class="e">*</span>:</label>
+              <input type="text" value="{{merchanturl}}" #url (keyup)="validurl(url.value)"
+                onkeydown="javascript: return (event.keyCode ==32) ?false  : true">
+              <button class="line_btn sblue mr-4" [ngClass]="btnsdisable" (click)="submiturl(url.value)">submit</button>
+            </div>
+
+            <div class="col-sm-12 submitmsg">
+              <span [ngClass]="responsesty" #div></span>
+
+            </div>
+            <div class="text-danger error" style="padding-left:200px;">
+              <span [hidden]="txtErrormsg">{{websitevalidmsg}}</span>
+            </div>
+            <div class="col-sm-12">
+              &nbsp;
+
+            </div>
+
+            <div class="col-sm-12 mb-3">
+              <div class="ui-helper-clearfix">
+
+                <button type="button" pButton icon="pi pi-download" (click)="exportToExcel()" [disabled]="excelDown"
+                  label="Download to CSV" class="pull-right"></button>
+                <button pButton label="Clear All Filters" (click)="onClick()" class="pull-right"
+                  style="margin-right:10px;"></button>
+
+                <button type="button" pButton icon="fa fa-plus" label="Add" (click)="Addmerchents()"
+                  [hidden]="btnAddDisable" class="pull-right" style="margin-right: 10px;"></button>
+              </div>
+            </div>
+            <div class="col-sm-12">
+
+              <p-table [columns]="cols" class="dun_table" #dt selectionMode="single" [(selection)]="selectedmerchent"
+                (onRowSelect)="onRowSelect($event)" [paginator]="true" [rows]="10" [value]="merchentlist"
+                [resizableColumns]="true">
+
+                <ng-template pTemplate="caption">
+
+                  <div *ngIf="merchentlist.length==0">
+                    No merchants found
+                  </div>
+                </ng-template>
+
+                <ng-template pTemplate="header" let-columns>
+                  <tr>
+                    <th *ngFor="let col of columns" pResizableColumn>
+                      {{col.header}}
+                      <p-sortIcon [pSortableColumn]="col.field" [field]="col.field" ariaLabel="Activate to sort"
+                        ariaLabelDesc="Activate to sort in descending order"
+                        ariaLabelAsc="Activate to sort in ascending order"></p-sortIcon>
+                      <i class="pi pi-filter" style="font-size: 1em;cursor: pointer;"
+                        (click)="showfilter(col.field)"></i>
+                    </th>
+                  </tr>
+                  <tr *ngIf="merchentlist.length!=0">
+                    <th *ngFor="let col of columns" [ngSwitch]="col.field">
+
+                      <input *ngSwitchCase="'merchantAttribute'" [hidden]="merchantAttribute" pInputText type="text"
+                        [value]="dt.filters[col.field] ? dt.filters[col.field].value : ''"
+                        (input)="dt.filter($event.target.value, col.field, col.filterMatchMode)"
+                        (focusout)="filterExcel()">
+                      <input *ngSwitchCase="'merchantValue'" [hidden]="merchantValue" pInputText
+                        [value]="dt.filters[col.field] ? dt.filters[col.field].value : ''" type="text"
+                        (input)="dt.filter($event.target.value, col.field, col.filterMatchMode)"
+                        (focusout)="filterExcel()">
+                      <input *ngSwitchCase="'merchantDescription'" [hidden]="merchantDescription"
+                        [value]="dt.filters[col.field] ? dt.filters[col.field].value : ''" pInputText type="text"
+                        (input)="dt.filter($event.target.value, col.field, col.filterMatchMode)"
+                        (focusout)="filterExcel()">
+
+                    </th>
+                  </tr>
+                </ng-template>
+
+                <ng-template pTemplate="body" let-rowData let-columns="columns">
+                  <tr [pSelectableRow]="rowData" *ngIf="merchentlist.length!=0">
+
+                    <td class="ui-resizable-column">
+                      {{rowData.merchantAttribute}}
+                    </td>
+                    <td class="ui-resizable-column">
+                      {{rowData.merchantValue}}
+                    </td>
+                    <td class="ui-resizable-column">
+                      {{rowData.merchantDescription}}
+                    </td>
+
+                    <td style="display: none" class="ui-resizable-column">
+                      {{rowData.merchantRedirectionId}}
+                    </td>
+                  </tr>
+
+                </ng-template>
+              </p-table>
+
+              <div class="loading-indicator mid" *ngIf="ProgressSpinnerDlg">
+                <p-progressSpinner></p-progressSpinner>
+              </div>
+
+              <div class="overlay" *ngIf="ProgressSpinnerDlg"></div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div>
+  <app-add-merchant-param [display]="display" (displayChange)="onDialogClose($event)"></app-add-merchant-param>
+</div>
+
+<div class="changepassword">
+  <p-dialog header="Add merchant" [(visible)]="editmerchentdisplay" [modal]="true" [responsive]="true"
+    [style]="{width: '550px'}" [closeOnEscape]="true" (onHide)="onClose()">
+
+    <form class="from_wrapper" [formGroup]="merchentForm" novalidate>
+      <h2 class="col-md-12 text-center">Edit Merchant Values</h2>
+
+      <div class="row inputset" style="display: none">
+
+        <div class="col-sm-6"><label>Merchant Redirectid</label><span class="r">*</span></div>
+        <div class="col-sm-6"><input id="input" type="text" formControlName="merchantRedirectionId"
+            (keyup)="formvalidate()"> </div>
+        <div class="col-sm-12">
+
+        </div>
+
+        <div class="col-sm-12">
+          <hr>
+        </div>
+      </div>
+
+      <div class="row inputset">
+
+        <div class="col-sm-6"><label>Attribute</label><span class="r">*</span></div>
+        <div class="col-sm-6"><input id="input" type="text" formControlName="MerchantAttribute"
+            placeholder="Enter attribute" (keyup)="formvalidate()"> </div>
+        <div class="col-sm-12">
+          <div
+            *ngIf="merchentForm.controls['MerchantAttribute'].errors && !merchentForm.controls['MerchantAttribute'].pristine"
+            class="text-danger float-right error">
+            <div [hidden]="!merchentForm.controls['MerchantAttribute'].errors.required">Enter merchant
+              attribute name </div>
+
+          </div>
+        </div>
+
+        <div class="col-sm-12">
+          <hr>
+        </div>
+      </div>
+      <div class="row inputset">
+        <div class="col-sm-6"><label>Value</label><span class="r">*</span></div>
+        <div class="col-sm-6"><input id="input" type="text" formControlName="MerchantValue" placeholder="Enter value"
+            (keyup)="formvalidate()"> </div>
+        <div class="col-sm-12">
+          <div *ngIf="merchentForm.controls['MerchantValue'].errors && !merchentForm.controls['MerchantValue'].pristine"
+            class="text-danger float-right error">
+            <div [hidden]="!merchentForm.controls['MerchantValue'].errors.required">Enter merchant value
+            </div>
+
+          </div>
+        </div>
+
+        <div class="col-sm-12">
+          <hr>
+        </div>
+      </div>
+
+      <div class="row inputset">
+        <div class="col-sm-6"><label>Description</label><span class="r">*</span></div>
+        <div class="col-sm-6"><input id="input" type="text" formControlName="MerchantDescription"
+            placeholder="Enter description" (keyup)="formvalidate()"> </div>
+        <div class="col-sm-12">
+          <div
+            *ngIf="merchentForm.controls['MerchantDescription'].errors && !merchentForm.controls['MerchantDescription'].pristine"
+            class="text-danger float-right error">
+            <div [hidden]="!merchentForm.controls['MerchantDescription'].errors.required"> Enter merchant
+              description</div>
+
+          </div>
+        </div>
+
+        <div class="col-sm-12">
+          <hr>
+        </div>
+      </div>
+
+      <div class="row justify-content-center mt-4">
+
+        <button class="line_btn sblue mr-4" [ngClass]="btndisable" (click)="updatemerchentvalues()">Update</button>
+        <button class="line_btn sblue" (click)="redirectcustomerlist()">Cancel</button>
+
+      </div>
+    </form>
+
+    <div class="loading-indicator mid" *ngIf="ProgressSpinnerupd">
+      <p-progressSpinner></p-progressSpinner>
+    </div>
+
+    <div class="overlay" *ngIf="ProgressSpinnerupd"></div>
+
+
+    <div class="col-sm-12" style="text-align: center">
+      <span [ngClass]="responsesty" #msgdiv></span>
+
+    </div>
+
+  </p-dialog>
+  <p-toast></p-toast>
+</div>

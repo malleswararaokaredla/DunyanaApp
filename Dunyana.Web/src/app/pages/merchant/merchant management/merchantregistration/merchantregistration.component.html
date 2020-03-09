@@ -1,0 +1,464 @@
+<section class="signin">
+    <header class="trans">
+        <div class="main-header">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <a [routerLink]="['/customer/home']" class="site-logo"><img [src]="headerlogo"
+                                alt="dunyaya" /></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <main>
+        <section class="signin_wrap">
+
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-5 col-xl-4">
+                        <div class="si">
+
+                            <a class="backBtn" (click)="prevclick()" [hidden]="previosusbtn" href="#demo"
+                                data-slide="prev">
+                                <i class="icomoon icon-arrows"></i>
+                            </a>
+                            <h4 class="_top">Become a Seller</h4>
+
+
+                            <form class="from_wrapper" [formGroup]="merchantForm" novalidate #myform="ngForm"
+                                (keydown.enter)="$event.preventDefault()">
+
+                                <div id="demo" class="carousel" data-ride="carousel" data-interval="false"
+                                    data-wrap="false">
+                                    <ul class="carousel-indicators">
+                                        <li data-target="#demo" data-slide-to="0" class="active"></li>
+                                        <li data-target="#demo" data-slide-to="1"></li>
+                                        <li data-target="#demo" data-slide-to="2"></li>
+                                        <li data-target="#demo" data-slide-to="3"></li>
+
+                                    </ul>
+                                    <div class="carousel-inner">
+                                        <div class="carousel-item active">
+
+
+                                            <p class="para"> &nbsp;
+                                                <!-- Lorem ipsum dolor sit amet, consectetur adipiscing elit. -->
+                                            </p>
+                                            <div class="row inputset">
+
+                                                <div class="col-sm-12"><input type="text" pInputText
+                                                        formControlName="Name" [(ngModel)]="_merchentFormData.Name"
+                                                        #name placeholder="Name*" (keyup)="formvalidate();"
+                                                        (keypress)="nameSpace(name,$event)" class="w-100" id="Name">
+                                                </div>
+                                                <div class="col-sm-12">
+                                                    <div *ngIf="merchantForm.controls['Name'].errors && !merchantForm.controls['Name'].pristine"
+                                                        class="text-danger error">
+                                                        <div [hidden]="!merchantForm.controls['Name'].errors.required">
+                                                            please enter merchant name </div>
+                                                        <div [hidden]="!merchantForm.controls['Name'].errors.pattern">
+                                                            please enter valid merchant name</div>
+                                                    </div>
+
+                                                    <div class="text-danger error">
+                                                        <span [hidden]="txtErrormsg">{{merchentnameValidemsg}}</span>
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-12">
+                                                    <hr>
+                                                </div>
+                                            </div>
+
+                                            <div class="row inputset">
+
+                                                <div class="col-sm-12 upl-btn">
+                                                    <input type="file" #uploaderr (change)="iconChangeEvent($event)"
+                                                        (click)="uploaderr.value = null" placeholder="Profile Image"
+                                                        [hidden]=true accept="image/x-png,image/gif,image/jpeg" />
+                                                    <input type="text" placeholder="Profile Image" class="w-50"
+                                                        disabled>
+
+                                                    <a href="javascript:void(0)" class="del_btn" [hidden]="removeicon"
+                                                        (click)="removeprofileimage()"></a>
+                                                    <button type="button" (click)="uploaderr.click()" label="Upload"
+                                                        class="btn-small float-right">Upload</button>
+
+                                                </div>
+                                                <div class="col-sm-12 ht" [ngClass]="popup">
+                                                    <img [src]="finalImage" [ngClass]="btnupload1" />
+
+                                                    <hr>
+
+                                                </div>
+                                            </div>
+
+                                            <div class="row inputset">
+
+                                                <div class="col-sm-12"><input placeholder="Company*" type="text"
+                                                        formControlName="Company" #companyname
+                                                        [(ngModel)]="_merchentFormData.Company"
+                                                        (keyup)="formvalidate();"
+                                                        (keypress)="companyNameSpace(companyname,$event)"
+                                                        class="w-100" />
+                                                </div>
+                                                <div class="col-sm-12">
+                                                    <div *ngIf="merchantForm.controls['Company'].errors && !merchantForm.controls['Company'].pristine"
+                                                        class="text-danger error">
+                                                        <div
+                                                            [hidden]="!merchantForm.controls['Company'].errors.required">
+                                                            please enter company name</div>
+                                                        <div
+                                                            [hidden]="!merchantForm.controls['Company'].errors.pattern">
+                                                            please enter valid company name</div>
+                                                    </div>
+                                                    <div class="text-danger error">
+                                                        <span
+                                                            [hidden]="txtErrormsg">{{merchentCompanynameValidemsg}}</span>
+                                                    </div>
+
+                                                </div>
+                                                <div class="col-sm-12">
+                                                    <hr>
+                                                </div>
+                                            </div>
+
+                                            <div class="row inputset">
+                                                <div class="col-sm-12 upl-btn">
+                                                    <input type="file" placeholder="Icon Image" #uploader
+                                                        (click)="uploader.value = null"
+                                                        (change)="fileChangeEvent($event)" [hidden]=true
+                                                        accept="image/x-png,image/gif,image/jpeg" />
+
+                                                    <input type="text" placeholder="Company Image *" class="w-50"
+                                                        disabled>
+
+                                                    <button type="button" (click)="uploader.click()" label="Upload"
+                                                        class="btn-small float-right">Upload</button>
+                                                </div>
+                                                <div class="col-sm-12">
+                                                    <span class="text-danger error" [hidden]="fileSelected">
+                                                        please upload company image
+                                                    </span>
+                                                </div>
+                                                <div class="col-sm-12  ht" [ngClass]="popup">
+                                                    <img [src]="iconimage" [ngClass]="btnupload" />
+
+                                                    <hr>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="carousel-item">
+
+                                            <p class="para"> &nbsp;
+                                                <!-- Lorem ipsum dolor sit amet, consectetur adipiscing elit. -->
+                                            </p>
+                                            <div class="row inputset">
+
+                                                <div class="col-sm-12"><input placeholder="Website link*" type="text"
+                                                        formControlName="Website"
+                                                        [(ngModel)]="_merchentFormData.Website"
+                                                        (keyup)="formauthdatavalidate()" class="w-100" id="Website"
+                                                        onkeydown="javascript: return (event.keyCode ==32) ?false  : true" />
+                                                </div>
+                                                <div class="col-sm-12">
+                                                    <div *ngIf="merchantForm.controls['Website'].errors && !merchantForm.controls['Website'].pristine"
+                                                        class="text-danger error">
+                                                        <div
+                                                            [hidden]="!merchantForm.controls['Website'].errors.required">
+                                                        </div>
+
+                                                    </div>
+                                                    <div class="text-danger error">
+                                                        <span [hidden]="txtErrormsg">{{websitevalidmsg}}</span>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-sm-12">
+                                                    <hr>
+                                                </div>
+                                            </div>
+
+                                            <div class="row inputset">
+
+                                                <div class="col-sm-12"><input placeholder="Email*" type="text"
+                                                        formControlName="Email" [(ngModel)]="_merchentFormData.Email"
+                                                        (keyup)="formauthdatavalidate()" class="w-100"
+                                                        onkeydown="javascript: return (event.keyCode ==32) ?false  : true" />
+                                                </div>
+
+                                                <div class="col-sm-12">
+                                                    <div *ngIf="merchantForm.controls['Email'].errors && !merchantForm.controls['Email'].pristine"
+                                                        class="text-danger error">
+                                                        <div [hidden]="!merchantForm.controls['Email'].errors.required">
+                                                        </div>
+                                                        <div [hidden]="!merchantForm.controls['Email'].errors?.pattern">
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="text-danger error">
+                                                        <span [hidden]="txtErrormsg">{{emailValiderrormsg}}</span>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-sm-12">
+                                                    <hr>
+                                                </div>
+                                            </div>
+
+                                            <div class="row inputset">
+
+                                                <div class="col-sm-12"><input type="password" placeholder="Password*"
+                                                        appBlockCopyPaste formControlName="PWD"
+                                                        [(ngModel)]="_merchentFormData.PWD"
+                                                        (keyup)="formauthdatavalidate()" class="w-100" minlength="6"
+                                                        maxlength="12"
+                                                        onkeydown="javascript: return (event.keyCode ==32) ?false  : true" />
+                                                </div>
+                                                <div class="col-sm-12">
+                                                    <div *ngIf="merchantForm.controls['PWD'].errors && !merchantForm.controls['PWD'].pristine"
+                                                        class="text-danger error">
+                                                        <div [hidden]="!merchantForm.controls['PWD'].errors.required">
+                                                        </div>
+                                                        <div [hidden]="!merchantForm.controls['PWD'].errors?.pattern">
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="text-danger error">
+                                                        <span [hidden]="txtErrormsg">{{pwdValiderrormsg}}</span>
+                                                    </div>
+
+                                                </div>
+
+                                                <div class="col-sm-12">
+                                                    <hr>
+                                                </div>
+
+                                            </div>
+
+                                            <div class="row inputset">
+
+                                                <div class="col-sm-12"><input placeholder="Confirm Password*"
+                                                        appBlockCopyPaste type="password"
+                                                        formControlName="confirmpassword"
+                                                        [(ngModel)]="_merchentFormData.CPWD"
+                                                        (keyup)="formauthdatavalidate();" class="w-100" minlength="6"
+                                                        maxlength="12"
+                                                        onkeydown="javascript: return (event.keyCode ==32) ?false  : true" />
+                                                </div>
+                                                <div class="col-sm-12">
+                                                    <div *ngIf="merchantForm.controls['confirmpassword'].errors && !merchantForm.controls['confirmpassword'].pristine"
+                                                        class="text-danger error-msg float-right">
+                                                        <div
+                                                            [hidden]="!merchantForm.controls['confirmpassword'].errors.required">
+                                                        </div>
+                                                    </div>
+                                                    <div class="text-danger error">
+                                                        <span [hidden]="txtErrormsg">{{cpwdValiderrormsg}}</span>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-sm-12">
+                                                    <hr>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                        <div class="carousel-item">
+                                            <div class="row inputset">
+
+                                                <div class="col-sm-12">
+                                                    <p-multiSelect [options]="categories" placeholder="categories"
+                                                        formControlName="categorie" [ngClass]="pmultiStyleSell"
+                                                        [(ngModel)]="_merchentFormData.Categories"
+                                                        defaultLabel="Categories*"
+                                                        [panelStyle]="{minWidth:'12em'}"
+                                                        (onChange)="dropdownvalidation()">
+
+                                                    </p-multiSelect>
+
+                                                </div>
+                                                <div class="col-sm-12">
+                                                    <hr>
+                                                </div>
+                                            </div>
+
+                                            <div class="row inputset">
+
+                                                <div class="col-sm-12">
+                                                    <p-dropdown [options]="countries" formControlName="country"
+                                                        [ngClass]="pdropStyle" Placeholder="Country"
+                                                        [(ngModel)]="_merchentFormData.Country" [autoWidth]="false"
+                                                        [filter]="false" (onChange)="dropdownvalidation()">
+
+                                                    </p-dropdown>
+
+                                                </div>
+                                                <div class="col-sm-12">
+                                                    <hr>
+                                                </div>
+                                            </div>
+                                            <div class="row inputset">
+
+                                                <div class="col-sm-12">
+                                                    <p-multiSelect [options]="sellcountry"
+                                                        placeholder="Where do you want to Sell*"
+                                                        formControlName="SellCountrie" [ngClass]="pmultiStyleCountry"
+                                                        [(ngModel)]="_merchentFormData.SellCountries"
+                                                        defaultLabel="Where do you want to Sell*"
+                                                        [panelStyle]="{minWidth:'12em'}"
+                                                        (focusout)="dropdownvalidation()">
+
+                                                    </p-multiSelect>
+                                                </div>
+                                                <div class="col-sm-12">
+                                                    <hr>
+                                                </div>
+                                            </div>
+
+                                            <div class="row inputset">
+
+                                                <div class="col-sm-12 terms_chk mt-2">                           
+                                                    <p-checkbox class="chk" [(ngModel)]="Terms"
+                                                    (onChange)="IsAcceptterms($event)" formControlName="TermandCondition"
+                                                    binary="true" [disabled]='true' [hidden]="true"></p-checkbox>
+                                                    <p class="terms">I agree to the <a href="javascript:void(0)"
+                                                        (click)="showTermsDialog()"><u>Terms & Conditions of
+                                                        dunyana</u></a>.</p>
+                                                    <!-- <p class="terms"> By continuing, you agree to our<a
+                                                            href="javascript:void(0)" (click)="showDialog()"> Terms &
+                                                            Conditions</a></p> -->
+                                                </div>
+                                             
+                                            </div>
+
+                                        </div>
+
+                                        <div class="carousel-item">
+                                            <div class="center col-md-12 p-0 text-center">
+
+                                                <img class="text-center success_img" [src]="checkinfo">
+                                                <h2>Success!</h2>
+                                                <p>
+                                                    We have received your registration request. Please allow us some time
+                                                    to process.
+                                                </p>
+                                                <p>Redirecting...</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row btns">
+                                    <div class="col-sm-9 m-auto">
+                                        <p-button class="line_btn sblue" [label]="submitbtntext" href="#demo"
+                                            [hidden]="verifybtndisplay" data-slide="next" [ngClass]="btndisable"
+                                            (click)="addMerchent()"></p-button>
+
+                                    </div>
+                                    <div class="col-sm-8 em-reg">
+                                        <span [hidden]="show" [ngClass]="responsesty" #div></span>
+                                    </div>
+
+                                </div>
+
+                                <div class="col-sm-12">
+                                    <span [hidden]="txtErrormsg"
+                                        class="text-danger error cat-err">{{dropValiderromsg}}</span>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer class="trans">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <p>Photo by Jolly Chic.<strong> Shop this look</strong>.</p>
+                </div>
+            </div>
+        </div>
+
+    </footer>
+</section>
+
+<div class="loading-indicator mid" *ngIf="ProgressSpinnerDlg">
+    <p-progressSpinner></p-progressSpinner>
+</div>
+
+<div class="overlay" *ngIf="ProgressSpinnerDlg"></div>
+<app-terms-conditions [isChecked]='false' [display]="display" (displayChange)="onDialogClose($event)"></app-terms-conditions>
+<!-- The Modal -->
+
+<div class="modal" id="myModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Profile Image</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+
+
+            <div class="modal-body">
+                <div class="row inputset">
+
+                    <div class="col-sm-12">
+                        <image-cropper [imageChangedEvent]="imageChangedEvent" [maintainAspectRatio]="true"
+                            [aspectRatio]="4 / 3" [resizeToWidth]="150" [resizeToHeight]="150" format="png"
+                            (imageCropped)="imageCropped($event)" (imageLoaded)="imageLoaded()"
+                            (cropperReady)="cropperReady()" (loadImageFailed)="loadImageFailed()" [roundCropper]="true">
+                        </image-cropper>
+                    </div>
+                    <div class="col-sm-12">
+                        <img [src]="croppedImage" class="uploadimgsty" />
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" (click)="saveCropImage()" class="btn btn-primary btn-sm"
+                    data-dismiss="modal">Save</button>
+                <button type="button" class="btn btn-danger btn-sm" data-dismiss="modal">Close</button>
+            </div>
+
+        </div>
+    </div>
+</div>
+<div class="modal" id="myModal1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Company Logo</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+
+
+            <div class="modal-body">
+                <div class="row inputset">
+
+                    <div class="col-sm-12">
+                        <image-cropper [imageChangedEvent]="imageChangedEvent" [maintainAspectRatio]="true"
+                            [aspectRatio]="4 / 3" [resizeToWidth]="150" [resizeToHeight]="150" format="png"
+                            (imageCropped)="imageCropped($event)" (imageLoaded)="imageLoaded()"
+                            (cropperReady)="cropperReady()" (loadImageFailed)="loadImageFailed()" [roundCropper]="true">
+                        </image-cropper>
+                    </div>
+                    <div class="col-sm-12">
+                        <img [src]="croppediconImage" class="uploadimgsty" />
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" (click)="saveiconCropImage()" class="btn btn-primary btn-sm"
+                    data-dismiss="modal">Save</button>
+                <button type="button" class="btn btn-danger btn-sm" data-dismiss="modal">Close</button>
+            </div>
+
+        </div>
+    </div>
+</div>

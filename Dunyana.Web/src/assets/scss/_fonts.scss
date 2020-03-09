@@ -1,0 +1,160 @@
+$teshrin_arltlight-font-path: "../src/assets/scss/fonts/teshrinarlt-light-webfont.woff";
+$teshrin_arltmedium-font-path: "../src/assets/scss/fonts/teshrinarlt-medium-webfont.woff";
+
+@font-face {
+    font-family: 'teshrin_arltlight';
+    src: local('teshrin_arltlight'), url($teshrin_arltlight-font-path) format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'teshrin_arltmedium';
+    src: local('teshrin_arltmedium'), url($teshrin_arltmedium-font-path) format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'icomoon';
+    src: url($icon-font);
+    src: url($icon-font1) format('embedded-opentype'), url($icon-font2) format('truetype'), url($icon-font3) format('woff'), url($icon-font4) format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+[class^="icon-"],
+[class*=" icon-"] {
+    /* use !important to prevent issues with browser extensions that change fonts */
+    font-family: 'icomoon' !important;
+    // speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    /* Better Font Rendering =========== */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-arrow_long:before {
+    content: "\e903";
+    color: #24b8eb;
+}
+
+.icon-arrows:before {
+    content: "\e904";
+}
+
+.icon-cart:before {
+    content: "\e905";
+    color: #24b8eb;
+}
+
+.icon-cname:before {
+    content: "\e906";
+    color: #fff;
+}
+
+.icon-Cursor:before {
+    content: "\e907";
+}
+
+.icon-cust_serv:before {
+    content: "\e908";
+}
+
+.icon-edit:before {
+    content: "\e909";
+}
+
+.icon-fb_logo:before {
+    content: "\e90a";
+}
+
+.icon-insta_logo:before {
+    content: "\e90b";
+}
+
+.icon-line:before {
+    content: "\e90c";
+}
+
+.icon-logo:before {
+    content: "\e90d";
+}
+
+.icon-mc_logo .path1:before {
+    content: "\e90e";
+    color: rgb(255, 255, 255);
+}
+
+.icon-mc_logo .path2:before {
+    content: "\e90f";
+    margin-left: -1em;
+    color: rgb(255, 95, 0);
+}
+
+.icon-mc_logo .path3:before {
+    content: "\e910";
+    margin-left: -1em;
+    color: rgb(235, 0, 27);
+}
+
+.icon-mc_logo .path4:before {
+    content: "\e913";
+    margin-left: -1em;
+    color: rgb(247, 158, 27);
+}
+
+.icon-mc_logo .path5:before {
+    content: "\e914";
+    margin-left: -1em;
+    color: rgb(247, 158, 27);
+}
+
+.icon-offer:before {
+    content: "\e911";
+}
+
+.icon-payment:before {
+    content: "\e912";
+}
+
+.icon-tracking:before {
+    content: "\e916";
+}
+
+.icon-twitter_logo:before {
+    content: "\e917";
+    color: #fff;
+}
+
+.icon-add .path1:before {
+    content: "\e900";
+    color: white;
+}
+
+.icon-add .path2:before {
+    content: "\e901";
+    margin-left: -0.98828125em;
+    color: white;
+}
+
+.icon-add .path3:before {
+    content: "\e902";
+    margin-left: -0.98828125em;
+    color: white;
+}
+
+
+.icon-light:before {
+    content: "\e915";
+    color: #ffffff;
+}
+
+.icon-moon:before {
+    content: "\e918";
+    color: #ffffff;
+}

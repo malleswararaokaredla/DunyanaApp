@@ -1,0 +1,122 @@
+<section class="signin">
+  <h5>
+    <p-toast [showTransitionOptions]="'0ms'" [hideTransitionOptions]="'2500ms'"></p-toast>
+  </h5>
+  <header class="trans">
+
+    <div class="main-header">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-6">
+            <a [routerLink]="['/customer/home']" class="site-logo"><img
+                [src]="translate.store.currentLang =='en' ? 'assets/layout/images/glogo.png':'assets/layout/images/glogo_ar.png'"
+                alt="dunyana" /></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+  <main>
+    <section class="signin_wrap">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-5 col-xl-5">
+            <div class="si">
+              <h4>Sign In</h4>
+
+              <form class="from_wrapper login_wrp" [formGroup]="loginForm" (ngSubmit)="OnLogin()">
+                <div class="row inputset">
+                  <div class="col-sm-3"><label>Email</label><span class="">*</span></div>
+                  <div class="col-sm-9"><input type="text" #loginfocus placeholder="email@domain.com"
+                      formControlName="lEmail" id="lEmail" appInputSpace>
+                    <div *ngIf="loginForm.controls['lEmail'].errors && !loginForm.controls['lEmail'].pristine"
+                      class="login-error">
+                      <div [hidden]="!loginForm.controls['lEmail'].errors.required">Please enter email</div>
+                      <div [hidden]="!loginForm.controls['lEmail'].errors?.pattern">Please enter valid email</div>
+                    </div>
+
+                  </div>
+                  <div class="col-sm-12">
+                    <hr>
+                  </div>
+                </div>
+                <div class="row inputset">
+                  <div class="col-sm-3"><label>Password</label><span class="">*</span></div>
+                  <div class="col-sm-9">
+                    <input type="password" formControlName="lPassword" id="lPassword"
+                      onkeydown="javascript: return (event.keyCode ==32) ?false  : true" placeholder="********"
+                      maxlength="20" minlength="1" pInputText appInputSpace appBlockCopyPaste>
+                    <div *ngIf="loginForm.controls['lPassword'].errors && !loginForm.controls['lPassword'].pristine"
+                      class="login-error">
+                      <div [hidden]="!loginForm.controls['lPassword'].errors.required">Please enter password</div>
+                      <!-- <div [hidden]="!loginForm.controls['lPassword'].errors?.minlength">Please enter valid password</div> -->
+
+                    </div>
+                  </div>
+                  <div class="col-sm-12">
+                    <hr>
+                  </div>
+                </div>
+
+                <div class="row acset">
+                  <div class="col-sm-4"></div>
+                  <div class="col-sm-8 right-align"><a [routerLink]="['/forgotpassword']">Forgot
+                      your password?</a></div>
+                </div>
+
+                <div class="row btset">
+                  <div class="col-sm-12 col-xl-6">
+
+
+                    <p-button class="line_btn sblue" label="Sign in" [disabled]="loginForm.invalid"></p-button>
+                  </div>
+
+                </div>
+
+
+                <!-- <div class="row ">
+                  <div class="col-sm-12">
+                    <p class="terms">By continuing, you agree to our <a href="javascript:void(0)"
+                        (click)="showDialog()">Terms &
+                        Conditions</a>.</p>
+                  </div>
+                </div> -->
+                <div class="row ftset">
+                  <div class="col-sm-12">
+                    <p>New to Dunyana?</p>
+                    <a [routerLink]="['/signup']" class="line_btn lblack">Create your account</a>
+                  </div>
+                </div>
+                <div class="pt-2">
+                  <div class="errormsg">
+                    <span [hidden]="show" #div></span>
+                  </div>
+                </div>
+
+              </form>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer class="trans">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <p>Photo by Jolly Chic.<strong> Shop this look</strong>.</p>
+        </div>
+      </div>
+    </div>
+
+  </footer>
+
+</section>
+<div class="loading-indicator mid" *ngIf="ProgressSpinnerDlg">
+  <p-progressSpinner></p-progressSpinner>
+</div>
+
+<div class="overlay" *ngIf="ProgressSpinnerDlg"></div>
+
+<app-terms-conditions [display]="display" (displayChange)="onDialogClose($event)"></app-terms-conditions>

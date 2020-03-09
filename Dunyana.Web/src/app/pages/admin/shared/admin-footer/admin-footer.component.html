@@ -1,0 +1,44 @@
+<footer>
+  <div class="container">
+      <div class="row">
+          <div class="col-md-7 comp_info d-none">
+              <a [routerLink]="['/customer/home']" (click)="gotoTop()"><img [src]="translate.store.currentLang =='en' ? 'assets/layout/images/footer_logo.png':'assets/layout/images/footer_logo_ar.png'" alt="dunyana" /></a>
+              <p>+8002464444<br> <a href="mailto:admin@dunyana.com">admin@dunyana.com</a></p>
+              <ul class="social">
+                  <li><a href="#"><i class="icomoon icon-fb_logo"></i></a></li>
+                  <li><a href="#"><i class="icomoon icon-twitter_logo"></i></a></li>
+                  <li><a href="#"><i class="icomoon icon-insta_logo"></i></a></li>
+
+              </ul>
+          </div>
+          <div class="col-md-5 ftlinks">
+              <!-- <ul>
+                  <li><a [routerLink]="['/customer/contact-us']" (click)="gotoTop()">{{ 'ContactUs' | translate }}</a></li>
+                  <li><a [routerLink]="['/customer/orders-payment']" (click)="gotoTop()">{{ 'Ordering&Payment' | translate }}</a></li>
+                  <li><a [routerLink]="['/customer/shipping']" (click)="gotoTop()">{{ 'Shipping' | translate }}</a></li>
+                  <li><a [routerLink]="['/customer/Returns']" (click)="gotoTop()">{{ 'Returns' | translate }}</a></li>
+                  <li><a [routerLink]="['/customer/faq']" (click)="gotoTop()">{{ 'FAQ' | translate }}</a></li>
+                  <li><a [routerLink]="['/customer/about-dunyana']" (click)="gotoTop()">{{ 'AboutDunyana' | translate }}</a></li>
+                  <li><a [routerLink]="['/customer/privacy-policy']" (click)="gotoTop()">{{ 'PrivacyPolicy' | translate }}</a></li>
+                  <li><a href="javascript:void(0)" (click)="showDialog()">{{ 'Terms&Conditions' | translate }}</a></li>
+                  <li><a [routerLink]="['/customer/press-enquiries']" (click)="gotoTop()">{{ 'PressEnquiries' | translate }}</a></li>
+              </ul> -->
+          </div>
+      </div>
+  </div>
+  <div class="container-fluid">
+      <div class="row">
+          <div class="col-sm-12 ftdivider">
+
+          </div>
+      </div>
+  </div>
+  <div class="container">
+      <!-- <i class="icomoon icon-arrow_long" (click)="gotoTop()"></i> -->
+      <div class="row">
+          <div id="top" class="col-sm-12 fttxt">
+              <p>&copy; {{ 'AllRights' | translate }}</p>
+          </div>
+      </div>
+  </div>
+</footer>

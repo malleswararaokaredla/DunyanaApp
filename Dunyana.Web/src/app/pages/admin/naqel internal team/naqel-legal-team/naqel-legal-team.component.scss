@@ -1,0 +1,112 @@
+.btnsty{
+    margin: 5px;
+    width: 100px;
+    height: 43px;
+}
+h3{
+    text-align: center;
+}
+.mid{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50% -50%);
+    z-index: 1;
+  }
+
+  .overlay{
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: black;
+    opacity: 0.5;
+    z-index: 3;
+    left: 0;
+    top: 0;
+  }
+
+
+.succmsg{
+  text-align: center;
+  color: green;
+}
+.charnumlenth{
+  text-align: center;
+  font-family: "Open Sans", "Helvetica Neue", sans-serif;
+    font-size: 14px;
+    font-weight: bold;
+    float: right;
+}
+
+
+.disable{
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.line_btn {
+  &.sblue {
+       background-position: 8px 40px;
+       background-color:transparent;
+       border:none;
+       outline: none;
+
+           &:hover {
+          background-position: 8px -20px;
+
+      }
+   
+  }
+
+ 
+}
+.uploadimgsty{
+  // width: 50%;
+}
+
+.upl-btn{
+  button{
+      background-color: #00c0f3;
+      color: white;
+      border-radius: 10px;
+      text-align: center;
+      border: 0;
+      font-size: 10pt;
+      margin-bottom: 5px;
+      margin-top: 4px;
+  }
+}
+
+.mid{
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50% -50%);
+  z-index: 1;
+}
+
+.overlay{
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background: black;
+  opacity: 0.5;
+  z-index: 0;
+  left: 0;
+  top: 0;
+}
+
+.msgerror {
+  text-align: center;
+  color: red;
+ 
+  /* float: right; */
+  position: absolute;
+  /* right: 5%; */
+}
+
+.charmsgerror {
+  text-align: center;
+  color: red;
+
+}

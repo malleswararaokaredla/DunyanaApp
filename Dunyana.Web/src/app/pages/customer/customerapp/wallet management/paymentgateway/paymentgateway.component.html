@@ -1,0 +1,14 @@
+<section class="signin_wrap">
+
+  <div class="container">
+    <div class="row">
+      <h2 [hidden]="!amountsuccess">payment added successfully</h2>
+    </div>
+  </div>
+</section>
+
+<div class="loading-indicator mid" *ngIf="ProgressSpinnerDlg">
+  <p-progressSpinner></p-progressSpinner>
+</div>
+
+<div class="overlay" *ngIf="ProgressSpinnerDlg"></div>

@@ -1,0 +1,222 @@
+<app-admin-menu></app-admin-menu>
+
+<section class="ad_legal">
+    <div class="container">
+
+        <div class="row ">
+            <div class="col-sm-12">
+                <div class="ui-helper-clearfix">
+                    <button type="button" pButton icon="pi pi-download" [disabled]="excelDown" (click)="exportToExcel()"
+                        label="Download to CSV" class="pull-right"></button>
+                    <button pButton [disabled]="excelDown" label="Clear All Filters" (click)="onClick()"
+                        class="pull-right" style="margin-right:10px;"></button>
+                </div>
+            </div>
+            <div class="col-sm-12">
+                <div class="tab_table">
+                    <p-tabView [activeIndex]="index" (onChange)="changeTab($event)">
+                        <p-tabPanel header="Open Requests">
+                            <p-table class="dun_table" #dtt [columns]="cols" [value]="naqelopenfilterdcopydata"
+                                [(selection)]="selectedopenmerchant" selectionMode="single" [paginator]="true"
+                                [rows]="10" (onRowSelect)="onRowSelect($event)"
+                                (onRowUnselect)="onopenRowUnselect($event)" [resizableColumns]="true">
+
+                                <ng-template pTemplate="header" let-columns>
+                                    <tr>
+                                        <th *ngFor="let col of columns" pResizableColumn>
+                                            {{col.header}}
+                                            <p-sortIcon [pSortableColumn]="col.field" [field]="col.field"
+                                                ariaLabel="Activate to sort"
+                                                ariaLabelDesc="Activate to sort in descending order"
+                                                ariaLabelAsc="Activate to sort in ascending order"></p-sortIcon>
+                                            <i class="pi pi-filter" style="font-size: 1em;cursor: pointer;"
+                                                (click)="showfilter(col.field)"></i>
+
+                                        </th>
+                                    </tr>
+                                    <tr>
+                                        <th *ngFor="let col of columns" [ngSwitch]="col.field">
+                                            <input *ngSwitchCase="'merchantName'" pInputText type="text"
+                                                (input)="dtt.filter($event.target.value, col.field, col.filterMatchMode)"
+                                                [value]="dtt.filters[col.field] ? dtt.filters[col.field].value : ''"
+                                                [hidden]="merchantName" (focusout)="filterExcel()">
+                                            <input *ngSwitchCase="'sourceLocation'" pInputText type="text"
+                                                (input)="dtt.filter($event.target.value, col.field, col.filterMatchMode)"
+                                                [value]="dtt.filters[col.field] ? dtt.filters[col.field].value : ''"
+                                                [hidden]="sourceLocation" (focusout)="filterExcel()">
+                                            <input *ngSwitchCase="'operatingCountries'" pInputText type="text"
+                                                (input)="dtt.filter($event.target.value, col.field, col.filterMatchMode)"
+                                                [value]="dtt.filters[col.field] ? dtt.filters[col.field].value : ''"
+                                                [hidden]="operatingCountries" (focusout)="filterExcel()">
+                                            <input *ngSwitchCase="'categories'" pInputText type="text"
+                                                (input)="dtt.filter($event.target.value, col.field, col.filterMatchMode)"
+                                                [value]="dtt.filters[col.field] ? dtt.filters[col.field].value : ''"
+                                                [hidden]="categories" (focusout)="filterExcel()">
+
+                                            <p-calendar #calendar [(ngModel)]="createdon" showButtonBar="true"
+                                                *ngSwitchCase="'requestCreatedOn'" [hidden]="requestCreatedOn"
+                                                [monthNavigator]="true" (onSelect)="filterDates()"
+                                                [yearNavigator]="true" [readonlyInput]="true" yearRange="2000:2030"
+                                                [styleClass]="pcalender" placeholder="Select Created Date"
+                                                (onClearClick)="clear()" dateFormat="mm-dd-yy">
+                                            </p-calendar>
+
+                                        </th>
+                                    </tr>
+                                </ng-template>
+                                <ng-template pTemplate="body" let-rowData let-columns="columns">
+                                    <tr [pSelectableRow]="rowData">
+                                        <td *ngFor="let col of columns" class="ui-resizable-column">
+                                            {{rowData[col.field]}}
+                                        </td>
+                                    </tr>
+
+                                </ng-template>
+                                <ng-template pTemplate="summary" let-rowData>
+                                    <div style="text-align:center">
+                                        <button type="button" pButton class="ui-button-success btnsty"
+                                            [disabled]="isrowselect" label="Review"
+                                            (click)="movetoInprocess()"></button>
+                                    </div>
+                                </ng-template>
+                            </p-table>
+
+                        </p-tabPanel>
+                        <p-tabPanel header="My Requests">
+                            <p-table class="dun_table" #dtinp [columns]="assigncols" [value]="naqelinprogressleagaldata"
+                                [(selection)]="selectedinprocessmerchant" selectionMode="single" [paginator]="true"
+                                [rows]="10" (onRowSelect)="oninprocessRowSelect($event)"
+                                (onRowUnselect)="oninprocessRowUnselect($event)" [resizableColumns]="true">
+
+                                <ng-template pTemplate="header" let-columns>
+                                    <tr>
+                                        <th *ngFor="let col of columns" pResizableColumn>
+                                            {{col.header}}
+                                            <p-sortIcon [field]="col.field" ariaLabel="Activate to sort"
+                                                [pSortableColumn]="col.field"
+                                                ariaLabelDesc="Activate to sort in descending order"
+                                                ariaLabelAsc="Activate to sort in ascending order"></p-sortIcon>
+                                            <i class="pi pi-filter" style="font-size: 1em;cursor: pointer;"
+                                                (click)="showlegalfilter(col.field)"></i>
+
+                                        </th>
+                                    </tr>
+                                    <tr>
+                                        <th *ngFor="let col of columns" [ngSwitch]="col.field">
+                                            <input *ngSwitchCase="'merchantName'" pInputText type="text"
+                                                (input)="dtinp.filter($event.target.value, col.field, col.filterMatchMode)"
+                                                [value]="dtinp.filters[col.field] ? dtinp.filters[col.field].value : ''"
+                                                [hidden]="lmerchantName" (focusout)="filterExcel()">
+                                            <input *ngSwitchCase="'merchantContractNumber'" pInputText type="text"
+                                                (input)="dtinp.filter($event.target.value, col.field, col.filterMatchMode)"
+                                                [value]="dtinp.filters[col.field] ? dtinp.filters[col.field].value : ''"
+                                                [hidden]="lmerchantContractNumber" (focusout)="filterExcel()">
+                                            <input *ngSwitchCase="'sourceLocation'" pInputText type="text"
+                                                (input)="dtinp.filter($event.target.value, col.field, col.filterMatchMode)"
+                                                [value]="dtinp.filters[col.field] ? dtinp.filters[col.field].value : ''"
+                                                [hidden]="lsourceLocation" (focusout)="filterExcel()">
+                                            <input *ngSwitchCase="'operatingCountries'" pInputText type="text"
+                                                (input)="dtinp.filter($event.target.value, col.field, col.filterMatchMode)"
+                                                [value]="dtinp.filters[col.field] ? dtinp.filters[col.field].value : ''"
+                                                [hidden]="loperatingCountries" (focusout)="filterExcel()">
+                                            <input *ngSwitchCase="'categories'" pInputText type="text"
+                                                (input)="dtinp.filter($event.target.value, col.field, col.filterMatchMode)"
+                                                [value]="dtinp.filters[col.field] ? dtinp.filters[col.field].value : ''"
+                                                [hidden]="lcategories" (focusout)="filterExcel()">
+                                            <input *ngSwitchCase="'requestStatus'" pInputText type="text"
+                                                (input)="dtinp.filter($event.target.value, col.field, col.filterMatchMode)"
+                                                [value]="dtinp.filters[col.field] ? dtinp.filters[col.field].value : ''"
+                                                [hidden]="requestStatus" (focusout)="filterExcel()">
+                                            <input *ngSwitchCase="'requestAssigneeName'" pInputText type="text"
+                                                (input)="dtinp.filter($event.target.value, col.field, col.filterMatchMode)"
+                                                [value]="dtinp.filters[col.field] ? dtinp.filters[col.field].value : ''"
+                                                [hidden]="requestAssigneeName" (focusout)="filterExcel()">
+                                        </th>
+                                    </tr>
+                                </ng-template>
+                                <ng-template pTemplate="body" let-rowData let-columns="columns">
+                                    <tr [pSelectableRow]="rowData">
+                                        <td *ngFor="let col of columns" class="ui-resizable-column">
+                                            {{rowData[col.field]}}
+                                        </td>
+                                    </tr>
+                                </ng-template>
+                            </p-table>
+                        </p-tabPanel>
+                    </p-tabView>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="succmsg">
+        <span [hidden]="movedtoinprocess">Merchant Moved to In Process Status Successfully </span>
+    </div>
+
+</section>
+
+
+<div class="changepassword">
+    <p-dialog header="Edit Merchant Status" [(visible)]="editdisplay" [modal]="true" [responsive]="true"
+        [style]="{width: '475px'}" [closeOnEscape]="true" (onHide)="onClose()">
+        <div class="row">
+            <div class="col-sm-6">
+                <label for="merchantname">Name</label>
+            </div>
+            <div class="col-sm-6">
+                <label><strong>{{merchantname}}</strong></label>
+
+            </div>
+        </div>
+
+        <div class="form-group" [hidden]="isapprovedtype">
+           
+           
+                <label for="contractnumber">Contract Number</label>
+                <!-- <input type="text" class="form-control" [minlength]="7" [maxlength]="10" placeholder="9876543210"
+                    [(ngModel)]="legalteam.merchantContractNumber" (keypress)="_keyPress($event)" /> -->
+                    <input type="text" class="form-control" placeholder="9876543210"
+                    [(ngModel)]="legalteam.merchantContractNumber" />
+        </div>
+
+        <div class="form-group">
+            <label for="ApprovalStatus">Status</label>
+            <select class="form-control" id="ApprovalStatus" (change)="getstatusdesc()" required
+                [(ngModel)]="legalteam.ApprovalStatus" name="ApprovalStatus">
+                <option *ngFor="let st of Status" [value]="st.id">{{st.description}}</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="Description">Description <span>*</span></label>
+            <textarea placeholder="Description" rows="3" class="form-control" id="Description" name="Description"
+                minlength="50" maxlength="500" [(ngModel)]="legalteam.Description"></textarea>
+
+            <span class="charnumlenth"> You
+                entered <code class="succmsg">{{legalteam.Description.trim().length}}</code> characters</span>
+        </div>
+
+        <div class="row justify-content-center mt-4">
+
+            <button class="line_btn sblue mr-4" [ngClass]="btndisable" (click)="Updatelegalstatus()">Update</button>
+            <button (click)="closeupdatedialog()" class="line_btn sblue">Cancel</button>
+
+        </div>
+        <div class="">
+            <div [ngClass]="responsesty">
+                <span>{{response}}</span>
+            </div>
+        </div>
+        <div class="loading-indicator mid" *ngIf="ProgressSpinnereditDlg">
+            <p-progressSpinner></p-progressSpinner>
+        </div>
+
+        <div class="overlay" *ngIf="ProgressSpinnereditDlg"></div>
+    </p-dialog>
+</div>
+
+
+<div class="loading-indicator mid" *ngIf="ProgressSpinnerDlg">
+    <p-progressSpinner></p-progressSpinner>
+</div>
+
+<div class="overlay" *ngIf="ProgressSpinnerDlg"></div>

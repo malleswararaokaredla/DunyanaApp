@@ -1,0 +1,90 @@
+<main>
+    <section class="accounts legal">
+        <div class="text_container">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-4 col-lg-4">
+
+                        <h4>Your Profile</h4>
+
+                        <div class="profile">
+
+                            <div class="thumb">
+                                <img [src]="profiledata.companyImage">
+                                <p>{{profiledata.company}}</p>
+                            </div>
+                            <div class="address">
+
+                                <p>Link Company<br><span class="file_nm"><a href="{{profiledata.website}}"
+                                            target="_blank">{{profiledata.website}}</a></span></p>
+                                <p>Email<br> <span>{{profiledata.email}}</span></p>
+                                <p>Categories<br> <span *ngFor="let item of listofcategories">
+                                        {{item.categoryName}}<br />
+                                    </span></p>
+                                <p>Country<br> <span>{{profiledata.country}}</span></p>
+                                <p>Where to sell<br>
+                                    <span *ngFor="let item of listofcountries">
+                                        {{item.sellCountryName}}<br />
+                                    </span>
+
+                                    <p class="text-blue float-left"><a (click)="showDialog()">Change password </a></p>
+                                    <p class="text-blue float-right edit"><a (click)="showEditDialog()"><i
+                                                class="text-blue icon-edit f-big mr-2"></i> Edit </a></p>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-xl-8 col-lg-8 links">
+                        <h4>Links</h4>
+                        <div class="links_container">
+                            <div class="lnks lr" [ngClass]="{'active':'Legal'==selecteddiv}">
+                                <a href="javascript:void(0);" (click)="showdiv('Legal');GoFocus()">
+                                    <h4>Legal <br>Requirements</h4>
+                                </a>
+                            </div>
+                            <div class="lnks bn" [ngClass]="{'active':'Banner'==selecteddiv}">
+                                <a href="javascript:void(0);" (click)="showdiv('Banner');GoFocus()">
+                                    <h4>Banner</h4>
+                                </a>
+                            </div>
+                            <div class="lnks dp" [ngClass]="{'active':'Deals'==selecteddiv}">
+                                <a href="javascript:void(0);" (click)="showdiv('Deals');GoFocus()">
+                                    <h4>Deals <br>& Promotions</h4>
+                                </a>
+                            </div>
+                            <div class="lnks" bt [ngClass]="{'active':'Billing'==selecteddiv}">
+                                <a href="javascript:void(0);" (click)="showdiv('Billing');GoFocus()">
+                                    <h4>Billing Terms</h4>
+                                </a>
+                            </div>
+
+                        </div>
+                        <div class="links_det_container">
+                            <div class="links_det" id="divfocus">
+
+                                <app-banner [childMessage]="parentMessage" [hidden]="banner"></app-banner>
+                                <app-billing-terms [hidden]="billing"></app-billing-terms>
+                                <app-deals-promotions [hidden]="deals"></app-deals-promotions>
+                                <app-legal-requirements [hidden]="legal"></app-legal-requirements>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+</main>
+
+<app-changepassword [display]="display" (displayChange)="onDialogClose($event)"></app-changepassword>
+
+<app-merchant-edit-profile [display]="editdialogdisplay" (displayChange)="onEditDialogClose($event)">
+</app-merchant-edit-profile>

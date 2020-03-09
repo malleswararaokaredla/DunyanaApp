@@ -1,0 +1,20 @@
+section.accounts .text_container .profile .address .text-blue a 
+{
+    cursor: pointer;
+}
+main
+{
+    padding:15px 0;
+    min-height: calc(100% - 194px);
+    .text_container
+    {
+        padding-top:15px;
+    }
+}
+.profile {
+    p{
+        span{
+           word-break: break-all; 
+        }
+    }
+   }

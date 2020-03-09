@@ -1,0 +1,129 @@
+<h4>Requirements</h4>
+
+
+<div class="row from_wrapper" >
+  <div class="col-sm-4">
+      <label for="contractnumber"><strong>Contract Number</strong></label>
+  </div>
+  <div class="col-sm-6">
+          <label class="lbl" >{{ContractNumber}}</label>
+  </div>
+</div>
+
+
+<form class="from_wrapper" [formGroup]="legalForm">
+
+  <div class="row inputset">
+    <div class="col-sm-4">
+      <label for="CR"><strong>CR *</strong></label>
+    </div>
+    <div class="col-sm-6">
+
+      <input pInputText type="text"  autofocus placeholder="CR *" id="CR" formControlName="CR" >
+
+      <div *ngIf="legalForm.controls['CR'].errors && !legalForm.controls['CR'].pristine" class="text-danger error">
+        <!-- maxlength="20"
+           <div [hidden]="!legalForm.controls['CR'].errors.required">
+          Please enter CR</div> -->
+          <!-- <div class="error_msg"
+          [hidden]="!legalForm.controls['CR'].errors?.pattern">
+          Please enter valid CR (Alphanumeric, no special characters)</div> -->
+      </div>
+    </div>
+
+  </div>
+  <div class="row inputset">
+    <div class="col-sm-4">
+      <label for="reqbrndac"><strong>Brand account</strong></label>
+  </div>
+    <div class="col-sm-6">
+      <input pInputText type="text" placeholder="Brand account *" id="reqbrndac" formControlName="Brandaccount">
+      <div *ngIf="legalForm.controls['Brandaccount'].errors && !legalForm.controls['Brandaccount'].pristine" class="text-danger error">
+        <!-- maxlength="15"
+          <div [hidden]="!legalForm.controls['Brandaccount'].errors.required">
+          Please enter Brand account</div> -->
+          <!-- <div class="error_msg"
+          [hidden]="!legalForm.controls['Brandaccount'].errors?.pattern">
+          Please enter valid Brand account (Only characters. No numerals and no special characters)</div> -->
+      </div>
+    </div>
+
+  </div>
+  <div class="row inputset">
+    <div class="col-sm-4">
+      <label for="banqname"><strong>Bank name</strong></label>
+  </div>
+    <div class="col-sm-6">
+      <input pInputText type="text" placeholder="Bank name *"  id="banqname" formControlName="Bankname">
+      <div *ngIf="legalForm.controls['Bankname'].errors && !legalForm.controls['Bankname'].pristine" class="text-danger error">
+        <!-- maxlength="15"
+           <div [hidden]="!legalForm.controls['Bankname'].errors.required">
+          Please enter Bank name</div> -->
+          <!-- <div class="error_msg"
+          [hidden]="!legalForm.controls['Bankname'].errors?.pattern">
+          Please enter valid Bank name (Only characters. No numerals and no special characters)</div> -->
+      </div>
+    </div>
+
+  </div>
+
+  <div class="row inputset">
+    <div class="col-sm-4">
+      <label for="banqname"><strong>Account number</strong></label>
+  </div>
+    <div class="col-sm-6">
+      <input pInputText type="text"  placeholder="A/C number *" maxlength="20" id="accname" formControlName="Accountnum">
+      <div *ngIf="legalForm.controls['Accountnum'].errors && !legalForm.controls['Accountnum'].pristine" class="text-danger error">
+        <!-- maxlength="20"
+          <div [hidden]="!legalForm.controls['Accountnum'].errors.required">
+          Please enter Account number</div> -->
+          <!-- <div class="error_msg"
+        [hidden]="!legalForm.controls['Accountnum'].errors?.pattern">
+        Please enter valid Account number (Only numeric values)</div> -->
+      </div>
+    </div>
+
+  </div>
+  <div class="row inputset">
+    <div class="col-sm-4">
+      <label for="contractnumber"><strong>Address</strong></label>
+  </div>
+    <div class="col-sm-6">
+      <input pInputText type="text" placeholder="Address *" id="addrs" formControlName="Address" >
+      <div *ngIf="legalForm.controls['Address'].errors && !legalForm.controls['Address'].pristine" class="text-danger error">
+        <!-- maxlength="50" 
+          <div [hidden]="!legalForm.controls['Address'].errors.required">
+          Please enter Address</div> -->
+          <!-- <div class="error_msg"
+        [hidden]="!legalForm.controls['Address'].errors?.pattern">
+        Please enter valid Address (Alpha numeric. do not allow special characters other than # or - or /.)</div> -->
+      </div>
+    </div>
+
+  </div>
+  <div class="row inputset">
+    <div class="col-sm-4">
+      <label for="contractnumber"><strong>Contract Number</strong></label>
+  </div>
+    <div class="col-sm-6">
+      <input pInputText type="text" placeholder="Swift code *" id="swftcode"  formControlName="Swiftcode">
+      <div *ngIf="legalForm.controls['Swiftcode'].errors && !legalForm.controls['Swiftcode'].pristine" class="text-danger error">
+        <!-- maxlength="12" 
+          <div [hidden]="!legalForm.controls['Swiftcode'].errors.required">
+          Please enter Swift code</div> -->
+          <!-- <div class="error_msg"
+        [hidden]="!legalForm.controls['Swiftcode'].errors?.pattern">
+        Please enter valid Swift code (Alpha numeric)</div> -->
+      </div>
+    </div>
+  </div>
+  <div class="btn_cont btnPos">
+   
+    <a href="javascript:void(0)" style="width:145px; text-align: center" class="line_btn sblue"
+    (click)="Updatelegaldata()" >Update</a>
+
+  </div>
+  <div [ngClass]="responsesty">
+    <span>{{response}}</span>
+  </div>
+</form>

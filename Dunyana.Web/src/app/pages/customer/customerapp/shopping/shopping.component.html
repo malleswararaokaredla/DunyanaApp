@@ -1,0 +1,185 @@
+<section class="home_banner">
+
+    <div *ngIf="translate.store.currentLang =='en'">
+        <ngu-carousel #headerCarousel [inputs]="carouselConfig" [dataSource]="adminpromotionsenglist">
+            <div *nguCarouselDef="let item;" class="item">
+                <div *ngIf="item.englishImage!=''">
+                    <div class="item" [ngStyle]="{'background-image':'url('+item.englishImage+')'}"
+                        (click)="Navigatetomerchanturl(item)">
+                        <div class="text_container">
+                            <div class="container">
+
+                                <div class="row">
+                                    <div class="col-sm-12 col-xl-12 p-o">
+                                        <!-- <h1>{{ 'allyourfavourite' | translate }}<br />
+                                            {{ 'brandsinoneplace' | translate }}
+                                            <br /><strong>{{ 'shoptheworld'  | translate }}</strong></h1> -->
+
+                                        <!-- <p><a href="javascript:void(0)" (click)="shopbycategory()"
+                                                class="line_btn blue">{{ 'Explorecategories' | translate }}</a></p>
+
+                                        <p><a href="javascript:void(0)" (click)="shopbycategory()"
+                                                class="line_btn blue">{{ 'Explorecategories' | translate }}</a></p> -->
+
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <button NguCarouselNext class="rightRs"> <i class="fa fa-angle-right"></i> </button>
+            <button NguCarouselPrev class="leftRs"> <i class="fa fa-angle-left"></i> </button>
+            <ul class="myPoint" NguCarouselPoint>
+                <li *ngFor="let j of headerCarousel.pointNumbers; let j = index" [class.active]="j==headerCarousel.activePoint" (click)="headerCarousel.moveTo(j)">
+                </li>
+            </ul>
+        </ngu-carousel>
+    </div>
+    <div *ngIf="translate.store.currentLang =='ar'">
+        <ngu-carousel #headerCarousel [inputs]="carouselConfig" [dataSource]="adminpromotionsarbclist">
+            <div *nguCarouselDef="let item;" class="item">
+                <div *ngIf="item.arabicImage!=''">
+                    <div class="item" [ngStyle]="{'background-image':'url('+item.arabicImage+')'}"
+                        (click)="Navigatetomerchanturl(item)">
+                        <div class="text_container">
+                            <div class="container">
+
+                                <div class="row">
+                                    <div class="col-sm-12 col-xl-12 p-o">
+                                        <!-- <h1>{{ 'allyourfavourite' | translate }}<br />
+                                            {{ 'brandsinoneplace' | translate }}
+                                            <br /><strong>{{ 'shoptheworld'  | translate }}</strong></h1> -->
+
+                                        <!-- <p><a href="javascript:void(0)" (click)="shopbycategory()"
+                                                class="line_btn blue">{{ 'Explorecategories' | translate }}</a></p>
+
+                                        <p><a href="javascript:void(0)" (click)="shopbycategory()"
+                                                class="line_btn blue">{{ 'Explorecategories' | translate }}</a></p> -->
+
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <button NguCarouselNext class="rightRs"> <i class="fa fa-angle-right"></i> </button>
+            <button NguCarouselPrev class="leftRs"> <i class="fa fa-angle-left"></i> </button>
+            <ul class="myPoint" NguCarouselPoint>
+                <li *ngFor="let j of headerCarousel.pointNumbers; let j = index" [class.active]="j==headerCarousel.activePoint" (click)="headerCarousel.moveTo(j)">
+                </li>
+            </ul>
+        </ngu-carousel>
+    </div>
+</section>
+
+<section class="offerbadge">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-12">
+
+                <div *ngIf="translate.store.currentLang =='en'">
+                    <ngu-carousel #headerCarousel [inputs]="carouselConfig" [dataSource]="engbannerslist">
+                        <div *nguCarouselDef="let item;" class="item">
+                            <div class="ob" (click)="Navigatetomerchanturl(item)">
+                                <img alt="Thumbnail [100%x225]" class="card-img-top" src="{{item.englishImage}}">
+                            </div>
+                        </div>
+                    </ngu-carousel>
+                </div>
+
+                <div *ngIf="translate.store.currentLang =='ar'">
+                    <ngu-carousel #headerCarousel [inputs]="carouselConfig" [dataSource]="arbbannerlist">
+                        <div *nguCarouselDef="let item;" class="item">
+                            <div class="ob" (click)="Navigatetomerchanturl(item)">
+                                <img alt="Thumbnail [100%x225]" class="card-img-top" src="{{item.arabicImage}}">
+
+                            </div>
+                        </div>
+                    </ngu-carousel>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+<app-categoriesslider [childMessage]="parentMessage"></app-categoriesslider>
+
+<section>
+    <div class="container-fluid">
+        <hr />
+    </div>
+</section>
+
+
+<section class="category brands" id="brands">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-10 offset-md-1">
+                <h2>Merchants</h2>
+                <p class="text-center let-space">
+                    <span *ngFor="let char of alphabetpaging" [ngClass]="{'active':char == selectedchar}"
+                        (click)="Filterbyalphabet(char)">{{char}}</span>
+                </p>
+            </div>
+        </div>
+        <hr />
+    </div>
+</section>
+
+
+<section class="">
+    <div class="container-fluid">
+
+        <div class="row">
+            <div class="col-md-6" *ngFor="let merchant of pagedItems">
+                <div class="card mb-4 box-shadow" (click)="redirecttomarchantsite(merchant.merchantUrl)"><img
+                        alt="Thumbnail [100%x225]" class="card-img-top" src="{{merchant.merchantWebImage}}">
+                    <div class="card-body">
+                        <p class="card-text">{{merchant.merchantName}}</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <!-- pager -->
+        <div class="col-md-12 text-center">
+            <ul *ngIf="pager.pages && pager.pages.length" class="pagination">
+                <li [ngClass]="{disabled:pager.currentPage === 1}">
+                    <a (click)="setPage(1)">First</a>
+                </li>
+                <li [ngClass]="{disabled:pager.currentPage === 1}">
+                    <a (click)="pager.currentPage === 1?'': setPage(pager.currentPage - 1)">Previous</a>
+                </li>
+                <li *ngFor="let page of pager.pages" [ngClass]="{active:pager.currentPage === page}">
+                    <a (click)="setPage(page)">{{page}}</a>
+                </li>
+                <li [ngClass]="{disabled:pager.currentPage === pager.totalPages}">
+                    <a (click)="pager.currentPage === pager.totalPages?'':setPage(pager.currentPage + 1)">Next</a>
+                </li>
+                <li [ngClass]="{disabled:pager.currentPage === pager.totalPages}">
+                    <a (click)="setPage(pager.totalPages)">Last</a>
+                </li>
+            </ul>
+
+        </div>
+
+        <div class="no-orders" [hidden]="isempty">
+            <span>No merchants found</span>
+        </div>
+    </div>
+
+</section>
+
+<div class="loading-indicator mid" *ngIf="ProgressSpinnerDlg">
+    <p-progressSpinner></p-progressSpinner>
+</div>
+
+<div class="overlay" *ngIf="ProgressSpinnerDlg"></div>
+
+<app-merchant-url-not-found [display]="display" (displayChange)="onDialogClose($event)"></app-merchant-url-not-found>

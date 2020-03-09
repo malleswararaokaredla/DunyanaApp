@@ -1,0 +1,33 @@
+
+<section class="container-fluid carouselSlider category" id="catg" [ngClass]="hidesliderbtns">
+        <h2>{{ childcustMessage | translate }}</h2>
+        <p-carousel headerText="items" [value]="items" numVisible="5" responsive="true" circular="true">
+            <ng-template let-item pTemplate="item">
+                <div *ngIf="item.merchantCount==0" class="ui-grid ui-grid-responsive imgsty1" (click)="navigatetocategory(item.id);">
+                    <div class="ui-grid-row">
+                        <div class="ui-grid-col-12"><img src="{{item.image}}" width="210" class="radius"></div>
+                    </div>
+                    <div class="ui-grid-row">
+                        <div id="catslider" class="ui-grid-col-12 desc" [ngClass]="{'active':item.id == childMessage}">{{item.name | translate }}</div>
+                    </div>
+             
+                </div>
+                <!-- <div *ngIf="item.merchantCount>0" class="ui-grid ui-grid-responsive imgsty1" (click)="navigatetocategory(item.id);">
+                    <div class="ui-grid-row">
+                        <div class="ui-grid-col-12"><img src="{{item.image}}" width="210" class="radius"></div>
+                    </div>
+                    <div class="ui-grid-row">
+                        <div id="catslider" class="ui-grid-col-12 desc" [ngClass]="{'active':item.id == childMessage}">{{item.name | translate }}</div>
+                    </div>
+             
+                </div> -->
+            </ng-template>
+        </p-carousel>
+        <div class="no-orders" [hidden]="isempty">
+            <span>No Categories Found</span>
+        </div>
+</section>
+<div class="loading-indicator mid" *ngIf="ProgressSpinnerDlg">
+    <p-progressSpinner></p-progressSpinner>
+</div>
+<div class="overlay" *ngIf="ProgressSpinnerDlg"></div>

@@ -1,0 +1,47 @@
+<app-admin-menu></app-admin-menu>
+
+<main>
+    <section class="accounts">
+        <div class="text_container">
+            <div class="container">
+
+                <div class="row">
+
+                    <div class="col-xl-4 col-lg-4">
+
+                        <h4>Your Profile</h4>
+
+                        <div class="profile">
+
+                            <div class="thumb">
+                                <img [src]="profiledata.Image">
+                                <p>{{profiledata.FirstName}}<br><span>
+                                        {{profiledata.Country}}</span></p>
+                            </div>
+                            <div class="address">
+
+                                <p>Mobile No.<br><span>{{profiledata.Mobile}}</span></p>
+
+                                <p>Address (*)<br> <span>{{profiledata.Address}},
+                                        {{profiledata.Country}} </span></p>
+
+                                <p>Email ID<br> <span>{{profiledata.Email}}</span></p>
+
+                                <p class="text-blue float-left"><a (click)="showDialog()">Change password </a></p>
+                                <p class="text-blue float-right edit"><a (click)="showEditDialog()"><i
+                                            class="text-blue icon-edit f-big mr-2"></i> Edit </a></p>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</main>
+<app-changepassword [display]="display" (displayChange)="onDialogClose($event)"></app-changepassword>
+<app-admin-edit-profile [display]="editdialogdisplay" (displayChange)="onEditDialogClose($event)">
+</app-admin-edit-profile>

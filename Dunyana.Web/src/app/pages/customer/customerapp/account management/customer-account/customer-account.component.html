@@ -1,0 +1,229 @@
+<main>
+    <section class="accounts">
+        <div class="text_container">
+            <div class="container">
+
+                <div class="row">
+                    <div class="col-xl-4 col-lg-4 leftPanel">
+
+                        <h2>Dear Customer <br><span class="font-weight-bold">{{profiledata.FirstName}}.</span></h2>
+                        <p>Thanks for choosing dunyana,</p>
+                        <p> We aim to provide you best ecommerce & online end to end shopping experience with world
+                            class varieties of brands and products.</p>
+
+                    </div>
+
+                    <div class="col-xl-7 col-lg-8 offset-xl-1 offset-lg-0 wallet">
+
+                        <div class="row">
+                            <h4 class="col-12">Your Wallet</h4>
+                            <div class="col-xl-4 col-lg-4 ">
+                                <div class="col-xl-12 col-lg-12 g-box">
+                                    <p class="first">Balance</p>
+                                    <p class="b-font text-right" [routerLink]="['/customer/wallethistory']">
+                                        {{Walletamount}}</p>
+
+                                    <p><a [routerLink]="['/customer/wallet-topup']"><span class="icon-add mr-2"><span
+                                                    class="path1"></span><span class="path2"></span><span
+                                                    class="path3"></span></span> add
+                                            balance</a></p>
+                                </div>
+                            </div>
+                            <div class="col-xl-4 col-lg-4 " (click)="getPointsHistory()">
+                                <div class="col-xl-12 col-lg-12 g-box">
+                                    <p class="first">Points</p>
+                                    <p class="b-font text-right">
+                                        {{Walletpoints}}</p>
+
+                                    <span></span>
+                                </div>
+                            </div>
+                            <div class="col-xl-4 col-lg-4">
+                                <!-- <div class="col-xl-12 col-lg-12 g-box">
+                                    <img src="assets/layout/images/svg/mc_logo.svg" height="72px">
+                                    <p class="light">Mohammed Ali K<br> <strong> 1051 0510 5100</strong><br> 01/23
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; CVC 123</p>
+                                    <p><a href="#"><i class="icon-edit mr-2"></i>edit/remove card</a></p>
+                                </div> -->
+                            </div>
+                            <!-- <div class="col-xl-4 col-lg-4">
+                                <div class="col-xl-12 col-lg-12 g-box-line">
+                                    <img src="assets/layout/images/svg/plus.svg" width="55px" height="55px">
+                                </div>
+
+                            </div> -->
+                        </div>
+
+
+                    </div>
+
+                    <div class="col-xl-4 col-lg-4">
+
+                        <h4>Your Profile</h4>
+
+                        <div class="profile">
+
+                            <div class="thumb">
+                                <img [src]="profiledata.Image">
+                                <p>{{profiledata.FirstName}}<br><span> {{profiledata.City}},
+                                        {{profiledata.Country}}</span></p>
+                            </div>
+                            <div class="address">
+
+                                <p>Mobile No.<br><span>{{profiledata.Mobile}}</span></p>
+
+                                <p>Address (*)<br> <span>{{profiledata.Address}},<br>{{profiledata.City}},
+                                        {{profiledata.Country}} </span></p>
+
+                                <p>Email ID<br> <span>{{profiledata.Email}}</span></p>
+
+                                <p class="text-blue float-left"><a (click)="showDialog()">Change password </a></p>
+                                <p class="text-blue float-right edit"><a (click)="showEditDialog()"><i
+                                            class="text-blue icon-edit f-big mr-2"></i> Edit </a></p>
+
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="col-xl-7 col-lg-8 offset-xl-1 offset-lg-0 order-history">
+
+                        <h4 class="">Your Order History</h4>
+
+                        <!-- <div class="col-md-12 category" *ngFor="let order of pagedItems"
+                            (click)="GetOrderDetails(order.productid)">
+                            <div class="col-md-4">
+                                <span>Merchant Name :</span><strong>{{order.soldby}}</strong>
+                            </div>
+                            <div class="col-md-4">
+<p>Order Details</p>
+<div>
+    <p>Order ID:{{order.orderid}}</p>
+</div>
+                            </div>
+                            <div class="img col-lg-2 col-sm-2">
+                                <img src="{{order.productimage}}" width="110">
+                            </div>
+
+                            <div class="float-left pl-4 col-lg-5 col-sm-5 pr-0">
+                                <h3>{{order.productname}}</h3>
+                                <p>Order ID:{{order.orderid}}<br> Sold by <strong>{{order.soldby}}</strong></p>
+                            </div>
+                            <div class="float-right text-right col-md-4 col-sm-4">
+                                <h3>{{order.productcost}}</h3>
+                                <p>{{order.MasterCard}}</p>
+                            </div>
+
+                            <div class="float-left pl-4 opl col-lg-6 col-xl-6 col-sm-6">
+
+                                Order Placed <span>{{order.orderplaced | date:'MMM d, y'}}</span>
+                            </div>
+                            <div class="float-right text-right  col-md-4 col-sm-3">
+                                <h3>on route</h3>
+                                <p>{{order.orderstatus}}</p>
+                                <p *ngIf="order.Cod=='Y'">COD</p>
+                            </div>
+                        </div> -->
+
+
+                        <div class="col-md-12 category" *ngFor="let order of pagedItems"
+                            (click)="GetOrderDetails(order.orderID)">
+                            <!-- 
+                            <div class="img col-lg-2 col-sm-2">
+                                <img src="{{order.productimage}}" width="110">
+                            </div>
+
+                            <div class="float-left pl-4 col-lg-5 col-sm-5 pr-0">
+                                <h3>{{order.productname}}</h3>
+                                <p>Order ID:{{order.orderid}}<br> Sold by <strong>{{order.soldby}}</strong></p>
+                            </div>
+                            <div class="float-right text-right col-md-4 col-sm-4">
+                                <h3>{{order.productcost}}</h3>
+                                <p>{{order.MasterCard}}</p>
+                            </div>
+
+                            <div class="float-left pl-4 opl col-lg-6 col-xl-6 col-sm-6">
+
+                                Order Placed <span>{{order.orderplaced | date:'MMM d, y'}}</span>
+                            </div>
+                            <div class="float-right text-right  col-md-4 col-sm-3">
+                                <h3>on route</h3>
+                                <p>{{order.orderstatus}}</p>
+                                <p *ngIf="order.Cod=='Y'">COD</p>
+                            </div> -->
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <h3>Merchant Name :<strong> {{order.merchantName}}</strong></h3>
+
+                                    <img src="{{order.merchantImage}}">
+                                </div>
+                                <div class="col-md-5 details">
+                                    <h3>Order Details:</h3>
+                                    <h4>Order Id</h4>
+                                    <p>{{order.orderID}}</p>
+                                    <h4>Order Placed</h4>
+                                    <p>{{order.orderDate | date:'MMM d, y'}}</p>
+                                    <h4>No Of Products</h4>
+                                    <p>{{order.products.length}}</p>
+                                    <h4>Amount</h4>
+                                    <p>{{order.orderAmount}} {{order.currenyCode}}</p>
+                                    <h4>Status</h4>
+                                    <p>{{order.orderStatus}}</p>
+                                </div>
+                                <div class="col-md-4 details">
+                                    <h3> Mode Of Payment:</h3>
+                                    <p *ngIf="order.cod==='Y'">COD</p>
+                                    <p *ngIf="order.cod==='N'">Paid
+                                    </p>
+                                    <p *ngIf="order.cod==='N'">MasterCard ****
+                                        <span>{{order.paymentDetails[0]['card']}}</span></p>
+                                    <h4>Payment Status :</h4>
+                                    <p *ngIf="order.cod==='Y' && order.paymentStatus==='1'">Paid</p>
+                                    <p *ngIf="order.cod==='Y' && order.paymentStatus==='0'">Pending</p>
+                                    <p *ngIf="order.cod==='N' && order.paymentStatus==='0'">Pending</p>
+                                    <p *ngIf="order.cod==='N' && order.paymentStatus==='1'">Paid</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-12 text-center float-right pr-0">
+                            <ul *ngIf="pager.pages && pager.pages.length" class="pagination">
+                                <li [ngClass]="{disabled:pager.currentPage === 1}">
+                                    <a (click)="setPage(1)">First</a>
+                                </li>
+                                <li [ngClass]="{disabled:pager.currentPage === 1}">
+                                    <a (click)="pager.currentPage === 1?'': setPage(pager.currentPage - 1)">Previous</a>
+                                </li>
+                                <li *ngFor="let page of pager.pages" [ngClass]="{active:pager.currentPage === page}">
+                                    <a (click)="setPage(page)">{{page}}</a>
+                                </li>
+                                <li [ngClass]="{disabled:pager.currentPage === pager.totalPages}">
+                                    <a
+                                        (click)="pager.currentPage === pager.totalPages?'':setPage(pager.currentPage + 1)">Next</a>
+                                </li>
+                                <li [ngClass]="{disabled:pager.currentPage === pager.totalPages}">
+                                    <a (click)="setPage(pager.totalPages)">Last</a>
+                                </li>
+                            </ul>
+
+                        </div>
+                        <div [hidden]="noorders" class="no-orders"><span>No orders found</span></div>
+
+                    </div>
+
+                </div>
+                <div>
+                </div>
+            </div>
+
+        </div>
+
+        <app-categoriesslider [childMessage]="parentMessage"></app-categoriesslider>
+    </section>
+
+</main>
+<app-changepassword [display]="display" (displayChange)="onDialogClose($event)"></app-changepassword>
+<app-edit-profile [display]="editdialogdisplay" (displayChange)="onEditDialogClose($event)"></app-edit-profile>
+<div class="loading-indicator" *ngIf="ProgressSpinnerDlg">
+    <p-progressSpinner></p-progressSpinner>
+</div>

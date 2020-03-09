@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 46.9996 26.9994">
+  <defs>
+    <clipPath id="16bdc393-4f67-4ce9-a1de-f935e4602220" transform="translate(-0.0004 -0.0006)">
+      <rect width="47" height="27" fill="none"/>
+    </clipPath>
+  </defs>
+  <title>bot_arrow</title>
+  <g id="ab12c637-f6c5-46bb-9ce8-64dac28f6c21" data-name="Layer 2">
+    <g id="ced3b970-07f4-4420-b2ba-cf22455b1ffe" data-name="Layer 1">
+      <g clip-path="url(#16bdc393-4f67-4ce9-a1de-f935e4602220)">
+        <path d="M23.5005,27a3.4878,3.4878,0,0,1-2.4746-1.0254l-20-19.999a3.5,3.5,0,0,1,4.9492-4.95L23.5005,18.55,41.0254,1.0254a3.5,3.5,0,1,1,4.9492,4.95l-19.999,19.999A3.4889,3.4889,0,0,1,23.5005,27Z" transform="translate(-0.0004 -0.0006)" fill="#00b3e6"/>
+      </g>
+    </g>
+  </g>
+</svg>

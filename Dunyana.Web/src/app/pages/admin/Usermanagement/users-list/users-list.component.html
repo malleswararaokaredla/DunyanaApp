@@ -1,0 +1,389 @@
+<app-admin-menu></app-admin-menu>
+
+
+
+
+<section class="ad_legal ">
+  <div class="container">
+    <div class="row ">
+
+      <div class="col-sm-12">
+        <div class="ui-helper-clearfix">
+          <button type="button" pButton icon="pi pi-download" (click)="exportToExcel()" [disabled]="excelDown" label="Download to CSV"
+            class="pull-right"></button>
+            <button pButton label="Clear All Filters" (click)="onClick()" class="pull-right"
+            style="margin-right:10px;"></button>
+          <button type="button" [disabled]="!showAdd" pButton icon="fa fa-plus" label="Add" class="pull-right"
+            style="margin-right: 10px;" (click)="AddUser()"></button>
+        </div>
+      </div>
+
+      <div class="col-sm-12">
+        <div class="tab_table">
+
+
+          <p-tabView [activeIndex]="index" class="dun_table" (onChange)="changeTab($event)">
+            <p-tabPanel header="Naqel Users">
+              <p-table [columns]="naqelUserCols" #dtNaqel selectionMode="single" [(selection)]="selecteduser"
+                (onRowSelect)="onRowSelect($event)" [paginator]="naqelUserslist.length > 0 ? true : false" [rows]="10"
+                [value]="naqelUserslist" [resizableColumns]="true">
+
+                <ng-template pTemplate="caption">
+
+                  <div *ngIf="naqelUserslist.length==0">
+                    No naqel users found
+                  </div>
+
+                </ng-template>
+                <ng-template pTemplate="header" let-columns>
+                  <tr>
+                    <th *ngFor="let col of columns" pResizableColumn>
+                      {{col.header}}
+                      <p-sortIcon [field]="col.field" [pSortableColumn]="col.field"></p-sortIcon>
+                      <i class="pi pi-filter" style="font-size: 1em;cursor: pointer;"
+                        (click)="showfilter(col.field)"></i>
+
+                    </th>
+                  </tr>
+                  <tr *ngIf='naqelUserslist.length != 0'>
+                    <th *ngFor="let col of columns" [ngSwitch]="col.field">
+                      <input *ngSwitchCase="'userName'" pInputText type="text"
+                        (input)="dtNaqel.filter($event.target.value, col.field, col.filterMatchMode)"
+                        [value]="dtNaqel.filters[col.field] ? dtNaqel.filters[col.field].value : ''"
+                        [hidden]="userName" (focusout)="filterExcel()">
+                      <input *ngSwitchCase="'email'" pInputText type="text"
+                        (input)="dtNaqel.filter($event.target.value, col.field, col.filterMatchMode)" 
+                        [value]="dtNaqel.filters[col.field] ? dtNaqel.filters[col.field].value : ''"
+                        [hidden]="email" (focusout)="filterExcel()">
+                      <input *ngSwitchCase="'mobile'" pInputText type="text"
+                        (input)="dtNaqel.filter($event.target.value, col.field, col.filterMatchMode)" 
+                        [value]="dtNaqel.filters[col.field] ? dtNaqel.filters[col.field].value : ''"
+                        [hidden]="mobile" (focusout)="filterExcel()">
+                      <input *ngSwitchCase="'country'" pInputText type="text"
+                        (input)="dtNaqel.filter($event.target.value, col.field, col.filterMatchMode)"
+                        [value]="dtNaqel.filters[col.field] ? dtNaqel.filters[col.field].value : ''"
+                        [hidden]="ucountry" (focusout)="filterExcel()">
+                      <input *ngSwitchCase="'isActive'" pInputText type="text"
+                        (input)="dtNaqel.filter($event.target.value, col.field, col.filterMatchMode)"
+                        [value]="dtNaqel.filters[col.field] ? dtNaqel.filters[col.field].value : ''"
+                        [hidden]="isActive" (focusout)="filterExcel()">
+                      <input *ngSwitchCase="'userType'" pInputText type="text"
+                        (input)="dtNaqel.filter($event.target.value, col.field, col.filterMatchMode)"
+                        [value]="dtNaqel.filters[col.field] ? dtNaqel.filters[col.field].value : ''"
+                        [hidden]="userType" (focusout)="filterExcel()">
+
+                    </th>
+
+                  </tr>
+                </ng-template>
+                <ng-template pTemplate="body" let-rowData let-columns="columns">
+                  <tr [pSelectableRow]="rowData">
+                    <td *ngFor="let col of columns" class="ui-resizable-column">
+                      {{rowData[col.field]}}
+                    </td>
+                  </tr>
+                </ng-template>
+              </p-table>
+
+            </p-tabPanel>
+
+            <p-tabPanel header="Customers">
+              <p-table [columns]="customerCols" #dtCustomers selectionMode="single" [(selection)]="selecteduser"
+                (onRowSelect)="onRowSelect($event)" [paginator]="customers.length > 0 ? true : false" [rows]="10"
+                [value]="customers" [resizableColumns]="true">
+
+                <ng-template pTemplate="caption">
+
+
+                  <div *ngIf="customers.length==0">
+                    No customers found
+                  </div>
+                </ng-template>
+                <ng-template pTemplate="header" let-columns>
+                  <tr>
+                    <th *ngFor="let col of columns" pResizableColumn>
+                      {{col.header}}
+                      <p-sortIcon [field]="col.field" [pSortableColumn]="col.field"></p-sortIcon>
+                      <i class="pi pi-filter" style="font-size: 1em;cursor: pointer;"
+                        (click)="showcustomerfilter(col.field)"></i>
+                    </th>
+                  </tr>
+                  <tr *ngIf='customers.length != 0'>
+                    <th *ngFor="let col of columns" [ngSwitch]="col.field">
+                      <input *ngSwitchCase="'userName'" pInputText type="text"
+                        (input)="dtCustomers.filter($event.target.value, col.field, col.filterMatchMode)"
+                        [value]="dtCustomers.filters[col.field] ? dtCustomers.filters[col.field].value : ''"
+                        [hidden]="cuserName" (focusout)="filterExcel()">
+                      <input *ngSwitchCase="'email'" pInputText type="text"
+                        (input)="dtCustomers.filter($event.target.value, col.field, col.filterMatchMode)"
+                        [value]="dtCustomers.filters[col.field] ? dtCustomers.filters[col.field].value : ''"
+                        [hidden]="cemail" (focusout)="filterExcel()">
+                      <input *ngSwitchCase="'mobile'" pInputText type="text"
+                        (input)="dtCustomers.filter($event.target.value, col.field, col.filterMatchMode)"
+                        [value]="dtCustomers.filters[col.field] ? dtCustomers.filters[col.field].value : ''"
+                        [hidden]="cmobile" (focusout)="filterExcel()">
+                      <input *ngSwitchCase="'country'" pInputText type="text"
+                        (input)="dtCustomers.filter($event.target.value, col.field, col.filterMatchMode)"
+                        [value]="dtCustomers.filters[col.field] ? dtCustomers.filters[col.field].value : ''"
+                        [hidden]="ccountry" (focusout)="filterExcel()">
+                      <input *ngSwitchCase="'isActive'" pInputText type="text"
+                        (input)="dtCustomers.filter($event.target.value, col.field, col.filterMatchMode)"
+                        [value]="dtCustomers.filters[col.field] ? dtCustomers.filters[col.field].value : ''"
+                        [hidden]="cisActive" (focusout)="filterExcel()">
+                    </th>
+                  </tr>
+                </ng-template>
+                <ng-template pTemplate="body" let-rowData let-columns="columns">
+                  <tr [pSelectableRow]="rowData">
+                    <td *ngFor="let col of columns" class="ui-resizable-column">
+                      {{rowData[col.field]}}
+                    </td>
+                  </tr>
+                </ng-template>
+              </p-table>
+
+            </p-tabPanel>
+
+            <p-tabPanel header="Merchants">
+              <p-table [columns]="merchantCols" #dtMerchants selectionMode="single" [(selection)]="selecteduser"
+                (onRowSelect)="onRowSelect($event)" [paginator]="merchants.length > 0 ? true : false" [rows]="10"
+                [value]="merchants" [resizableColumns]="true">
+
+                <ng-template pTemplate="caption">
+
+                  <div *ngIf="merchants.length==0">
+                    No merchants found
+                  </div>
+                </ng-template>
+                <ng-template pTemplate="header" let-columns>
+                  <tr>
+                    <th *ngFor="let col of columns" pResizableColumn>
+                      {{col.header}}
+                      <p-sortIcon [field]="col.field" [pSortableColumn]="col.field"></p-sortIcon>
+                      <i class="pi pi-filter" style="font-size: 1em;cursor: pointer;"
+                        (click)="showmerchantfilter(col.field)" (focusout)="filterExcel()"></i>
+
+                    </th>
+                  </tr>
+                  <tr *ngIf="merchants.length !=0">
+                    <th *ngFor="let col of columns" [ngSwitch]="col.field">
+                      <input *ngSwitchCase="'userName'" pInputText type="text"
+                        (input)="dtMerchants.filter($event.target.value, col.field, col.filterMatchMode)"
+                        [value]="dtMerchants.filters[col.field] ? dtMerchants.filters[col.field].value : ''"
+                        [hidden]="muserName" (focusout)="filterExcel()">
+                      <input *ngSwitchCase="'email'" pInputText type="text"
+                        (input)="dtMerchants.filter($event.target.value, col.field, col.filterMatchMode)"
+                        [value]="dtMerchants.filters[col.field] ? dtMerchants.filters[col.field].value : ''"
+                        [hidden]="memail" (focusout)="filterExcel()">
+                      <input *ngSwitchCase="'company'" pInputText type="text"
+                        (input)="dtMerchants.filter($event.target.value, col.field, col.filterMatchMode)"
+                        [value]="dtMerchants.filters[col.field] ? dtMerchants.filters[col.field].value : ''"
+                        [hidden]="mcompany" (focusout)="filterExcel()">
+                      <input *ngSwitchCase="'country'" pInputText type="text"
+                        (input)="dtMerchants.filter($event.target.value, col.field, col.filterMatchMode)"
+                        [value]="dtMerchants.filters[col.field] ? dtMerchants.filters[col.field].value : ''"
+                        [hidden]="mcountry" (focusout)="filterExcel()">
+                      <input *ngSwitchCase="'isActive'" pInputText type="text"
+                        (input)="dtMerchants.filter($event.target.value, col.field, col.filterMatchMode)"
+                        [value]="dtMerchants.filters[col.field] ? dtMerchants.filters[col.field].value : ''"
+                        [hidden]="misActive" (focusout)="filterExcel()">
+
+
+                    </th>
+                  </tr>
+                </ng-template>
+                <ng-template pTemplate="body" let-rowData let-columns="columns">
+                  <tr [pSelectableRow]="rowData">
+                    <td *ngFor="let col of columns" class="ui-resizable-column">
+                      {{rowData[col.field]}}
+                    </td>
+                  </tr>
+                </ng-template>
+              </p-table>
+
+            </p-tabPanel>
+          </p-tabView>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Add User -->
+<app-add-users [display]="display" (displayChange)="onDialogClose($event)"></app-add-users>
+
+<!-- Edit Customer Merchant -->
+<div class="changepassword">
+  <p-dialog header="Edit user" [(visible)]="edituserdisplay" [modal]="true" [responsive]="true"
+    [style]="{width: '475px'}" [closeOnEscape]="true" (onHide)="onClose()">
+    <form class="from_wrapper" [formGroup]="userForm" novalidate>
+
+      <div class="row inputset">
+        <div class="col-sm-6" *ngIf="!isMerchant"><label>First Name</label><span class="">*</span></div>
+        <div class="col-sm-6" *ngIf="isMerchant"><label>Name</label><span class="">*</span></div>
+        <div class="col-sm-6"><input [attr.readonly]="isNaqeluser?null:true" type="text" placeholder="Ali"
+            maxlength="25" formControlName="firstname" (keyup)="formvalidate()">
+        </div>
+        <div class="col-sm-12">
+          <div *ngIf="userForm.controls['firstname'].errors && !userForm.controls['firstname'].pristine"
+            class="text-danger float-right error-msg">
+            <div [hidden]="!userForm.controls['firstname'].errors.required">Please enter first name </div>
+            <div [hidden]="!userForm.controls['firstname'].errors.pattern">Please enter first name</div>
+          </div>
+        </div>
+        <div class="col-sm-12">
+          <hr>
+        </div>
+      </div>
+      <div class="row inputset" *ngIf="!isMerchant">
+        <div class="col-sm-6"><label>Last Name</label><span class="">*</span></div>
+        <div class="col-sm-6"><input [attr.readonly]="isNaqeluser?null:true" type="text" maxlength="25"
+            placeholder="Raza" formControlName="lastname" (keyup)="formvalidate()" /></div>
+        <div class="col-sm-12">
+          <div *ngIf="userForm.controls['lastname'].errors && !userForm.controls['lastname'].pristine"
+            class="text-danger float-right error-msg">
+            <div [hidden]="!userForm.controls['lastname'].errors.required">Please enter last name </div>
+            <div [hidden]="!userForm.controls['lastname'].errors.pattern">Please enter last name</div>
+          </div>
+        </div>
+        <div class="col-sm-12">
+          <hr>
+        </div>
+      </div>
+      <div class="row inputset">
+        <div class="col-sm-6"><label>Email</label><span class="">*</span></div>
+        <div class="col-sm-6"><input [attr.readonly]="true" type="text" maxlength="50" placeholder="email@domian.com"
+            formControlName="email" (keyup)="formvalidate()" /></div>
+        <div class="col-sm-12">
+          <div *ngIf="userForm.controls['email'].errors && !userForm.controls['email'].pristine"
+            class="text-danger float-right error-msg">
+            <div [hidden]="!userForm.controls['email'].errors.required">Please enter email </div>
+            <div [hidden]="!userForm.controls['email'].errors.pattern">Please enter email</div>
+          </div>
+        </div>
+        <div class="col-sm-12">
+          <hr>
+        </div>
+      </div>
+
+      <div class="row inputset" *ngIf="!isMerchant">
+        <div class="col-sm-6"><label>Mobile</label><span class="">*</span></div>
+        <div class="col-sm-6"><input [attr.readonly]="isNaqeluser?null:true" type="text" maxlength="15" [maxlength]="10"
+            placeholder="9876543210" formControlName="mobile" (keypress)="_keyPress($event)" (keyup)="formvalidate()" />
+        </div>
+        <div class="col-sm-12">
+          <div *ngIf="userForm.controls['mobile'].errors && !userForm.controls['mobile'].pristine"
+            class="text-danger error-msg float-right">
+            <div [hidden]="!userForm.controls['mobile'].errors.required">Please enter mobile number </div>
+            <div
+              [hidden]="!userForm.controls['mobile'].errors?.minlength && !userForm.controls['mobile'].errors?.maxlength">
+              Pleae enter mobile number</div>
+          </div>
+        </div>
+        <div class="col-sm-12">
+          <hr>
+        </div>
+      </div>
+
+      <div class="row inputset" *ngIf="isMerchant">
+        <div class="col-sm-6"><label>Company</label><span class="">*</span></div>
+        <div class="col-sm-6"><textarea [attr.readonly]="true" maxlength="500" placeholder="Company" rows="2"
+            formControlName="company" (keyup)="formvalidate()"></textarea></div>
+        <div class="col-sm-12">
+          <div *ngIf="userForm.controls['company'].errors && !userForm.controls['company'].pristine"
+            class="text-danger error-msg float-right">
+            <div [hidden]="!userForm.controls['company'].errors.required">Please enter company </div>
+            <div [hidden]="!userForm.controls['company'].errors.pattern">Please enter correct company</div>
+          </div>
+        </div>
+        <div class="col-sm-12">
+          <hr>
+        </div>
+      </div>
+
+      <div class="row inputset" *ngIf="!isMerchant">
+        <div class="col-sm-6"><label>Address</label><span class="">*</span></div>
+        <div class="col-sm-6"><textarea [attr.readonly]="isNaqeluser?null:true" maxlength="500" placeholder="Address"
+            rows="2" formControlName="address" (keyup)="formvalidate()"></textarea></div>
+        <div class="col-sm-12">
+          <div *ngIf="userForm.controls['address'].errors && !userForm.controls['address'].pristine"
+            class="text-danger error-msg float-right">
+            <div [hidden]="!userForm.controls['address'].errors.required">Please enter address </div>
+            <div [hidden]="!userForm.controls['address'].errors.pattern">Please enter correct address</div>
+          </div>
+        </div>
+        <div class="col-sm-12">
+          <hr>
+        </div>
+      </div>
+
+      <div class="row inputset" *ngIf="!isNaqeluser">
+        <div class="col-sm-6"><label>Country</label><span class="">*</span></div>
+        <div class="col-sm-6"><input [attr.readonly]="true" type="text" value="{{ country }}" /></div>
+      </div>
+
+      <div class="row inputset" *ngIf="isNaqeluser">
+        <div class="col-sm-6"><label>Country</label><span class="">*</span></div>
+        <div class="col-sm-6">
+
+          <p-dropdown [options]="countries" formControlName="country" (onChange)="formvalidate()"
+            [disabled]="isNaqeluser?null:true" [(ngModel)]="userDto.country" [autoWidth]="false" [filter]="false">
+            <option *ngFor="let c of countries" [ngValue]="c">{{c}}</option>
+          </p-dropdown>
+        </div>
+        <div class="col-sm-12">
+          <hr>
+        </div>
+      </div>
+      <div class="row inputset" *ngIf="isNaqeluser">
+        <div class="col-sm-6"><label>User Type</label><span class="">*</span></div>
+        <div class="col-sm-6">
+          <p-dropdown [options]="naqelUserTypes" formControlName="userType" (onChange)="formvalidate()"
+            [autoWidth]="false" [filter]="false">
+            <option *ngFor="let s of naqelUserTypes" [ngValue]="s">{{s}}</option>
+          </p-dropdown>
+        </div>
+        <div class="col-sm-12">
+        </div>
+        <div class="col-sm-12">
+          <hr>
+        </div>
+      </div>
+      <div class="row inputset">
+        <div class="col-sm-6"><label>Status</label><span class="">*</span></div>
+        <div class="col-sm-6">
+          <p-dropdown [options]="userStatuses" formControlName="isActive" (onChange)="formvalidate()"
+            [autoWidth]="false" [filter]="false">
+            <option *ngFor="let s of userStatuses" [ngValue]="s">{{s}}</option>
+          </p-dropdown>
+        </div>
+        <div class="col-sm-12">
+        </div>
+        <div class="col-sm-12">
+          <hr>
+        </div>
+      </div>
+
+
+
+      <div class="row justify-content-center mt-4">
+
+        <button class="line_btn sblue mr-4" [ngClass]="btndisable" (click)="updateUser()">Update</button>
+        <button class="line_btn sblue" (click)="redirectusertable()">Cancel</button>
+
+      </div>
+      <div class="">
+        <div [ngClass]="responsesty">
+          <span>{{response}}</span>
+        </div>
+      </div>
+    </form>
+
+  </p-dialog>
+</div>
+
+<div class="loading-indicator mid" *ngIf="ProgressSpinnerDlg">
+  <p-progressSpinner></p-progressSpinner>
+</div>
+
+<div class="overlay" *ngIf="ProgressSpinnerDlg"></div>

@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,OAAO,CAAA;EACH,MAAM,EAAE,GAAG;EACX,KAAK,EAAE,KAAK;EACZ,MAAM,EAAE,IAAI;CAEf",
+    "sources": [
+        "naqel-legal-team.component.scss"
+    ],
+    "names": [],
+    "file": "naqel-legal-team.component.css"
+}

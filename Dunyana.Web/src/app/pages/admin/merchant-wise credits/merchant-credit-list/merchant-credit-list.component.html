@@ -1,0 +1,153 @@
+<app-admin-menu></app-admin-menu>
+
+<section class="ad_legal">
+    <div class="container">
+        <div class="row ">
+            <div class="col-sm-6">
+
+            </div>
+            <!-- <div class="col-sm-6 mb-3">
+                <div class="ui-helper-clearfix">
+
+                   <button type="button" pButton icon="fa fa-plus" label="Add" (click)="addcredits()"
+                        class="pull-right"></button>
+                </div>
+            </div> -->
+            <div class="col-sm-12">
+
+                <p-table [columns]="cols" class="dun_table" #dt selectionMode="single" [(selection)]="selectedcategory"
+                    (onRowSelect)="onRowSelect($event)" [paginator]="true" [rows]="5" [value]="credits"
+                    [resizableColumns]="true">
+
+                    <ng-template pTemplate="caption">
+
+                        <div *ngIf="credits.length==0">
+                            No records found
+                        </div>
+                    </ng-template>
+                    <ng-template pTemplate="header" let-columns>
+                        <tr>
+                            <th *ngFor="let col of columns" [pSortableColumn]="col.field" pResizableColumn>
+                                {{col.header}}
+                                <p-sortIcon [field]="col.field" ariaLabel="Activate to sort"
+                                    ariaLabelDesc="Activate to sort in descending order"
+                                    ariaLabelAsc="Activate to sort in ascending order"></p-sortIcon>
+                            </th>
+                        </tr>
+                    </ng-template>
+                    <ng-template pTemplate="body" let-rowData>
+                        <tr [pSelectableRow]="rowData">
+                          <td class="ui-resizable-column">
+                              {{rowData.merchantID}}
+                          </td>
+                          <td class="ui-resizable-column">
+                            {{rowData.merchantName}}
+                          </td>
+                          <td class="ui-resizable-column">
+                            {{rowData.merchantCountry}}
+                          </td>
+                          <td class="ui-resizable-column">
+                            {{rowData.walletPoints}}
+                          </td>
+                          <td class="ui-resizable-column">
+                            {{rowData.walletAmount}}
+                          </td>
+                        </tr>
+                    </ng-template>
+                    <ng-template pTemplate="summary">
+                        <div style="text-align:right" [ngClass]="responsesty">
+                            <p>{{response}}</p>
+                        </div>
+                    </ng-template>
+                </p-table>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="changepassword">
+  <p-dialog header="Edit" [(visible)]="display" [modal]="true" [responsive]="true"
+      [style]="{width: '475px'}" [closeOnEscape]="true" (onHide)="onClose()">
+
+      <form class="from_wrapper" [formGroup]="categoryForm" novalidate>
+
+          <div class="row inputset">
+
+              <div class="col-sm-6"><label>Merchant Name</label><span class="r">*</span></div>
+              <div class="col-sm-6"><input id="input" type="text" formControlName="Name" (keyup)="formvalidate()">
+              </div>
+              <div class="col-sm-12">
+                  <div *ngIf="categoryForm.controls['Name'].errors && !categoryForm.controls['Name'].pristine"
+                      class="text-danger float-right error">
+                      <div [hidden]="!categoryForm.controls['Name'].errors.required">Merchant name required</div>
+                      <div [hidden]="!categoryForm.controls['Name'].errors.pattern">
+                          Please enter valid merchant name</div>
+                  </div>
+              </div>
+
+              <div class="col-sm-12">
+                  <hr>
+              </div>
+          </div>
+          <div class="row inputset">
+            <div class="col-sm-6"><label>Country</label><span class="">*</span></div>
+            <div class="col-sm-6">
+                <p-dropdown [options]="countries" formControlName="country" [autoWidth]="false" [filter]="false">
+                    <option *ngFor="let c of countries" [ngValue]="c">{{c}}</option>
+                </p-dropdown>
+            </div>
+            <div class="col-sm-12">
+              <hr>
+            </div>
+        </div>
+        
+        <div class="row inputset">
+
+          <div class="col-sm-6"><label>Wallet Points(%)</label><span class="r">*</span></div>
+          <div class="col-sm-6"><input id="input" type="text" formControlName="points"  (keypress)="_keyPress($event)"  (keyup)="formvalidate()">
+          </div>
+          <div class="col-sm-12">
+              <div *ngIf="categoryForm.controls['points'].errors && !categoryForm.controls['points'].pristine"
+                  class="text-danger float-right error">
+                  <div [hidden]="!categoryForm.controls['points'].errors.required">Points are required</div>
+                  <div [hidden]="!categoryForm.controls['points'].errors.pattern">
+                      Please enter valid points</div>
+              </div>
+          </div>
+
+          <div class="col-sm-12">
+              <hr>
+          </div>
+        </div>
+
+        <div class="row inputset">
+
+          <div class="col-sm-6"><label>Wallet Amount(%)</label><span class="r">*</span></div>
+          <div class="col-sm-6"><input id="input" type="text" formControlName="amount" (keypress)="_keyPress($event)" (keyup)="formvalidate()">
+          </div>
+          <div class="col-sm-12">
+              <div *ngIf="categoryForm.controls['amount'].errors && !categoryForm.controls['amount'].pristine"
+                  class="text-danger float-right error">
+                  <div [hidden]="!categoryForm.controls['amount'].errors.required">Amount required</div>
+                  <div [hidden]="!categoryForm.controls['amount'].errors.pattern">
+                      Please enter valid Amount</div>
+              </div>
+          </div>
+
+          <div class="col-sm-12">
+              <hr>
+          </div>
+        </div>
+
+          <div class="row justify-content-center mt-4">
+
+              <button class="line_btn sblue mr-4" [ngClass]="btndisable"
+                  (click)="updatecredits()">Update</button>
+              <button class="line_btn sblue" (click)="onClose()">Cancel</button>
+
+          </div>
+       
+      </form>
+  </p-dialog>
+</div>

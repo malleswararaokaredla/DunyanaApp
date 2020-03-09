@@ -1,0 +1,391 @@
+<section class="signin">
+    <p-toast [showTransitionOptions]="'0ms'" [hideTransitionOptions]="'3000ms'"></p-toast>
+    <header class="trans">
+        <div class="main-header">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <a [routerLink]="['/customer/home']" class="site-logo"><img
+                                [src]="translate.store.currentLang =='en' ? 'assets/layout/images/glogo.png':'assets/layout/images/glogo_ar.png'"
+                                alt="dunyana" /></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <main>
+
+        <section class="signin_wrap">
+
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-5 col-xl-5">
+                        <div class="si">
+
+                            <a class="backBtn" (click)="prevclick()" [ngClass]="prevbtn" href="#demo" data-slide="prev">
+                                <i class="icomoon icon-arrows"></i>
+                            </a>
+                            <h4 [ngClass]="topheader">Get Started</h4>
+
+
+                            <div id="demo" class="carousel" data-ride="carousel" data-interval="false">
+                                <ul class="carousel-indicators">
+                                    <li data-target="#demo" data-slide-to="0" class="active"></li>
+                                    <li data-target="#demo" data-slide-to="1"></li>
+                                    <li data-target="#demo" data-slide-to="2"></li>
+                                    <li data-target="#demo" data-slide-to="3"></li>
+                                    <li data-target="#demo" data-slide-to="4"></li>
+                                    <li data-target="#demo" data-slide-to="5"></li>
+                                </ul>
+                                <div class="carousel-inner">
+                                    <form class="from_wrapper" [formGroup]="registrationForm" novalidate #f="ngForm">
+                                        <div class="carousel-item c-btm" [ngClass]="activetab">
+                                            <p class="para btm"> &nbsp;&nbsp;&nbsp;&nbsp;
+                                                <!-- Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                                                Praesent interdum seconds. adipiscing elit. Praesent interdum -->
+                                            </p>
+
+                                            <div class="row inputset">
+                                                <div class="col-sm-5"><label>First Name</label><span class="r">*</span>
+                                                </div>
+                                                <div class="col-sm-7"><input type="text" autofocus placeholder="Ali"
+                                                        pInputText formControlName="firstname" maxlength="100"
+                                                        #firstname [(ngModel)]="registerdto.FirstName"
+                                                        (keypress)="firstrestrictNumeric(firstname, $event);"
+                                                        (keyup)="basicformvalidate()" class="w-100" id="firstname">
+                                                </div>
+                                                <div class="col-sm-12">
+                                                    <div *ngIf="registrationForm.controls['firstname'].errors && !registrationForm.controls['firstname'].pristine"
+                                                        class="text-danger error">
+                                                        <div
+                                                            [hidden]="!registrationForm.controls['firstname'].errors.required">
+                                                            Please enter first name</div>
+                                                        <div
+                                                            [hidden]="!registrationForm.controls['firstname'].errors.pattern">
+                                                            Please enter valid first name</div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-12">
+                                                    <hr>
+                                                </div>
+                                            </div>
+
+                                            <div class="row inputset">
+                                                <div class="col-sm-5"><label>Last Name</label><span class="">*</span>
+                                                </div>
+                                                <div class="col-sm-7"><input type="text" placeholder="Raza"
+                                                        formControlName="lastname" maxlength="100" #lastname
+                                                        (keypress)="restrictNumeric(lastname, $event);"
+                                                        [(ngModel)]="registerdto.LastName" (keyup)="basicformvalidate()"
+                                                        class="w-100" /></div>
+                                                <div class="col-sm-12">
+                                                    <div *ngIf="registrationForm.controls['lastname'].errors && !registrationForm.controls['lastname'].pristine"
+                                                        class="text-danger error">
+                                                        <div
+                                                            [hidden]="!registrationForm.controls['lastname'].errors.required">
+                                                            Please enter last name</div>
+                                                        <div
+                                                            [hidden]="!registrationForm.controls['lastname'].errors.pattern">
+                                                            Please enter valid last name</div>
+
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-12">
+                                                    <hr>
+                                                </div>
+                                            </div>
+
+                                        </div>
+
+                                        <div class="carousel-item">
+
+                                            <p class="para"> &nbsp;
+                                                <!-- Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                                                Praesent interdum seconds. adipiscing elit. Praesent interdum -->
+                                            </p>
+                                            <div class="row inputset">
+                                                <div class="col-sm-4"><label>Email</label><span class="">*</span></div>
+                                                <div class="col-sm-8"><input type="text" placeholder="email@domain.com"
+                                                        formControlName="emailid" maxlength="50" class = "inputFullWidth"
+                                                        [(ngModel)]="registerdto.Email"
+                                                        onkeydown="javascript: return (event.keyCode ==32) ?false  : true"
+                                                        (keyup)="formauthdatavalidate()" id="emailid" /></div>
+                                                <div class="col-sm-12">
+                                                    <div *ngIf="registrationForm.controls['emailid'].errors && !registrationForm.controls['emailid'].pristine"
+                                                        class="text-danger error">
+                                                        <div
+                                                            [hidden]="!registrationForm.controls['emailid'].errors.required">
+                                                        </div>
+                                                        <div
+                                                            [hidden]="!registrationForm.controls['emailid'].errors?.pattern">
+                                                        </div>
+                                                    </div>
+                                                    <div class="text-danger error">
+                                                        <span [hidden]="txterrormsg">{{emailvaliderrormsg}}</span>
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-12">
+                                                    <hr>
+                                                </div>
+                                            </div>
+
+                                            <div class="row inputset">
+                                                <div class="col-sm-4"><label>Password</label><span class="">*</span>
+                                                </div>
+                                                <div class="col-sm-8"><input type="password" placeholder="********"
+                                                        appBlockCopyPaste formControlName="password" maxlength="12"
+                                                        [(ngModel)]="registerdto.PWD" (keyup)="formauthdatavalidate();"
+                                                        onkeydown="javascript: return (event.keyCode ==32) ?false  : true" />
+                                                </div>
+                                                <div class="col-sm-12">
+                                                    <div *ngIf="registrationForm.controls['password'].errors && !registrationForm.controls['password'].pristine"
+                                                        class="text-danger error">
+                                                        <div
+                                                            [hidden]="!registrationForm.controls['password'].errors.required">
+                                                        </div>
+                                                        <div
+                                                            [hidden]="!registrationForm.controls['password'].errors?.pattern">
+                                                        </div>
+                                                        <div
+                                                            [hidden]="!registrationForm.controls['password'].errors?.minlength">
+                                                        </div>
+                                                    </div>
+                                                    <div class="text-danger error">
+                                                        <span [hidden]="txterrormsg">{{pwdvaliderrormsg}}</span>
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-12">
+                                                    <hr>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                        <div class="carousel-item">
+                                            <p class="para mb-1"> &nbsp;
+                                                <!-- Lorem ipsum dolor sit amet, consectetur adipiscing elit. -->
+                                            </p>
+
+                                            <div class="row inputset">
+                                                <div class="col-sm-5"><label>Country</label><span class="">*</span>
+                                                </div>
+                                                <div class="col-sm-7">
+                                                    <p-dropdown [options]="countries" formControlName="country"
+                                                        [(ngModel)]="registerdto.Country" [autoWidth]="false"
+                                                        [filter]="false" (onChange)="selectedcountry($event)">
+                                                        <option *ngFor="let c of countries" [ngValue]="c">{{c}}</option>
+                                                    </p-dropdown>
+
+                                                </div>
+                                                <div class="col-sm-12">
+                                                    <hr>
+                                                </div>
+                                            </div>
+
+                                            <div class="row inputset">
+                                                <div class="col-sm-5"><label>City</label><span class="">*</span></div>
+                                                <div class="col-sm-7"><input type="text" placeholder="Raza"
+                                                        formControlName="city" maxlength="100"
+                                                        [(ngModel)]="registerdto.City"
+                                                        (keyup)="Addressformvalidate(); restrictInput($event)" /></div>
+                                                <div class="col-sm-12">
+                                                    <div *ngIf="registrationForm.controls['city'].errors && !registrationForm.controls['city'].pristine"
+                                                        class="text-danger error">
+                                                        <div
+                                                            [hidden]="!registrationForm.controls['city'].errors.required">
+                                                            Please enter city</div>
+                                                        <div
+                                                            [hidden]="!registrationForm.controls['city'].errors?.pattern">
+                                                            Please enter valid city</div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-12">
+                                                    <hr>
+                                                </div>
+                                            </div>
+
+                                            <div class="row inputset">
+                                                <div class="col-sm-5"><label>Address</label>
+                                                </div>
+                                                <div class="col-sm-7"><textarea placeholder="Address" rows="1"
+                                                        formControlName="address" maxlength="500"
+                                                        [(ngModel)]="registerdto.Address"></textarea></div>
+                                                <!-- <div class="col-sm-12">
+                                                    <div *ngIf="registrationForm.controls['address'].errors && !registrationForm.controls['address'].pristine"
+                                                        class="text-danger error">
+                                                        <div
+                                                            [hidden]="!registrationForm.controls['address'].errors.required">
+                                                            Please enter address</div>
+                                                    </div>
+                                                </div> -->
+                                                <div class="col-sm-12">
+                                                    <hr>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="carousel-item">
+                                            <p class="para mb-5"> &nbsp;
+                                                <!-- Lorem ipsum dolor sit amet, consectetur adipiscing
+                                                elit. Praesent interdum seconds. adipiscing elit. Praesent interdum -->
+                                            </p>
+                                            <div class="row inputset">
+                                                <div class="col-sm-5"><label>Mobile</label><span class="">*</span></div>
+                                                <div class="col-sm-7"><span>+ {{selectedcountrycode}}</span><input
+                                                        type="text" placeholder="9876543210" formControlName="mobile"
+                                                        [(ngModel)]="registerdto.Mobile" minlength="7"maxlength="10"
+                                                        (keypress)="_keyPress($event)"
+                                                        (focusout)="contactformvalidate()" onpaste="return false"
+                                                        id="mobile" /></div>
+                                                <div class="col-sm-12">
+                                                    <div *ngIf="registrationForm.controls['mobile'].errors && !registrationForm.controls['mobile'].pristine"
+                                                        class="text-danger error">
+                                                        <div
+                                                            [hidden]="!registrationForm.controls['mobile'].errors.required">
+                                                        </div>
+                                                        <div
+                                                            [hidden]="!registrationForm.controls['mobile'].errors?.minlength && !registrationForm.controls['mobile'].errors?.maxlength">
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-sm-12">
+                                                    <hr>
+                                                </div>
+                                                <div class="col-sm-12 mt-2 terms_chk">
+
+                                                    <p-checkbox class="chk" [(ngModel)]="ruleschecked"
+                                                        (onChange)="IsAcceptterms($event)" formControlName="terms"
+                                                        binary="true" [disabled]='true' [hidden]="true"></p-checkbox>
+                                                    <p class="terms">I agree to the <a href="javascript:void(0)"
+                                                            (click)="showTermsDialog()"><u>Terms & Conditions of
+                                                                dunyana</u></a>.
+                                                    </p>
+                                                </div>
+                                                <div class="text-danger error">
+                                                    <span [hidden]="false">{{phonevaliderrormsg}}</span>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="carousel-item" *ngIf="registerdto.Country=='5'">
+                                            <p class="para"> &nbsp;
+                                                Mobile Verification
+                                                <!-- Lorem ipsum dolor sit amet, consectetur adipiscing elit. -->
+                                            </p>
+                                            <div class="">
+                                                <div class="otp-num">
+                                                    <input id="motp" id="xax" autofocus="autofocus" type="number"
+                                                        onkeydown="javascript: return (event.keyCode >31 && ( event.keyCode<48 || event.keyCode>57) ) ? false : true"
+                                                        oninput="if(value.length>6)value=value.slice(0,6)"
+                                                        formControlName="motp" [readonly]="otpdisable"
+                                                        [(ngModel)]="MOtp" (keyup)="Motpformvalidate()">
+                                                    <span class="ml-g"></span> <span></span> <span></span> <span></span>
+                                                    <span></span> <span></span>
+                                                </div>
+
+                                            </div>
+                                            <div class="pt-2">
+                                                <div [ngClass]="responsesty">
+                                                    <span>{{otpresponse}}</span>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="carousel-item">
+                                            <p class="para"> &nbsp;
+                                                Email Verification
+                                                <!-- Lorem ipsum dolor sit amet, consectetur adipiscing elit. -->
+                                            </p>
+                                            <div class="">
+                                                <div class="otp-num">
+                                                    <input id="otp" id="xax" autofocus="autofocus" type="number"
+                                                        onkeydown="javascript: return (event.keyCode >31 && ( event.keyCode<48 || event.keyCode>57) ) ? false : true"
+                                                        oninput="if(value.length>6)value=value.slice(0,6)"
+                                                        formControlName="otp" [readonly]="otpdisable" [(ngModel)]="Otp"
+                                                        (keyup)="otpformvalidate()">
+                                                    <span class="ml-g"></span> <span></span> <span></span> <span></span>
+                                                    <span></span> <span></span>
+                                                </div>
+
+                                            </div>
+                                            <div class="pt-2">
+                                                <div [ngClass]="responsesty">
+                                                    <span>{{otpresponse}}</span>
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+                                        <div class="carousel-item">
+                                            <div class="center col-md-12 p-0 text-center">
+
+                                                <img class="text-center" [src]="checkinfo">
+                                                <h2>Success!</h2>
+                                                <p>
+                                                    You have signed in successfully. You will be redirected in 5
+                                                    seconds.
+                                                </p>
+                                                <p>Redirecting...</p>
+                                            </div>
+                                        </div>
+                                    </form>
+
+                                </div>
+                            </div>
+
+
+                            <div class="row btns" [hidden]="hidenextbtn">
+                                <div class="col-sm-11 m-auto">
+                                    <p-button class="mtimersty" [ngClass]="mbtnotpdis" [hidden]="mobiletimerbtndisplay"
+                                    (click)="mobileresendotp()"><span id="mtime"
+                                        class="text-primary mtimer">{{resendtext}}</span></p-button>
+
+                                    <p-button class="timersty" [ngClass]="btnotpdis" [hidden]="timerbtndisplay"
+                                        (click)="resendotp()"><span id="time"
+                                            class="text-primary timer">{{resendtext}}</span></p-button>
+
+                                    <p-button class="line_btn sblue" [label]="submitbtntext" href="#demo"
+                                        data-slide="next" [ngClass]="btndisable" [hidden]="verifybtndisplay"
+                                        (click)="addcustomer()"></p-button>
+
+                                </div>
+                            </div>
+                            <div class="pt-2">
+                                <div [ngClass]="responsesty">
+                                    <span>{{response}}</span>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+    <footer class="trans">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <p>Photo by Jolly Chic.<strong> Shop this look</strong>.</p>
+                </div>
+            </div>
+        </div>
+
+    </footer>
+</section>
+
+<div class="loading-indicator mid" *ngIf="ProgressSpinnerDlg">
+    <p-progressSpinner></p-progressSpinner>
+
+
+</div>
+<div class="overlay" *ngIf="ProgressSpinnerDlg"></div>
+
+
+
+
+
+
+
+<app-terms-conditions [isChecked]='false' [display]="termesdialogdisplay" (displayChange)="ontemsDialogClose($event)">
+</app-terms-conditions>

@@ -1,0 +1,180 @@
+.walletbackground {
+    background-color: #00bdef;
+    height: calc(100% - 452px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding:30px 0;
+    min-height: 550px;
+    .text_container
+    {
+        flex-basis: 100%;
+        padding: 0;
+        .profile
+        {
+            background-color: #fff;
+            min-height: 350px;
+            .address
+            {
+                margin: 80px 30px 30px;
+               .price_input, .cc-det input{
+                    width: 100%;
+                    background: transparent;
+                    border: 0;
+                    border-bottom: solid 1px #ccc;
+                    font-size: 20px;
+                    padding: 0;
+                    font-weight: 600;
+                    margin: 0 0 5px;
+                    border-radius: 0;
+                }
+                .backBtn
+                {
+                    width: 50px;
+                    height: 50px;
+                    border-radius: 100%;
+                    background: #edeeef;
+                    text-align: center;
+                    margin-bottom: 1.5rem !important;
+                    position: absolute;
+                    margin-top: 0px;
+                    text-decoration: none;
+                    top:20px;
+                    cursor: pointer;
+                    i
+                    {
+                        color: #00c0f3;
+                        top: 16px;
+                        font-size: 15pt;
+                        position: relative;
+                        text-decoration: none;
+                    }
+                    &:hover
+                    {
+                        background-color: #00c0f3;
+                        i
+                        {
+                            color: #fff;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .line_btn.sblue
+    {
+        background-color: transparent;
+        border: 0;
+        min-width: 78px;
+        background-position: 17px 35px;
+        &:hover
+        {
+            background-position: 17px -25px;
+        }
+        &:disabled
+        {
+            background-position: 17px 35px !important;
+            color: #00bdef;
+            opacity: 0.5;
+        }
+    }
+}
+#saveCardContent
+{
+    padding:0;
+    input
+    {
+       // visibility: hidden;
+       opacity: 0;
+        margin: 0;
+        width: 18px;
+        height: 18px;
+        z-index: 9;
+        &+ label
+        {
+            position: relative;
+            padding-left: 25px;
+            line-height: 27px;
+            &::before
+            {
+                width:17px;
+                height: 17px;
+                display: inline-block;
+                bordeR:solid 1px #ccc;
+                content: '';
+                margin-right: 6px;
+                top: 1px;
+                position: absolute;
+                left: 0;
+            }
+        }
+        &:checked
+        {
+            &+label
+            {
+                &::before
+                {
+                    background-color: #00bdef;
+                }
+            }
+        }
+    }
+}
+.text-blue {
+    cursor: pointer;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #4f5b69;
+}
+
+h4 {
+    font-family: "teshrin_arltmedium", sans-serif;
+}
+
+
+
+.ui-dropdown-label
+{
+    font-size:20px !important;
+    padding:0 30px 0 0;
+}
+  //spinner styles
+.loading-indicator {
+    position: fixed;
+    z-index: 999;
+    height: 2em;
+    width: 2em;
+    overflow: show;
+    margin: auto;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    }
+    
+    // Transparent Overlay 
+    .loading-indicator:before {
+    content: '';
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.53);
+    }
+    .login-error {
+        color: crimson;
+        text-align: left;
+        padding-left: 10px;
+        font-size: 10pt
+        }
+        @media only screen and (max-height:900px)
+        {
+           .walletbackground 
+           {                
+                min-height: 410px;
+           }
+        }

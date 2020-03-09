@@ -1,0 +1,199 @@
+<section class="accounts">
+    <div class="text_container">
+        <div class="container">
+            <div class="row mt-2 mb-3">
+                <div class="col-xl-5 col-lg-5">
+                    <h4 class="sec-title">Tracking Shipment</h4>
+                    <div class="profile mb-5">
+
+                        <!-- <div class="thumb text-center w-100">
+                            <button class="backBtn" (click)="backtoaccountpage()"><i
+                                    class="icomoon icon-arrows"></i></button>
+
+                             <img src="{{productdetails.productimage}}" class="float-none">
+                            <h2>${{productdetails.productcost}}</h2>
+                            <div>{{productdetails.ordereddate | date:'MMM d, y'}}</div>
+                            <input class="text-center" type="text" value="*********45862">
+                        </div> -->
+
+                        <!--<div class="order-details">
+                            <div *ngFor="let trackpoints of trackingdata let last = last">
+                                <div class="fade-o" *ngIf="!last">
+                                    <p class="hd"><span></span>{{trackpoints.activity}} </p>
+                                    <p class="addr"> {{trackpoints.stationCode}}, CA 95673</p>
+                                </div>
+                                <div class="hd" *ngIf="last">
+                                    <button class="float-right line_btn blue edit" [disabled]="orderdelivered"
+                                        (click)="editaddressinmap()">Edit</button>
+                                    <p class="hd"><span></span>{{trackpoints.activity}} </p>
+                                    <p class="addr"> {{trackpoints.stationCode}}, CA 95673</p>
+                                </div>
+                            </div>
+                        </div> -->
+
+                        <div class="thumb text-center w-100 ">
+                            <button class="backBtn" (click)="backtoaccountpage()"><i
+                                    class="icomoon icon-arrows"></i></button>
+                        </div>
+                        <div class="order-details row">
+
+                            <div class="col-md-3">
+                                <img src="{{productitem.merchantImage}}" class="float-none">
+                            </div>
+                            <div class="col-md-8">
+                                <h4>Product Name:</h4>
+                                <p>{{selectedproduct.productName}}</p>
+                                <h4> Sold By:</h4>
+                                <p>{{productitem.merchantName}}</p>
+                                <h4>Tracking AWB#:</h4>
+                                <p> <span class="file_nm"><a
+                                            href="javascript:void(0)">{{selectedproduct.trackingID}}23423423423443</a></span>
+                                </p>
+                            </div>
+                            <div class="col-md-1" *ngIf="selectedproduct.productImage!=''">
+                                <img src="{{selectedproduct.productImage}}" class="float-none" style="max-width: 40px">
+                            </div>
+                            <div class="col-md-1" *ngIf="selectedproduct.productImage===''">
+                                <img src="{{no_orderimg}}" class="float-none" style="max-width: 40px">
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+
+                <div class="col-xl-7 col-lg-7">
+                    <h4 class="sec-title">Order Details</h4>
+                    <!-- <div class="col-md-12 category view">
+                        <div class="col-12">
+                            <h5 class="float-left col-6">{{productdetails.productname}} </h5>
+                            <h5 class="float-right text-right col-6">${{productdetails.productcost}}</h5>
+                        </div>
+                        <div class="col-12">
+                            <hr>
+                        </div>
+                        <div class="col-12">
+                            <p class="float-left col-6">Sub Total</p>
+                            <p class="float-right text-right col-6">$000</p>
+                        </div>
+                        <div class="col-12">
+                            <p class="float-left col-6">Status </p>
+                            <p class="float-right text-right col-6">{{productdetails.paymentStatus}} &nbsp;</p>
+                        </div>
+
+                        <div class="col-12 text-center">
+                            <button [hidden]="Iscod" id="pay-now-button" type="button" class="line_btn blue cancel"
+                                (click)="payOrder()">Pay Order</button>
+                            <button class="line_btn blue cancel">Cancel Order</button>
+                        </div>
+                    </div> -->
+
+                    <div class="category view  ">
+                        <div class="profile ord-det mb-4">
+                            <div class="order-details master row mb-3">
+                                <div class="col-sm-6">
+                                    <h4>Order ID :</h4>
+                                    <p> {{productitem.orderID}}</p>
+                                </div>
+                                <div class="col-sm-6">
+                                    <h4>Total Amount:</h4>
+                                    <p> {{productitem.orderAmount}} <span
+                                            style="font-weight: 600;">{{productitem.currenyCode}}</span> </p>
+                                </div>
+                                <div class="col-sm-6">
+                                    <h4>Order Date:</h4>
+                                    <p> {{productitem.orderDate | date:'MMM d, y' }}</p>
+                                </div>
+                            </div>
+
+                   
+                    <div *ngFor="let prod of pagedItems" class="prds-list">
+                            <div class="order-details row" style="padding-top: 15px; padding-bottom: 0;">
+                        <div class="col-sm-12 mb-3">
+                            <h4>Product No :  {{prod.productID}}</h4>
+                        </div>
+                        <div class="col-sm-6">
+                                <h4>Product Name :</h4><p> {{prod.productName}}</p>
+                                <h4>Sold By :</h4><p> {{productitem.merchantName}}</p>
+                                <h4>Tracking AWB#:</h4> <p (click)="viewtrackdetails(prod.productID)"> <span class="file_nm"><a
+                                    href="javascript:void(0)">{{prod.trackingID}}23423423423443</a></span>
+                        </p>
+                        </div>
+                        <div class="col-sm-2 text-center" *ngIf="prod.productImage!=''">
+                                <img src="{{prod.productImage}}" style="max-width: 65px" class="float-none">                     
+                        </div>
+                        <div class="col-sm-2 text-center" *ngIf="prod.productImage===''">
+                            <img src="{{no_orderimg}}" style="max-width: 65px" class="float-none">                     
+                    </div>
+                        <div class="col-sm-4">
+                                <h4>Amount :</h4><p> {{prod.unitCost}} {{prod.currenyCode}}</p>
+                                <h4>Payment Mode :</h4><p> <span *ngIf="productitem.cod==='Y'">COD</span>
+                                    <span *ngIf="productitem.cod==='N'">Paid</span></p>
+                                <h4>Status:</h4><p> {{productitem.orderStatus}}</p>
+                        </div>
+                 
+                        
+                        <div class="col-sm-12">
+                            <p (click)="viewtrackdetails(prod.productID)">
+                               </p>
+                        </div>
+                       
+                      
+                    </div>
+                   <!-- <div class="col-12  alt-bg">
+                        <div class="row">
+                            <div class="col-12 text-center">
+                                    <button [hidden]="Iscod" id="pay-now-button" type="button" class="line_btn blue cancel"
+                                    (click)="payOrder()">Pay Order</button>
+                                <button class="line_btn lblue cancel">Cancel Order</button>
+                            </div>
+                            
+                        </div>
+                        
+                    </div>-->
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 text-left">
+                            <button [hidden]="Iscod" id="pay-now-button" class="line_btn lblue cancel mt-0"
+                                (click)="payOrder()">Pay Order</button>
+                            <!-- <button class="line_btn lblue cancel mt-0" [hidden]="!Iscod">Cancel Order</button> -->
+                        </div>
+                        <div class="col-md-6 text-right">
+                            <ul *ngIf="pager.pages && pager.pages.length" class="pagination mt-1">
+                                <li [ngClass]="{disabled:pager.currentPage === 1}">
+                                    <a (click)="setPage(1)">First</a>
+                                </li>
+                                <li [ngClass]="{disabled:pager.currentPage === 1}">
+                                    <a (click)="pager.currentPage === 1?'': setPage(pager.currentPage - 1)">Previous</a>
+                                </li>
+                                <li *ngFor="let page of pager.pages" [ngClass]="{active:pager.currentPage === page}">
+                                    <a (click)="setPage(page)">{{page}}</a>
+                                </li>
+                                <li [ngClass]="{disabled:pager.currentPage === pager.totalPages}">
+                                    <a
+                                        (click)="pager.currentPage === pager.totalPages?'':setPage(pager.currentPage + 1)">Next</a>
+                                </li>
+                                <li [ngClass]="{disabled:pager.currentPage === pager.totalPages}">
+                                    <a (click)="setPage(pager.totalPages)">Last</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div>
+
+            </div>
+        </div>
+    </div>
+</section>
+<!-- <app-order-editaddress-map [display]="display" (displayChange)="onDialogClose($event)"></app-order-editaddress-map> -->
+
+<div class="loading-indicator mid" *ngIf="ProgressSpinnerDlg">
+    <p-progressSpinner></p-progressSpinner>
+</div>
+
+<div class="overlay" *ngIf="ProgressSpinnerDlg"></div>

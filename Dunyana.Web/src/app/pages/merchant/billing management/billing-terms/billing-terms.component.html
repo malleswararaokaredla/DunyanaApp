@@ -1,0 +1,13 @@
+<h4>Billing Terms</h4>
+
+<div *ngFor="let mercfile of merchantfiles">
+    <span class="downld_ic" *ngIf="mercfile.contractFileName.substring(mercfile.contractFileName.indexOf('.')+1,mercfile.contractFileName.length)!='pdf'">
+        <a [href]="mercfile.contractFileURL" ><i class="fa fa-download" aria-hidden="true"></i>&nbsp; {{mercfile.contractFileName}}</a>
+    </span>
+    <span class="downld_ic" *ngIf="mercfile.contractFileName.substring(mercfile.contractFileName.indexOf('.')+1,mercfile.contractFileName.length)=='pdf'">
+        <a [href]="mercfile.contractFileURL" target="_blank"><i class="fa fa-download" aria-hidden="true"></i>&nbsp; {{mercfile.contractFileName}}</a>
+    </span>
+</div>
+<div *ngIf="merchantfiles.length==0">
+   <h5>Contract files not uploaded</h5>
+</div>

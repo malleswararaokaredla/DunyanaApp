@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAqEA,AAAA,OAAO,CACP;EACI,MAAM,EAAE,OAAO;EACf,YAAY,EAAE,IAAI;CACrB",
+    "sources": [
+        "categoriesslider.component.scss"
+    ],
+    "names": [],
+    "file": "categoriesslider.component.css"
+}

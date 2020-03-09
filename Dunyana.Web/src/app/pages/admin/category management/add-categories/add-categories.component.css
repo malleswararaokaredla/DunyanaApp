@@ -1,0 +1,24 @@
+.disable {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.line_btn.sblue {
+  background-position: 8px 40px;
+  background-color: transparent;
+  border: none;
+  outline: none;
+}
+
+.line_btn.sblue:hover {
+  background-position: 8px -20px;
+}
+
+.error {
+  font-size: 11px;
+}
+
+.required {
+  color: red;
+}
+/*# sourceMappingURL=add-categories.component.css.map */

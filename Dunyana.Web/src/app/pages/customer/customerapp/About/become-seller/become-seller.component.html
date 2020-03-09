@@ -1,0 +1,55 @@
+<main style="padding-bottom: 0;">
+    <section class="story-banner">
+        <img src="assets/layout/images/hero_banner.jpg" alt="our story" />
+        <div class="title_container">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <h1 [routerLink]="['/merchants/registration']" class="seller_link">{{ 'Becomeaseller' | translate }}?</h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="master_text">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12">
+                    <h2 class="seller_link" [routerLink]="['/merchants/registration']"> {{ 'Becomeaseller' | translate }}
+                    </h2>
+                    <!-- <a [routerLink]="['/merchants/registration']">
+                            <h2>Becoming a seller</h2>
+                        </a> -->
+                    <p> 
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="history join-steps">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12">
+                    <h2> {{ 'You can join us by following 3 simple steps:' | translate }}  </h2>
+                    <ul class="join_line">
+                        <li class="y93">
+                            <div>
+                                <p>{{ 'Register using our platform' | translate }} </p>
+                            </div>
+                        </li>
+                        <li class="y10">
+                            <div>
+                                <p>{{ 'Our Sales Representative will contact you to finalize service agreement' | translate }}</p>
+                            </div>
+                        </li>
+                        <li class="y17">
+                            <div>
+                                <p>{{ 'Our system support team will integrate your website with our platform' | translate }}</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>

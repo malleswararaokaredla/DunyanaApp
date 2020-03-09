@@ -1,0 +1,150 @@
+.btns {
+    margin-top: 4rem;
+    .line_btn {
+        &.sblue {
+            background-position: center 43px;
+            background-color: #00c0f3;
+            background-image: url('../../../../../assets/layout/images/line_white.png');
+            background-repeat: no-repeat;
+            border: none;
+            outline: none;
+            color:white;// #00c0f3;
+            width: 100%;
+            border-radius: 20px;
+            text-align: center;
+            cursor: pointer;
+            &:hover {
+                background-position: center 43px;
+                outline: none;
+                background-color: #ffffff;
+                color: #00c0f3;
+                border: 1px solid #03A9F4;
+                background-image: url('../../../../../assets/layout/images/line_blue.png');
+            }
+        }
+    }
+}
+section.ad_legal
+{
+  
+   
+            padding:15px 0;
+            min-height: calc(100% - 194px);
+}
+.line_btn
+    {
+        padding:0;
+        background-color: transparent;
+        border:0;
+        outline: none;
+    }
+.web_info
+{
+    label
+    {
+       font-weight: 600;
+    }
+    input[type="text"]
+    {
+        padding:10px;
+        margin:0 20px;
+        border:0;
+        background-color: #f1f1f1;
+        min-width: 300px;
+    }    
+}
+h3
+{
+    margin-bottom: 40px;
+}
+.sel-dropdown
+{
+    background-color: #f1f1f1;
+    padding: 5px 10px; 
+    .ui-inputtext, .ui-dropdown
+    {
+        background-color: transparent !important;
+    }    
+}
+
+.r{
+    color: gray;
+}
+
+.mid{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50% -50%);
+    z-index: 1;
+  }
+
+  .overlay{
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: black;
+    opacity: 0.5;
+    z-index: 0;
+    left: 0;
+    top: 0;
+  }
+
+  .form{
+      width:800px;
+      margin: 0 auto;
+  }
+  .url{
+    display: flex;
+    flex-wrap: wrap;
+    margin-right: -15px;
+    /* margin-left: -15px; */
+    margin-bottom: 10px;
+    align-items: center;
+    justify-content: center;
+  }
+  .pointer{
+      cursor: pointer;
+  }
+  .container{
+    margin-top: 10px;
+}
+.mwc{
+    margin-top: 20px;
+}
+
+
+.disable{
+    opacity: 0.5;
+    pointer-events: none;
+}
+
+.line_btn {
+    &.sblue {
+         background-position: 8px 40px;
+         background-color:transparent;
+         border:none;
+         outline: none;
+         cursor: pointer;
+             &:hover {
+            background-position: 8px -20px;
+
+        }
+     
+    }
+
+   
+}
+
+.error{
+    font-size: 11px;
+}
+.required{
+    color: red;
+}
+
+.editmerchent .ui-dialog .ui-dialog-content {
+    border: 0;
+    padding: 0px 60px 50px;
+    border-radius: 0 0 20px 20px;
+}
