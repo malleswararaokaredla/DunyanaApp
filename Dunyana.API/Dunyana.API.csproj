@@ -1,0 +1,42 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DocumentationFile>D:\SymProjects\Dunyana\Dunyana.API\Dunyana.API.xml</DocumentationFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="MerchantImages\" />
+    <Folder Include="OrderImage\" />
+    <Folder Include="wwwroot\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.App" />
+    <PackageReference Include="AutoMapper" Version="8.1.0" />
+    <PackageReference Include="FluentValidation.AspNetCore" Version="7.3.1" />
+    <PackageReference Include="Microsoft.OpenApi" Version="1.1.4" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.1.9" />
+ 
+    <PackageReference Include="MySql.Data.EntityFrameworkCore" Version="8.0.16" />
+    <PackageReference Include="MySql.Data.EntityFrameworkCore.Design" Version="8.0.16" />
+    <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.1.2" PrivateAssets="All" />
+    <PackageReference Include="Serilog.Extensions.Logging.File" Version="1.1.0" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="4.0.1" />
+    <PackageReference Include="Swashbuckle.AspNetCore.Filters" Version="4.5.5" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Dunyana.Core\Dunyana.Core.csproj" />
+    <ProjectReference Include="..\Dunyana.DataAccess\Dunyana.DataAccess.csproj" />
+    <ProjectReference Include="..\Dunyana.NAQEL\Dunyana.NAQEL.csproj" />
+    <ProjectReference Include="..\Dunyana.Services\Dunyana.Services.csproj" />
+    <ProjectReference Include="..\Dunyana.Domain\Dunyana.Domain.csproj" />
+    <ProjectReference Include="..\Dunyana.Dto\Dunyana.Dto.csproj" />
+    <ProjectReference Include="..\Sym.Core\Sym.Core.csproj" />
+   
+    
+  </ItemGroup> 
+</Project>

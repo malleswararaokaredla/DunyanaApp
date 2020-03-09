@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Dunyana.API</name>
+    </assembly>
+    <members>
+        <member name="M:Dunyana.API.Controllers.CustomerController.GetProfileDetails(Dunyana.Dto.GetProfileDto)">
+            <summary>
+            Returns the details of the logged in user ( Customer or Merchant or Naqel user).
+            </summary>
+            <param name="customerRegistrationDto"></param>
+            <remarks>Email is required.</remarks>        
+            <returns>A task that upon completion contains the user details.</returns>
+        </member>
+        <member name="M:Dunyana.API.Controllers.OrdersController.Get(System.String)">
+            <summary>
+            Returns the details of the logged in user orders ( Customer).
+            </summary>
+            <param name="CustomerID"></param>
+            <remarks>CustomerID is required.</remarks>        
+            <returns>A task that upon completion contains the customer orders.</returns>
+        </member>
+    </members>
+</doc>

@@ -1,0 +1,18 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Dunyana.Core\Dunyana.Core.csproj" />
+    <ProjectReference Include="..\Dunyana.DataAccess\Dunyana.DataAccess.csproj" />
+    <ProjectReference Include="..\Dunyana.Domain\Dunyana.Domain.csproj" /> 
+    <ProjectReference Include="..\Dunyana.Dto\Dunyana.Dto.csproj" /> 
+    <ProjectReference Include="..\Dunyana.NAQEL\Dunyana.NAQEL.csproj" /> 
+    <ProjectReference Include="..\Sym.Core\Sym.Core.csproj" />
+    <PackageReference Include="FluentValidation.AspNetCore" Version="7.3.1" /> 
+    <PackageReference Include="AutoMapper" Version="8.1.0" /> 
+    <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="5.3.0" />
+    <ProjectReference Include="..\Checkout\CheckoutSdk.Extensions.Microsoft\CheckoutSdk.Extensions.Microsoft.csproj" />
+  </ItemGroup>
+</Project>
